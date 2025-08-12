@@ -9,7 +9,7 @@
     <!-- Chosen Palette: Indigo Dream (Vibrant Indigo, Soft Lavender, White) -->
     <!-- Application Structure Plan: A single-page application with a top navigation bar that smoothly scrolls to different thematic sections. The core of the app is an interactive "Requirements Checker" tool that allows users to select their drone's weight and flight purpose to instantly see the specific rules that apply to them. This task-oriented approach is more user-friendly than forcing users to read all text. It's supplemented by visually distinct sections for general safety rules, permitted flying areas, and an impactful chart visualizing the penalties. This structure guides the user from their specific needs to general knowledge. -->
     <!-- Visualization & Content Choices: 
-        1. Report Info: Drone registration and licensing rules based on weight/purpose. Goal: Inform users of their specific obligations. Viz/Method: Interactive form (radio buttons) with a dynamic text output area. Interaction: User selection triggers a JS function to display the correct requirements. Justification: Directly answers the user's primary question ("What do I need?") in an engaging way. Library/Method: Vanilla JS.
+        1. Report Info: Drone registration and licensing rules based on weight/purpose/location. Goal: Inform users of their specific obligations. Viz/Method: Interactive form (radio buttons) with a dynamic text output area. Interaction: User selection triggers a JS function to display the correct requirements. Justification: Directly answers the user's primary question ("What do I need?") in an engaging way. Library/Method: Vanilla JS.
         2. Report Info: Penalties for offenses (fines, jail time). Goal: Compare the severity of penalties to emphasize compliance. Viz/Method: Styled circles with text. Interaction: None. Justification: Circles provide a simple, clean visual representation of the two penalty tiers without the complexity of a chart. Library/Method: HTML/Tailwind CSS.
         3. Report Info: Key safety regulations. Goal: Organize rules for easy scanning. Viz/Method: Two-column grid layout with cards and styled text labels ("DO"/"DON'T"). Interaction: None. Justification: Styled text labels are professional and clearly communicate intent. Library/Method: HTML/Tailwind CSS.
         CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
@@ -42,17 +42,17 @@
 <body class="text-gray-800">
 
     <header class="bg-[#F5F3FF]/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex items-center">
                     <span class="font-bold text-xl text-gray-900">Drone SG</span>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#checker" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Checker</a>
-                        <a href="#rules" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Safety Rules</a>
+                        <a href="#checker" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">What you need</a>
+                        <a href="#rules" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Safety rules</a>
                         <a href="#penalties" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Penalties</a>
-                        <a href="#flying-areas" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Flying Areas</a>
+                        <a href="#flying-areas" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Flying areas</a>
                         <a href="#checklist" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Checklist</a>
                         <a href="#faq" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">FAQ</a>
                     </div>
@@ -63,21 +63,21 @@
 
     <main>
         <section id="hero" class="py-40" style="background-color: #5e5def;">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
                 <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">How to fly your drone legally in Singapore</h1>
                 <p class="mt-4 max-w-2xl text-xl text-indigo-100">A quick guide to the rules. Find out exactly what you need to do before you take flight.</p>
             </div>
         </section>
 
         <section id="checker" class="py-16 sm:py-24">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div>
                     <h2 class="text-base text-[#5e5def] font-semibold tracking-wide uppercase">Requirements</h2>
                     <p class="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
                         What's needed
                     </p>
                     <p class="mt-4 max-w-2xl text-xl text-gray-500">
-                        Answer two simple questions to see the specific registration and licensing rules that apply to you.
+                        Answer three simple questions to see the specific registration and licensing rules that apply to you.
                     </p>
                 </div>
 
@@ -117,6 +117,19 @@
                                 </div>
                             </fieldset>
                         </div>
+                        <div class="md:col-span-2">
+                             <h3 class="text-lg font-bold text-gray-900">3. Where are you flying?</h3>
+                            <fieldset class="mt-4 space-y-4">
+                                <div class="flex items-center">
+                                    <input id="location-outdoors" name="flying-location" type="radio" value="outdoors" class="focus:ring-[#5e5def] h-4 w-4 text-[#5e5def] border-gray-300" checked>
+                                    <label for="location-outdoors" class="ml-3 block text-sm font-medium text-gray-700">Outdoors</label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input id="location-indoors" name="flying-location" type="radio" value="indoors" class="focus:ring-[#5e5def] h-4 w-4 text-[#5e5def] border-gray-300">
+                                    <label for="location-indoors" class="ml-3 block text-sm font-medium text-gray-700">Indoors</label>
+                                </div>
+                            </fieldset>
+                        </div>
                     </form>
                     <div id="results" class="mt-8 p-6 bg-indigo-50 border-l-4 border-[#5e5def] rounded-r-lg">
                         <div class="flex">
@@ -128,7 +141,7 @@
                             <div class="ml-3">
                                 <h3 class="text-sm font-bold text-[#4338ca]">Your requirements</h3>
                                 <div id="results-content" class="mt-2 text-sm text-indigo-700">
-                                    <p>Select your drone's weight and purpose to see your specific requirements here.</p>
+                                    <p>Select your drone's weight, purpose, and location to see your specific requirements here.</p>
                                 </div>
                             </div>
                         </div>
@@ -138,14 +151,14 @@
         </section>
 
         <section id="rules" class="py-16 sm:py-24 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div>
                     <h2 class="text-base text-[#5e5def] font-semibold tracking-wide uppercase">The essentials</h2>
                     <p class="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
-                        Key safety regulations
+                        Key safety regulations for outdoor flying
                     </p>
                     <p class="mt-4 max-w-2xl text-xl text-gray-500">
-                        These rules apply to all drone operators, regardless of weight or purpose. Following them ensures the safety of everyone.
+                        These rules apply to all drone operators for outdoor flights, regardless of weight or purpose.
                     </p>
                 </div>
                 <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -156,12 +169,17 @@
                     </div>
                     <div class="p-6 bg-gray-50 rounded-lg">
                         <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded-full uppercase">Don't</span>
-                        <h3 class="mt-2 text-lg font-bold text-gray-900">Stay below 200ft (60m)</h3>
+                        <h3 class="mt-2 text-lg font-bold text-gray-900">Fly beyond visual line-of-sight (BVLOS)</h3>
+                        <p class="mt-2 text-base text-gray-600">Flying a drone where you cannot see it is strictly prohibited without an Operator and Class 1 Activity Permit.</p>
+                    </div>
+                    <div class="p-6 bg-gray-50 rounded-lg">
+                        <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded-full uppercase">Don't</span>
+                        <h3 class="mt-2 text-lg font-bold text-gray-900">Fly over 200ft (60m)</h3>
                         <p class="mt-2 text-base text-gray-600">Do not fly higher than 200 feet above mean sea level unless you have a specific permit.</p>
                     </div>
                     <div class="p-6 bg-gray-50 rounded-lg">
                         <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded-full uppercase">Don't</span>
-                        <h3 class="mt-2 text-lg font-bold text-gray-900">Avoid no-fly zones</h3>
+                        <h3 class="mt-2 text-lg font-bold text-gray-900">Fly in restricted areas</h3>
                         <p class="mt-2 text-base text-gray-600">Do not fly within 5km of an airport or airbase. Always check the OneMap app before flying.</p>
                     </div>
                     <div class="p-6 bg-gray-50 rounded-lg">
@@ -171,20 +189,15 @@
                     </div>
                     <div class="p-6 bg-gray-50 rounded-lg">
                         <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded-full uppercase">Don't</span>
-                        <h3 class="mt-2 text-lg font-bold text-gray-900">Fly over crowds</h3>
-                        <p class="mt-2 text-base text-gray-600">Avoid flying over groups of people, moving vehicles, or during bad weather.</p>
-                    </div>
-                    <div class="p-6 bg-gray-50 rounded-lg">
-                        <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded-full uppercase">Don't</span>
-                        <h3 class="mt-2 text-lg font-bold text-gray-900">Perform prohibited actions</h3>
-                        <p class="mt-2 text-base text-gray-600">Never drop items from your drone or use it to carry hazardous materials.</p>
+                        <h3 class="mt-2 text-lg font-bold text-gray-900">Fly over crowds or events</h3>
+                        <p class="mt-2 text-base text-gray-600">Avoid flying over groups of people. Flying at events with more than 50 people requires special permits.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="penalties" class="py-16 sm:py-24">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div>
                     <h2 class="text-base text-[#5e5def] font-semibold tracking-wide uppercase">Consequences</h2>
                     <p class="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -212,7 +225,7 @@
         </section>
 
         <section id="flying-areas" class="py-16 sm:py-24 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div>
                     <h2 class="text-base text-[#5e5def] font-semibold tracking-wide uppercase">Where to fly</h2>
                     <p class="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -226,7 +239,7 @@
                     <div class="p-8 bg-gray-50 rounded-lg">
                         <h3 class="text-xl font-bold text-gray-900">Official resource: OneMap</h3>
                         <p class="mt-3 text-base text-gray-600">The OneMap application is the definitive source for identifying no-fly zones and permitted areas. It is essential to consult this map before every single flight.</p>
-                        <a href="https://www.onemap.gov.sg/main/v2/dronequery" target="_blank" class="mt-4 inline-block bg-[#5e5def] text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors">Open OneMap</a>
+                        <a href="https://www.onemap.gov.sg/" target="_blank" class="mt-4 inline-block bg-[#5e5def] text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors">Open OneMap</a>
                     </div>
                     <div class="p-8 bg-gray-50 rounded-lg">
                         <h3 class="text-xl font-bold text-gray-900">Designated flying areas</h3>
@@ -249,7 +262,7 @@
                 <ul class="mt-8 space-y-3">
                     <li class="flex items-start p-4 bg-white rounded-lg shadow-sm">
                         <span class="h-6 w-6 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-800 mr-4 font-bold">✓</span>
-                        <p class="text-gray-700">Drone registered? (If over 250g)</p>
+                        <p class="text-gray-700">Drone registered? (If over 250g and flying outdoors)</p>
                     </li>
                     <li class="flex items-start p-4 bg-white rounded-lg shadow-sm">
                         <span class="h-6 w-6 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-800 mr-4 font-bold">✓</span>
@@ -257,7 +270,7 @@
                     </li>
                     <li class="flex items-start p-4 bg-white rounded-lg shadow-sm">
                         <span class="h-6 w-6 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-800 mr-4 font-bold">✓</span>
-                        <p class="text-gray-700">Airspace checked on OneMap?</p>
+                        <p class="text-gray-700">Airspace checked on OneMap? (For outdoor flights)</p>
                     </li>
                     <li class="flex items-start p-4 bg-white rounded-lg shadow-sm">
                         <span class="h-6 w-6 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-800 mr-4 font-bold">✓</span>
@@ -276,7 +289,7 @@
         </section>
 
         <section id="faq" class="py-16 sm:py-24 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div>
                     <h2 class="text-base text-[#5e5def] font-semibold tracking-wide uppercase">Common questions</h2>
                     <p class="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -285,6 +298,15 @@
                 </div>
                 <div class="mt-12 max-w-3xl mx-auto">
                     <div class="space-y-4">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-gray-900">
+                                <span>Do I need to register my drone if I only fly it indoors?</span>
+                                <span class="transform transition-transform duration-200">+</span>
+                            </button>
+                            <div class="faq-answer mt-2 text-gray-600">
+                                <p>Generally, no. Registration is not required for drones flown exclusively indoors in a private space. However, the rules change if the indoor space is <strong>publicly accessible</strong> (like a shopping mall or stadium) or if the flight is for an event with more than 50 people. In those specific indoor cases, a UA Pilot Licence and permits may be required.</p>
+                            </div>
+                        </div>
                         <div class="bg-gray-50 p-4 rounded-lg">
                             <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-gray-900">
                                 <span>Can I fly my drone at any open field?</span>
@@ -300,16 +322,7 @@
                                 <span class="transform transition-transform duration-200">+</span>
                             </button>
                             <div class="faq-answer mt-2 text-gray-600">
-                                <p>Tourist attractions like Marina Bay Sands, the Merlion, and Gardens by the Bay are located within restricted airspace and are often designated as "protected areas." Flying a drone in these locations is generally not allowed without special permits, which can be difficult to obtain for recreational purposes. Always assume flying is prohibited at major tourist spots unless you have explicit permission.</p>
-                            </div>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-lg">
-                            <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-gray-900">
-                                <span>Do I need to register my drone if I only fly it indoors?</span>
-                                <span class="transform transition-transform duration-200">+</span>
-                            </button>
-                            <div class="faq-answer mt-2 text-gray-600">
-                                <p>No, registration is not required for drones that are flown exclusively indoors. The rules and regulations, including registration and pilot licensing, apply to outdoor flights.</p>
+                                <p>Tourist attractions like Marina Bay Sands, the Merlion, and Gardens by the Bay are located within restricted airspace and are often designated as "protected areas." Flying a drone in these locations is generally not allowed without special permits, which can be difficult to obtain for recreational purposes. A permit from the Singapore Police Force (SPF) may also be required. Always assume flying is prohibited at major tourist spots unless you have explicit permission.</p>
                             </div>
                         </div>
                          <div class="bg-gray-50 p-4 rounded-lg">
@@ -329,7 +342,7 @@
     </main>
 
     <footer class="bg-gray-800 text-white">
-        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 text-left">
+        <div class="max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8 text-left">
             <h2 class="text-xl font-bold">Stay updated</h2>
             <p class="mt-2 text-base text-gray-300">Regulations can and will change. Always refer to CAAS for the latest information.</p>
             <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft" target="_blank" class="mt-4 inline-block bg-white text-gray-800 font-bold py-2 px-4 rounded-lg hover:bg-gray-200 transition-colors">
@@ -350,37 +363,39 @@
             function updateRequirements() {
                 const weight = form.querySelector('input[name="drone-weight"]:checked').value;
                 const purpose = form.querySelector('input[name="drone-purpose"]:checked').value;
+                const location = form.querySelector('input[name="flying-location"]:checked').value;
                 
                 let html = '<ul class="list-disc pl-5 space-y-1">';
 
-                if (purpose === 'commercial') {
-                    html += '<li><strong>UA Pilot Licence (UAPL)</strong> is required for the pilot.</li>';
-                    html += '<li>An <strong>Operator Permit</strong> is required for the business.</li>';
-                    html += '<li>A <strong>Class 1 Activity Permit</strong> is required for the specific flight operation.</li>';
-                    if (weight !== 'under_250g') {
-                         html += '<li>Drone must be <strong>registered</strong>.</li>';
-                    } else {
-                         html += '<li>Registration is not required if under 250g, but all other commercial permits apply.</li>';
-                    }
-                } else { // Recreational
-                    switch (weight) {
-                        case 'under_250g':
-                            html += '<li>No registration or license required.</li>';
-                            html += '<li>You must still follow all key safety regulations.</li>';
-                            break;
-                        case '250g_to_1.5kg':
-                            html += '<li>Drone must be <strong>registered</strong>.</li>';
-                            html += '<li>No pilot license is required.</li>';
-                            break;
-                        case '1.5kg_to_7kg':
-                            html += '<li>Drone must be <strong>registered</strong>.</li>';
-                            html += '<li>A <strong>UA Basic Training Certificate</strong> is required for the pilot.</li>';
-                            break;
-                        case 'over_7kg':
-                            html += '<li>Drone must be <strong>registered</strong>.</li>';
-                            html += '<li>A full <strong>UA Pilot Licence (UAPL)</strong> is required.</li>';
-                            html += '<li>Recreational use of drones over 7kg is highly restricted.</li>';
-                            break;
+                if (location === 'indoors') {
+                    html += '<li>For private indoor spaces, registration and pilot licenses are generally not required.</li>';
+                    html += '<li><strong>However</strong>, if flying in a <strong>publicly accessible indoor area</strong> (e.g., a mall, stadium) or for an event with <strong>more than 50 people</strong>, a <strong>UA Pilot Licence</strong> and permits are required.</li>';
+                } else { // Outdoors
+                    if (purpose === 'commercial') {
+                        html += '<li>An <strong>Operator Permit</strong> and <strong>Class 1 Activity Permit</strong> are required.</li>';
+                        html += '<li>A <strong>UA Pilot Licence (UAPL)</strong> is required for the pilot, regardless of drone weight.</li>';
+                        if (weight !== 'under_250g') {
+                             html += '<li>Drone must be <strong>registered</strong>.</li>';
+                        }
+                    } else { // Recreational
+                        switch (weight) {
+                            case 'under_250g':
+                                html += '<li>No registration or license required for basic recreational flying.</li>';
+                                break;
+                            case '250g_to_1.5kg':
+                                html += '<li>Drone must be <strong>registered</strong>.</li>';
+                                html += '<li>No pilot license is required for basic recreational flying.</li>';
+                                break;
+                            case '1.5kg_to_7kg':
+                                html += '<li>Drone must be <strong>registered</strong>.</li>';
+                                html += '<li>A <strong>UA Basic Training Certificate</strong> is required for the pilot.</li>';
+                                break;
+                            case 'over_7kg':
+                                html += '<li>Drone must be <strong>registered</strong>.</li>';
+                                html += '<li>A full <strong>UA Pilot Licence (UAPL)</strong> is required.</li>';
+                                break;
+                        }
+                         html += '<li>Regardless of weight, permits are required for flying at events with >50 people, flying above 200ft, or within restricted areas.</li>';
                     }
                 }
                 
