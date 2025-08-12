@@ -10,8 +10,8 @@
     <!-- Application Structure Plan: A single-page application with a top navigation bar that smoothly scrolls to different thematic sections. The core of the app is an interactive "Requirements Checker" tool that allows users to select their drone's weight and flight purpose to instantly see the specific rules that apply to them. This task-oriented approach is more user-friendly than forcing users to read all text. It's supplemented by visually distinct sections for general safety rules, permitted flying areas, and an impactful chart visualizing the penalties. This structure guides the user from their specific needs to general knowledge. -->
     <!-- Visualization & Content Choices: 
         1. Report Info: Drone registration and licensing rules based on weight/purpose. Goal: Inform users of their specific obligations. Viz/Method: Interactive form (radio buttons) with a dynamic text output area. Interaction: User selection triggers a JS function to display the correct requirements. Justification: Directly answers the user's primary question ("What do I need?") in an engaging way. Library/Method: Vanilla JS.
-        2. Report Info: Penalties for offenses (fines, jail time). Goal: Compare the severity of penalties to emphasize compliance. Viz/Method: Horizontal Bar Chart. Interaction: Tooltips on hover provide context. Justification: A chart provides a more immediate and impactful comparison of financial penalties than a text list. Library/Method: Chart.js on Canvas.
-        3. Report Info: Key safety regulations. Goal: Organize rules for easy scanning. Viz/Method: Two-column grid layout with cards and Unicode icons (✔/✖). Interaction: None. Justification: Card layout with icons improves readability and retention. Library/Method: HTML/Tailwind CSS.
+        2. Report Info: Penalties for offenses (fines, jail time). Goal: Compare the severity of penalties to emphasize compliance. Viz/Method: Styled circles with text. Interaction: None. Justification: Circles provide a simple, clean visual representation of the two penalty tiers without the complexity of a chart. Library/Method: HTML/Tailwind CSS.
+        3. Report Info: Key safety regulations. Goal: Organize rules for easy scanning. Viz/Method: Two-column grid layout with cards and styled text labels ("DO"/"DON'T"). Interaction: None. Justification: Styled text labels are professional and clearly communicate intent. Library/Method: HTML/Tailwind CSS.
         CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
     -->
     <style>
@@ -57,10 +57,10 @@
     </header>
 
     <main>
-        <section id="hero" class="py-20" style="background-color: #5e5def;">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">Fly your drone legally in Singapore</h1>
-                <p class="mt-4 max-w-2xl mx-auto text-xl text-indigo-100">An interactive guide to understanding the rules. Find out exactly what you need to do before you take flight.</p>
+        <section id="hero" class="py-40" style="background-color: #5e5def;">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+                <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">How to fly your drone legally in Singapore</h1>
+                <p class="mt-4 max-w-2xl text-xl text-indigo-100">A quick guide to the rules. Find out exactly what you need to do before you take flight.</p>
             </div>
         </section>
 
@@ -69,7 +69,7 @@
                 <div>
                     <h2 class="text-base text-[#5e5def] font-semibold tracking-wide uppercase">Requirements</h2>
                     <p class="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
-                        Check your requirements
+                        What's needed
                     </p>
                     <p class="mt-4 max-w-2xl text-xl text-gray-500">
                         Answer two simple questions to see the specific registration and licensing rules that apply to you.
@@ -145,33 +145,33 @@
                 </div>
                 <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                     <div class="p-6 bg-gray-50 rounded-lg">
-                        <span class="text-3xl font-bold text-green-500">✔</span>
+                        <span class="inline-block bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded-full uppercase">Do</span>
                         <h3 class="mt-2 text-lg font-bold text-gray-900">Maintain visual line-of-sight</h3>
                         <p class="mt-2 text-base text-gray-600">Always keep your drone where you can see it with your own eyes, not just on a screen.</p>
                     </div>
                     <div class="p-6 bg-gray-50 rounded-lg">
-                        <span class="text-3xl font-bold text-red-500">✖</span>
+                        <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded-full uppercase">Don't</span>
                         <h3 class="mt-2 text-lg font-bold text-gray-900">Stay below 200ft (60m)</h3>
                         <p class="mt-2 text-base text-gray-600">Do not fly higher than 200 feet above mean sea level unless you have a specific permit.</p>
                     </div>
                     <div class="p-6 bg-gray-50 rounded-lg">
-                        <span class="text-3xl font-bold text-red-500">✖</span>
+                        <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded-full uppercase">Don't</span>
                         <h3 class="mt-2 text-lg font-bold text-gray-900">Avoid no-fly zones</h3>
                         <p class="mt-2 text-base text-gray-600">Do not fly within 5km of an airport or airbase. Always check the OneMap app before flying.</p>
                     </div>
                     <div class="p-6 bg-gray-50 rounded-lg">
-                        <span class="text-3xl font-bold text-green-500">✔</span>
+                        <span class="inline-block bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded-full uppercase">Do</span>
                         <h3 class="mt-2 text-lg font-bold text-gray-900">Respect privacy</h3>
                         <p class="mt-2 text-base text-gray-600">Do not fly over private property or take photos/videos of people without their consent.</p>
                     </div>
                     <div class="p-6 bg-gray-50 rounded-lg">
-                        <span class="text-3xl font-bold text-red-500">✖</span>
-                        <h3 class="mt-2 text-lg font-bold text-gray-900">Don't fly over crowds</h3>
+                        <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded-full uppercase">Don't</span>
+                        <h3 class="mt-2 text-lg font-bold text-gray-900">Fly over crowds</h3>
                         <p class="mt-2 text-base text-gray-600">Avoid flying over groups of people, moving vehicles, or during bad weather.</p>
                     </div>
                     <div class="p-6 bg-gray-50 rounded-lg">
-                        <span class="text-3xl font-bold text-red-500">✖</span>
-                        <h3 class="mt-2 text-lg font-bold text-gray-900">No prohibited actions</h3>
+                        <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded-full uppercase">Don't</span>
+                        <h3 class="mt-2 text-lg font-bold text-gray-900">Perform prohibited actions</h3>
                         <p class="mt-2 text-base text-gray-600">Never drop items from your drone or use it to carry hazardous materials.</p>
                     </div>
                 </div>
@@ -186,12 +186,21 @@
                         Penalties for offences
                     </p>
                     <p class="mt-4 max-w-2xl text-xl text-gray-500">
-                        Breaking the rules can lead to serious legal and financial consequences. The chart below shows the maximum fines for first-time offenders.
+                        Breaking the rules can lead to serious legal and financial consequences. These are the maximum fines for first-time offenders.
                     </p>
                 </div>
-                <div class="mt-12">
-                    <div class="chart-container">
-                        <canvas id="penaltiesChart"></canvas>
+                <div class="mt-12 flex flex-col md:flex-row items-center justify-center gap-12 text-center">
+                    <div class="flex flex-col items-center">
+                        <div class="w-48 h-48 bg-indigo-200 rounded-full flex items-center justify-center border-4 border-indigo-300">
+                            <span class="text-3xl font-bold text-indigo-800">S$10k</span>
+                        </div>
+                        <p class="mt-4 font-semibold text-gray-700">Operating an unregistered drone (>250g)</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="w-64 h-64 bg-indigo-300 rounded-full flex items-center justify-center border-4 border-indigo-400">
+                             <span class="text-5xl font-bold text-indigo-900">S$50k</span>
+                        </div>
+                        <p class="mt-4 font-semibold text-gray-700">Flying without the required permit or license</p>
                     </div>
                 </div>
             </div>
@@ -264,12 +273,12 @@
 
     <footer class="bg-gray-800 text-white">
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 text-left">
-            <h3 class="text-xl font-bold">Stay updated</h3>
-            <p class="mt-2 text-base text-gray-300">Regulations can change. Always refer to the official source for the latest information.</p>
+            <h2 class="text-xl font-bold">Stay updated</h2>
+            <p class="mt-2 text-base text-gray-300">Regulations can and will change. Always refer to CAAS for the latest information.</p>
             <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft" target="_blank" class="mt-4 inline-block bg-white text-gray-800 font-bold py-2 px-4 rounded-lg hover:bg-gray-200 transition-colors">
                 Official CAAS Website
             </a>
-            <p class="mt-8 text-sm text-gray-400">This is an informational guide and not legal advice. Information is based on CAAS regulations as of August 2025.</p>
+            <p class="mt-8 text-sm text-gray-400">This is an informational guide maintained by Alan Soon. Information is based on CAAS regulations as of August 2025.</p>
         </div>
     </footer>
 
@@ -325,82 +334,6 @@
             form.addEventListener('change', updateRequirements);
             updateRequirements();
 
-            const ctx = document.getElementById('penaltiesChart').getContext('2d');
-            const penaltiesChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Operating Unregistered Drone (>250g)', 'Flying without Permit/License (First Offence)'],
-                    datasets: [{
-                        label: 'Max Fine (S$)',
-                        data: [10000, 50000],
-                        backgroundColor: [
-                            'rgba(129, 140, 248, 0.6)',
-                            'rgba(94, 93, 239, 0.6)'
-                        ],
-                        borderColor: [
-                            'rgba(129, 140, 248, 1)',
-                            'rgba(94, 93, 239, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    indexAxis: 'y',
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    let label = context.dataset.label || '';
-                                    if (label) {
-                                        label += ': ';
-                                    }
-                                    if (context.parsed.x !== null) {
-                                        label += new Intl.NumberFormat('en-SG', { style: 'currency', currency: 'SGD' }).format(context.parsed.x);
-                                    }
-                                    return label;
-                                }
-                            }
-                        },
-                        title: {
-                            display: true,
-                            text: 'Maximum fines for first-time offences',
-                            font: {
-                                family: 'Helvetica, Arial, sans-serif',
-                                size: 16,
-                                weight: 'bold'
-                            },
-                            color: '#1F2937'
-                        }
-                    },
-                    scales: {
-                        x: {
-                            beginAtZero: true,
-                            ticks: {
-                                color: '#374151',
-                                callback: function(value, index, values) {
-                                    return 'S$' + value / 1000 + 'k';
-                                }
-                            },
-                             grid: {
-                                color: 'rgba(0, 0, 0, 0.05)'
-                            }
-                        },
-                        y: {
-                            ticks: {
-                                color: '#374151'
-                            },
-                             grid: {
-                                color: 'rgba(0, 0, 0, 0.05)'
-                            }
-                        }
-                    }
-                }
-            });
         });
     </script>
 </body>
