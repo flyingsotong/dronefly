@@ -88,19 +88,35 @@
                             <fieldset class="mt-4 space-y-4">
                                 <div class="flex items-center group">
                                     <input id="weight-light" name="drone-weight" type="radio" value="under_250g" class="focus:ring-[#5e5def] h-4 w-4 text-[#5e5def] border-gray-300">
-                                    <label for="weight-light" class="ml-3 block text-sm font-medium text-gray-700">Under 250g <span class="block text-xs text-gray-500 font-normal opacity-0 group-hover:opacity-100 transition-opacity duration-300">e.g., DJI Mini Series</span></label>
+                                    <label for="weight-light" class="ml-3 block text-sm font-medium text-gray-700">Under 250g</label>
+                                    <div class="relative flex items-center">
+                                       <span class="ml-2 h-5 w-5 flex items-center justify-center rounded-full bg-gray-200 text-gray-600 text-xs font-bold cursor-pointer">i</span>
+                                       <span class="absolute left-8 w-max bottom-0 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">e.g., DJI Mini Series</span>
+                                    </div>
                                 </div>
                                 <div class="flex items-center group">
                                     <input id="weight-medium" name="drone-weight" type="radio" value="250g_to_1.5kg" class="focus:ring-[#5e5def] h-4 w-4 text-[#5e5def] border-gray-300" checked>
-                                    <label for="weight-medium" class="ml-3 block text-sm font-medium text-gray-700">250g to 1.5kg <span class="block text-xs text-gray-500 font-normal opacity-0 group-hover:opacity-100 transition-opacity duration-300">e.g., DJI Air, Avata, Mavic, Phantom</span></label>
+                                    <label for="weight-medium" class="ml-3 block text-sm font-medium text-gray-700">250g to 1.5kg</label>
+                                    <div class="relative flex items-center">
+                                       <span class="ml-2 h-5 w-5 flex items-center justify-center rounded-full bg-gray-200 text-gray-600 text-xs font-bold cursor-pointer">i</span>
+                                       <span class="absolute left-8 w-max bottom-0 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">e.g., DJI Air, Avata, Mavic, Phantom</span>
+                                    </div>
                                 </div>
                                 <div class="flex items-center group">
                                     <input id="weight-heavy" name="drone-weight" type="radio" value="1.5kg_to_7kg" class="focus:ring-[#5e5def] h-4 w-4 text-[#5e5def] border-gray-300">
-                                    <label for="weight-heavy" class="ml-3 block text-sm font-medium text-gray-700">1.5kg to 7kg <span class="block text-xs text-gray-500 font-normal opacity-0 group-hover:opacity-100 transition-opacity duration-300">e.g., DJI Inspire Series</span></label>
+                                    <label for="weight-heavy" class="ml-3 block text-sm font-medium text-gray-700">1.5kg to 7kg</label>
+                                     <div class="relative flex items-center">
+                                       <span class="ml-2 h-5 w-5 flex items-center justify-center rounded-full bg-gray-200 text-gray-600 text-xs font-bold cursor-pointer">i</span>
+                                       <span class="absolute left-8 w-max bottom-0 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">e.g., DJI Inspire Series</span>
+                                    </div>
                                 </div>
                                 <div class="flex items-center group">
                                     <input id="weight-very-heavy" name="drone-weight" type="radio" value="over_7kg" class="focus:ring-[#5e5def] h-4 w-4 text-[#5e5def] border-gray-300">
-                                    <label for="weight-very-heavy" class="ml-3 block text-sm font-medium text-gray-700">Over 7kg <span class="block text-xs text-gray-500 font-normal opacity-0 group-hover:opacity-100 transition-opacity duration-300">e.g., DJI Matrice Series</span></label>
+                                    <label for="weight-very-heavy" class="ml-3 block text-sm font-medium text-gray-700">Over 7kg</label>
+                                    <div class="relative flex items-center">
+                                       <span class="ml-2 h-5 w-5 flex items-center justify-center rounded-full bg-gray-200 text-gray-600 text-xs font-bold cursor-pointer">i</span>
+                                       <span class="absolute left-8 w-max bottom-0 bg-gray-800 text-white text-xs rounded py-1 px-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">e.g., DJI Matrice Series</span>
+                                    </div>
                                 </div>
                             </fieldset>
                         </div>
@@ -245,8 +261,8 @@
                         <h3 class="text-xl font-bold text-gray-900">Designated flying areas</h3>
                         <p class="mt-3 text-base text-gray-600">CAAS has designated specific areas for recreational flying:</p>
                         <ul class="mt-2 list-disc list-inside text-gray-600">
-                            <li>Pandan Reservoir</li>
-                            <li>Dover Road</li>
+                            <li><a href="https://maps.app.goo.gl/CnVtyFG7GrBvSn1U6" target="_blank" class="text-indigo-600 hover:underline">Pandan Reservoir</a></li>
+                            <li><a href="https://maps.app.goo.gl/NqLHaHawrzsn4Qto7" target="_blank" class="text-indigo-600 hover:underline">Dover Road</a></li>
                         </ul>
                     </div>
                 </div>
@@ -298,6 +314,15 @@
                 </div>
                 <div class="mt-12 max-w-3xl mx-auto">
                     <div class="space-y-4">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-gray-900">
+                                <span>How do I register my drone?</span>
+                                <span class="transform transition-transform duration-200">+</span>
+                            </button>
+                            <div class="faq-answer mt-2 text-gray-600">
+                                <p>Registration is a two-step process for all drones over 250g. First, you must purchase a registration label. Second, you complete the registration online via the CAAS website, where you will need to affix the label to your drone and upload a photo. You must be at least 16 years old to register. If you sell or lose your drone, you must de-register it.</p>
+                            </div>
+                        </div>
                          <div class="bg-gray-50 p-4 rounded-lg">
                             <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-gray-900">
                                 <span>What is Remote ID (B-RID)?</span>
@@ -333,16 +358,6 @@
                             </button>
                             <div class="faq-answer mt-2 text-gray-600">
                                 <p>The UAPL is a more advanced license required for anyone flying a drone for commercial purposes (regardless of weight) or for recreational/educational purposes if the drone is over 7kg. To obtain a UAPL, you must be at least 16 years old, pass a theory test administered by CAAS, and pass a practical assessment with an authorised flight examiner.</p>
-                            </div>
-                        </div>
-                         <div class="bg-gray-50 p-4 rounded-lg">
-                            <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-gray-900">
-                                <span>What are Operator and Activity Permits?</span>
-                                <span class="transform transition-transform duration-200">+</span>
-                            </button>
-                            <div class="faq-answer mt-2 text-gray-600">
-                                <p>An <strong>Operator Permit</strong> is for the company or business and is valid for one year. CAAS assesses the company's safety procedures, drone airworthiness, and personnel competency before issuing it.</p>
-                                <p class="mt-2">An <strong>Activity Permit</strong> is for a specific flight or block of flights. A <strong>Class 1</strong> permit is for commercial operations and requires an Operator Permit. A <strong>Class 2</strong> permit is for recreational flights under special conditions (e.g., above 200ft) and does not require an Operator Permit.</p>
                             </div>
                         </div>
                     </div>
