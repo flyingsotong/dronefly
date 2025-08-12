@@ -3,26 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Drone Guide - Singapore</title>
+    <title>SG Drone Guide - Ergo Theme</title>
+    <!-- Ergo Theme Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400;700&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Chosen Palette: Ergo Theme (Warm Beige, Muted Green, Charcoal) -->
-    <!-- Application Structure Plan: A single-page application with a top navigation bar that smoothly scrolls to different thematic sections. The core of the app is an interactive "Requirements Checker" tool that allows users to select their drone's weight and flight purpose to instantly see the specific rules that apply to them. This task-oriented approach is more user-friendly than forcing users to read all text. It's supplemented by visually distinct sections for general safety rules, permitted flying areas, and an impactful chart visualizing the penalties. This structure guides the user from their specific needs to general knowledge. -->
-    <!-- Visualization & Content Choices: 
-        1. Report Info: Drone registration and licensing rules based on weight/purpose. Goal: Inform users of their specific obligations. Viz/Method: Interactive form (radio buttons) with a dynamic text output area. Interaction: User selection triggers a JS function to display the correct requirements. Justification: Directly answers the user's primary question ("What do I need?") in an engaging way. Library/Method: Vanilla JS.
-        2. Report Info: Penalties for offenses (fines, jail time). Goal: Compare the severity of penalties to emphasize compliance. Viz/Method: Horizontal Bar Chart. Interaction: Tooltips on hover provide context. Justification: A chart provides a more immediate and impactful comparison of financial penalties than a text list. Library/Method: Chart.js on Canvas.
-        3. Report Info: Key safety regulations. Goal: Organize rules for easy scanning. Viz/Method: Two-column grid layout with cards and Unicode icons (✅/❌). Interaction: None. Justification: Card layout with icons improves readability and retention. Library/Method: HTML/Tailwind CSS.
-        CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. Thanks.
-    -->
     <style>
         body {
-            font-family: Helvetica, Arial, sans-serif;
-            background-color: #F9F7F3;
-            color: #3D3D3D;
+            font-family: 'DM Sans', Arial, sans-serif;
+            background-color: #F8F5F2; /* Warm Beige */
+            color: #262626; /* Charcoal */
         }
         h1, h2, h3, h4, h5, h6, .font-serif {
-            font-family: Helvetica, Arial, sans-serif;
+            font-family: 'DM Serif Display', serif;
             font-weight: 700;
+            letter-spacing: 0.01em;
+        }
+        header, footer {
+            font-family: 'DM Sans', Arial, sans-serif;
         }
         .chart-container {
             position: relative;
@@ -33,23 +31,48 @@
             height: 400px;
             max-height: 50vh;
         }
+        .ergo-card {
+            background: #FFFDED; /* Off-white with yellow tint */
+            border-radius: 1.5rem;
+            box-shadow: 0 6px 24px rgba(47, 55, 75, 0.09);
+            padding: 2rem;
+        }
+        .ergo-section {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+        .ergo-accent {
+            color: #59A96A; /* Muted Green */
+        }
+        .ergo-button {
+            background-color: #59A96A;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 999px;
+            padding: 0.75rem 2rem;
+            transition: background 0.2s;
+        }
+        .ergo-button:hover {
+            background-color: #355C3A;
+        }
+        .ergo-shadow {
+            box-shadow: 0 6px 24px rgba(47, 55, 75, 0.09);
+        }
     </style>
 </head>
-<body class="text-gray-800">
+<body class="text-[#262626] bg-[#F8F5F2]">
 
-    <header class="bg-[#F9F7F3]/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
-                    <span class="font-bold text-xl text-gray-900">SG Drone Guide</span>
-                </div>
+    <header class="bg-[#FFFDED]/70 backdrop-blur-lg sticky top-0 z-50 shadow-sm ergo-shadow">
+        <nav class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between h-20">
+                <span class="font-serif text-2xl text-[#262626] tracking-tight">SG Drone Guide</span>
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#checker" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Checker</a>
-                        <a href="#rules" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Safety Rules</a>
-                        <a href="#penalties" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Penalties</a>
-                        <a href="#flying-areas" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Flying Areas</a>
-                        <a href="#checklist" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Checklist</a>
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="#checker" class="ergo-accent hover:underline px-3 py-2 rounded-md text-base font-medium">Checker</a>
+                        <a href="#rules" class="ergo-accent hover:underline px-3 py-2 rounded-md text-base font-medium">Safety Rules</a>
+                        <a href="#penalties" class="ergo-accent hover:underline px-3 py-2 rounded-md text-base font-medium">Penalties</a>
+                        <a href="#flying-areas" class="ergo-accent hover:underline px-3 py-2 rounded-md text-base font-medium">Flying Areas</a>
+                        <a href="#checklist" class="ergo-accent hover:underline px-3 py-2 rounded-md text-base font-medium">Checklist</a>
                     </div>
                 </div>
             </div>
@@ -57,72 +80,69 @@
     </header>
 
     <main>
-        <section id="hero" class="py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">Fly Your Drone Legally in Singapore</h1>
-                <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-600">An interactive guide to understanding the rules. Find out exactly what you need to do before you take flight.</p>
+        <!-- Hero Section -->
+        <section id="hero" class="ergo-section bg-[#FFFDED]">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h1 class="font-serif text-5xl md:text-6xl text-[#262626] mb-6 leading-tight">Fly Your Drone Legally in Singapore</h1>
+                <p class="mt-2 max-w-2xl mx-auto text-xl text-[#484040] font-sans">An interactive guide to understanding the rules. Find out exactly what you need to do before you take flight.</p>
             </div>
         </section>
 
-        <section id="checker" class="py-16 sm:py-24">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Checker Section -->
+        <section id="checker" class="ergo-section">
+            <div class="max-w-5xl mx-auto px-6">
                 <div>
-                    <h2 class="text-base text-[#3A5F4B] font-semibold tracking-wide uppercase">Interactive Tool</h2>
-                    <p class="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
-                        Check Your Requirements
-                    </p>
-                    <p class="mt-4 max-w-2xl text-xl text-gray-500">
-                        Answer two simple questions to see the specific registration and licensing rules that apply to you.
-                    </p>
+                    <h2 class="font-serif text-base ergo-accent tracking-wide uppercase">Interactive Tool</h2>
+                    <p class="mt-2 text-4xl font-serif text-[#262626] leading-tight">Check Your Requirements</p>
+                    <p class="mt-4 max-w-xl text-xl text-[#484040]">Answer two simple questions to see the specific registration and licensing rules that apply to you.</p>
                 </div>
-
-                <div class="mt-12 bg-white p-8 rounded-2xl shadow-lg max-w-4xl mx-auto">
+                <div class="mt-12 ergo-card">
                     <form id="requirementsForm" class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
-                            <h3 class="text-lg font-bold text-gray-900">1. What is your drone's total weight?</h3>
-                            <fieldset class="mt-4 space-y-4">
+                            <h3 class="font-serif text-lg text-[#262626] mb-2">1. What is your drone's total weight?</h3>
+                            <fieldset class="mt-4 space-y-5">
                                 <div class="flex items-center">
-                                    <input id="weight-light" name="drone-weight" type="radio" value="under_250g" class="focus:ring-[#3A5F4B] h-4 w-4 text-[#3A5F4B] border-gray-300">
-                                    <label for="weight-light" class="ml-3 block text-sm font-medium text-gray-700">Under 250g</label>
+                                    <input id="weight-light" name="drone-weight" type="radio" value="under_250g" class="accent-[#59A96A] h-5 w-5 border-gray-300">
+                                    <label for="weight-light" class="ml-3 text-base text-[#484040] font-sans">Under 250g</label>
                                 </div>
                                 <div class="flex items-center">
-                                    <input id="weight-medium" name="drone-weight" type="radio" value="250g_to_1.5kg" class="focus:ring-[#3A5F4B] h-4 w-4 text-[#3A5F4B] border-gray-300" checked>
-                                    <label for="weight-medium" class="ml-3 block text-sm font-medium text-gray-700">250g to 1.5kg</label>
+                                    <input id="weight-medium" name="drone-weight" type="radio" value="250g_to_1.5kg" class="accent-[#59A96A] h-5 w-5 border-gray-300" checked>
+                                    <label for="weight-medium" class="ml-3 text-base text-[#484040] font-sans">250g to 1.5kg</label>
                                 </div>
                                 <div class="flex items-center">
-                                    <input id="weight-heavy" name="drone-weight" type="radio" value="1.5kg_to_7kg" class="focus:ring-[#3A5F4B] h-4 w-4 text-[#3A5F4B] border-gray-300">
-                                    <label for="weight-heavy" class="ml-3 block text-sm font-medium text-gray-700">1.5kg to 7kg</label>
+                                    <input id="weight-heavy" name="drone-weight" type="radio" value="1.5kg_to_7kg" class="accent-[#59A96A] h-5 w-5 border-gray-300">
+                                    <label for="weight-heavy" class="ml-3 text-base text-[#484040] font-sans">1.5kg to 7kg</label>
                                 </div>
                                 <div class="flex items-center">
-                                    <input id="weight-very-heavy" name="drone-weight" type="radio" value="over_7kg" class="focus:ring-[#3A5F4B] h-4 w-4 text-[#3A5F4B] border-gray-300">
-                                    <label for="weight-very-heavy" class="ml-3 block text-sm font-medium text-gray-700">Over 7kg</label>
+                                    <input id="weight-very-heavy" name="drone-weight" type="radio" value="over_7kg" class="accent-[#59A96A] h-5 w-5 border-gray-300">
+                                    <label for="weight-very-heavy" class="ml-3 text-base text-[#484040] font-sans">Over 7kg</label>
                                 </div>
                             </fieldset>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-gray-900">2. What is your purpose for flying?</h3>
-                            <fieldset class="mt-4 space-y-4">
+                            <h3 class="font-serif text-lg text-[#262626] mb-2">2. What is your purpose for flying?</h3>
+                            <fieldset class="mt-4 space-y-5">
                                 <div class="flex items-center">
-                                    <input id="purpose-rec" name="drone-purpose" type="radio" value="recreational" class="focus:ring-[#3A5F4B] h-4 w-4 text-[#3A5F4B] border-gray-300" checked>
-                                    <label for="purpose-rec" class="ml-3 block text-sm font-medium text-gray-700">Recreational / Educational</label>
+                                    <input id="purpose-rec" name="drone-purpose" type="radio" value="recreational" class="accent-[#59A96A] h-5 w-5 border-gray-300" checked>
+                                    <label for="purpose-rec" class="ml-3 text-base text-[#484040] font-sans">Recreational / Educational</label>
                                 </div>
                                 <div class="flex items-center">
-                                    <input id="purpose-com" name="drone-purpose" type="radio" value="commercial" class="focus:ring-[#3A5F4B] h-4 w-4 text-[#3A5F4B] border-gray-300">
-                                    <label for="purpose-com" class="ml-3 block text-sm font-medium text-gray-700">Commercial / Business</label>
+                                    <input id="purpose-com" name="drone-purpose" type="radio" value="commercial" class="accent-[#59A96A] h-5 w-5 border-gray-300">
+                                    <label for="purpose-com" class="ml-3 text-base text-[#484040] font-sans">Commercial / Business</label>
                                 </div>
                             </fieldset>
                         </div>
                     </form>
-                    <div id="results" class="mt-8 p-6 bg-emerald-50/50 border-l-4 border-[#3A5F4B] rounded-r-lg">
+                    <div id="results" class="mt-10 p-7 bg-[#F8F5F2] border-l-4 border-[#59A96A] rounded-r-2xl">
                         <div class="flex">
-                            <div class="flex-shrink-0 text-[#3A5F4B]">
-                                <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                            <div class="flex-shrink-0 text-[#59A96A]">
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zm9 4a1 1 0 100 2h-3a1 1 0 100-2h3z" clip-rule="evenodd"/>
                                 </svg>
                             </div>
                             <div class="ml-3">
-                                <h3 class="text-sm font-bold text-[#3A5F4B]">Your Requirements</h3>
-                                <div id="results-content" class="mt-2 text-sm text-gray-700">
+                                <h3 class="font-serif text-base font-bold text-[#59A96A]">Your Requirements</h3>
+                                <div id="results-content" class="mt-2 text-base text-[#484040] font-sans">
                                     <p>Select your drone's weight and purpose to see your specific requirements here.</p>
                                 </div>
                             </div>
@@ -132,92 +152,83 @@
             </div>
         </section>
 
-        <section id="rules" class="py-16 sm:py-24 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Safety Rules Section -->
+        <section id="rules" class="ergo-section bg-[#FFFDED]">
+            <div class="max-w-7xl mx-auto px-6">
                 <div>
-                    <h2 class="text-base text-[#3A5F4B] font-semibold tracking-wide uppercase">The Essentials</h2>
-                    <p class="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
-                        Key Safety Regulations
-                    </p>
-                    <p class="mt-4 max-w-2xl text-xl text-gray-500">
-                        These rules apply to all drone operators, regardless of weight or purpose. Following them ensures the safety of everyone.
-                    </p>
+                    <h2 class="font-serif text-base ergo-accent tracking-wide uppercase">The Essentials</h2>
+                    <p class="mt-2 text-4xl font-serif text-[#262626] leading-tight">Key Safety Regulations</p>
+                    <p class="mt-4 max-w-2xl text-xl text-[#484040]">These rules apply to all drone operators, regardless of weight or purpose. Following them ensures the safety of everyone.</p>
                 </div>
-                <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                    <div class="p-6 bg-gray-50 rounded-lg">
-                        <span class="text-3xl">✅</span>
-                        <h3 class="mt-2 text-lg font-bold text-gray-900">Maintain Visual Line-of-Sight</h3>
-                        <p class="mt-2 text-base text-gray-600">Always keep your drone where you can see it with your own eyes, not just on a screen.</p>
+                <div class="mt-14 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+                    <div class="ergo-card">
+                        <span class="text-4xl">✅</span>
+                        <h3 class="mt-3 font-serif text-xl text-[#262626]">Maintain Visual Line-of-Sight</h3>
+                        <p class="mt-3 text-base text-[#484040] font-sans">Always keep your drone where you can see it with your own eyes, not just on a screen.</p>
                     </div>
-                    <div class="p-6 bg-gray-50 rounded-lg">
-                        <span class="text-3xl">❌</span>
-                        <h3 class="mt-2 text-lg font-bold text-gray-900">Stay Below 200ft (60m)</h3>
-                        <p class="mt-2 text-base text-gray-600">Do not fly higher than 200 feet above mean sea level unless you have a specific permit.</p>
+                    <div class="ergo-card">
+                        <span class="text-4xl">❌</span>
+                        <h3 class="mt-3 font-serif text-xl text-[#262626]">Stay Below 200ft (60m)</h3>
+                        <p class="mt-3 text-base text-[#484040] font-sans">Do not fly higher than 200 feet above mean sea level unless you have a specific permit.</p>
                     </div>
-                    <div class="p-6 bg-gray-50 rounded-lg">
-                        <span class="text-3xl">❌</span>
-                        <h3 class="mt-2 text-lg font-bold text-gray-900">Avoid No-Fly Zones</h3>
-                        <p class="mt-2 text-base text-gray-600">Do not fly within 5km of an airport or airbase. Always check the OneMap app before flying.</p>
+                    <div class="ergo-card">
+                        <span class="text-4xl">❌</span>
+                        <h3 class="mt-3 font-serif text-xl text-[#262626]">Avoid No-Fly Zones</h3>
+                        <p class="mt-3 text-base text-[#484040] font-sans">Do not fly within 5km of an airport or airbase. Always check the OneMap app before flying.</p>
                     </div>
-                    <div class="p-6 bg-gray-50 rounded-lg">
-                        <span class="text-3xl">✅</span>
-                        <h3 class="mt-2 text-lg font-bold text-gray-900">Respect Privacy</h3>
-                        <p class="mt-2 text-base text-gray-600">Do not fly over private property or take photos/videos of people without their consent.</p>
+                    <div class="ergo-card">
+                        <span class="text-4xl">✅</span>
+                        <h3 class="mt-3 font-serif text-xl text-[#262626]">Respect Privacy</h3>
+                        <p class="mt-3 text-base text-[#484040] font-sans">Do not fly over private property or take photos/videos of people without their consent.</p>
                     </div>
-                    <div class="p-6 bg-gray-50 rounded-lg">
-                        <span class="text-3xl">❌</span>
-                        <h3 class="mt-2 text-lg font-bold text-gray-900">Don't Fly Over Crowds</h3>
-                        <p class="mt-2 text-base text-gray-600">Avoid flying over groups of people, moving vehicles, or during bad weather.</p>
+                    <div class="ergo-card">
+                        <span class="text-4xl">❌</span>
+                        <h3 class="mt-3 font-serif text-xl text-[#262626]">Don't Fly Over Crowds</h3>
+                        <p class="mt-3 text-base text-[#484040] font-sans">Avoid flying over groups of people, moving vehicles, or during bad weather.</p>
                     </div>
-                    <div class="p-6 bg-gray-50 rounded-lg">
-                        <span class="text-3xl">❌</span>
-                        <h3 class="mt-2 text-lg font-bold text-gray-900">No Prohibited Actions</h3>
-                        <p class="mt-2 text-base text-gray-600">Never drop items from your drone or use it to carry hazardous materials.</p>
+                    <div class="ergo-card">
+                        <span class="text-4xl">❌</span>
+                        <h3 class="mt-3 font-serif text-xl text-[#262626]">No Prohibited Actions</h3>
+                        <p class="mt-3 text-base text-[#484040] font-sans">Never drop items from your drone or use it to carry hazardous materials.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="penalties" class="py-16 sm:py-24">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Penalties Section -->
+        <section id="penalties" class="ergo-section">
+            <div class="max-w-7xl mx-auto px-6">
                 <div>
-                    <h2 class="text-base text-[#3A5F4B] font-semibold tracking-wide uppercase">Consequences</h2>
-                    <p class="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
-                        Penalties for Offences
-                    </p>
-                    <p class="mt-4 max-w-2xl text-xl text-gray-500">
-                        Breaking the rules can lead to serious legal and financial consequences. The chart below shows the maximum fines for first-time offenders.
-                    </p>
+                    <h2 class="font-serif text-base ergo-accent tracking-wide uppercase">Consequences</h2>
+                    <p class="mt-2 text-4xl font-serif text-[#262626] leading-tight">Penalties for Offences</p>
+                    <p class="mt-4 max-w-2xl text-xl text-[#484040]">Breaking the rules can lead to serious legal and financial consequences. The chart below shows the maximum fines for first-time offenders.</p>
                 </div>
-                <div class="mt-12">
-                    <div class="chart-container">
+                <div class="mt-14">
+                    <div class="chart-container ergo-card">
                         <canvas id="penaltiesChart"></canvas>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="flying-areas" class="py-16 sm:py-24 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Flying Areas Section -->
+        <section id="flying-areas" class="ergo-section bg-[#FFFDED]">
+            <div class="max-w-7xl mx-auto px-6">
                 <div>
-                    <h2 class="text-base text-[#3A5F4B] font-semibold tracking-wide uppercase">Where to Fly</h2>
-                    <p class="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
-                        Permitted Flying Areas
-                    </p>
-                    <p class="mt-4 max-w-2xl text-xl text-gray-500">
-                        While you can fly in many open spaces, some areas are specifically designated for drone flying. Always check the official map first.
-                    </p>
+                    <h2 class="font-serif text-base ergo-accent tracking-wide uppercase">Where to Fly</h2>
+                    <p class="mt-2 text-4xl font-serif text-[#262626] leading-tight">Permitted Flying Areas</p>
+                    <p class="mt-4 max-w-2xl text-xl text-[#484040]">While you can fly in many open spaces, some areas are specifically designated for drone flying. Always check the official map first.</p>
                 </div>
-                <div class="mt-12 grid gap-8 md:grid-cols-2">
-                    <div class="p-8 bg-gray-50 rounded-lg">
-                        <h3 class="text-xl font-bold text-gray-900">Official Resource: OneMap</h3>
-                        <p class="mt-3 text-base text-gray-600">The OneMap application is the definitive source for identifying no-fly zones and permitted areas. It is essential to consult this map before every single flight.</p>
-                        <a href="https://www.onemap.gov.sg/main/v2/dronequery" target="_blank" class="mt-4 inline-block bg-[#3A5F4B] text-white font-bold py-2 px-4 rounded-lg hover:bg-emerald-800 transition-colors">Open OneMap</a>
+                <div class="mt-14 grid gap-10 md:grid-cols-2">
+                    <div class="ergo-card">
+                        <h3 class="font-serif text-xl text-[#262626]">Official Resource: OneMap</h3>
+                        <p class="mt-3 text-base text-[#484040] font-sans">The OneMap application is the definitive source for identifying no-fly zones and permitted areas. It is essential to consult this map before flying.</p>
+                        <a href="https://www.onemap.gov.sg/main/v2/dronequery" target="_blank" class="mt-5 ergo-button inline-block">View Drone Map</a>
                     </div>
-                    <div class="p-8 bg-gray-50 rounded-lg">
-                        <h3 class="text-xl font-bold text-gray-900">Designated Flying Areas</h3>
-                        <p class="mt-3 text-base text-gray-600">CAAS has designated specific areas for recreational flying:</p>
-                        <ul class="mt-2 list-disc list-inside text-gray-600">
+                    <div class="ergo-card">
+                        <h3 class="font-serif text-xl text-[#262626]">Designated Flying Areas</h3>
+                        <p class="mt-3 text-base text-[#484040] font-sans">CAAS has designated specific areas for recreational flying:</p>
+                        <ul class="mt-5 list-disc list-inside text-[#484040] font-sans">
                             <li>Pandan Reservoir</li>
                             <li>Dover Road</li>
                         </ul>
@@ -226,50 +237,49 @@
             </div>
         </section>
 
-        <section id="checklist" class="py-16 sm:py-24">
-            <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Checklist Section -->
+        <section id="checklist" class="ergo-section">
+            <div class="max-w-3xl mx-auto px-6">
                 <div class="text-left">
-                    <h2 class="text-3xl font-bold tracking-tight text-gray-900">Pre-Flight Checklist</h2>
-                    <p class="mt-4 text-lg text-gray-500">Run through this quick checklist before you launch.</p>
+                    <h2 class="font-serif text-4xl text-[#262626] leading-tight">Pre-Flight Checklist</h2>
+                    <p class="mt-4 text-xl text-[#484040] font-sans">Run through this quick checklist before you launch.</p>
                 </div>
-                <ul class="mt-8 space-y-3">
-                    <li class="flex items-start p-4 bg-white rounded-lg shadow-sm">
-                        <span class="h-6 w-6 flex items-center justify-center rounded-full bg-emerald-100 text-emerald-800 mr-4 font-bold">✓</span>
-                        <p class="text-gray-700">Drone registered? (If over 250g)</p>
+                <ul class="mt-10 space-y-5">
+                    <li class="flex items-center p-5 ergo-card">
+                        <span class="h-8 w-8 flex items-center justify-center rounded-full bg-[#FFE066] text-[#262626] mr-4 font-bold text-xl">✓</span>
+                        <p class="text-[#484040] font-sans text-base">Drone registered? (If over 250g)</p>
                     </li>
-                    <li class="flex items-start p-4 bg-white rounded-lg shadow-sm">
-                        <span class="h-6 w-6 flex items-center justify-center rounded-full bg-emerald-100 text-emerald-800 mr-4 font-bold">✓</span>
-                        <p class="text-gray-700">Correct license/certificate obtained?</p>
+                    <li class="flex items-center p-5 ergo-card">
+                        <span class="h-8 w-8 flex items-center justify-center rounded-full bg-[#FFE066] text-[#262626] mr-4 font-bold text-xl">✓</span>
+                        <p class="text-[#484040] font-sans text-base">Correct license/certificate obtained?</p>
                     </li>
-                    <li class="flex items-start p-4 bg-white rounded-lg shadow-sm">
-                        <span class="h-6 w-6 flex items-center justify-center rounded-full bg-emerald-100 text-emerald-800 mr-4 font-bold">✓</span>
-                        <p class="text-gray-700">Airspace checked on OneMap?</p>
+                    <li class="flex items-center p-5 ergo-card">
+                        <span class="h-8 w-8 flex items-center justify-center rounded-full bg-[#FFE066] text-[#262626] mr-4 font-bold text-xl">✓</span>
+                        <p class="text-[#484040] font-sans text-base">Airspace checked on OneMap?</p>
                     </li>
-                    <li class="flex items-start p-4 bg-white rounded-lg shadow-sm">
-                        <span class="h-6 w-6 flex items-center justify-center rounded-full bg-emerald-100 text-emerald-800 mr-4 font-bold">✓</span>
-                        <p class="text-gray-700">Weather conditions suitable?</p>
+                    <li class="flex items-center p-5 ergo-card">
+                        <span class="h-8 w-8 flex items-center justify-center rounded-full bg-[#FFE066] text-[#262626] mr-4 font-bold text-xl">✓</span>
+                        <p class="text-[#484040] font-sans text-base">Weather conditions suitable?</p>
                     </li>
-                    <li class="flex items-start p-4 bg-white rounded-lg shadow-sm">
-                        <span class="h-6 w-6 flex items-center justify-center rounded-full bg-emerald-100 text-emerald-800 mr-4 font-bold">✓</span>
-                        <p class="text-gray-700">Drone in good working condition?</p>
+                    <li class="flex items-center p-5 ergo-card">
+                        <span class="h-8 w-8 flex items-center justify-center rounded-full bg-[#FFE066] text-[#262626] mr-4 font-bold text-xl">✓</span>
+                        <p class="text-[#484040] font-sans text-base">Drone in good working condition?</p>
                     </li>
-                     <li class="flex items-start p-4 bg-white rounded-lg shadow-sm">
-                        <span class="h-6 w-6 flex items-center justify-center rounded-full bg-emerald-100 text-emerald-800 mr-4 font-bold">✓</span>
-                        <p class="text-gray-700">Flight area clear and safe?</p>
+                    <li class="flex items-center p-5 ergo-card">
+                        <span class="h-8 w-8 flex items-center justify-center rounded-full bg-[#FFE066] text-[#262626] mr-4 font-bold text-xl">✓</span>
+                        <p class="text-[#484040] font-sans text-base">Flight area clear and safe?</p>
                     </li>
                 </ul>
             </div>
         </section>
     </main>
 
-    <footer class="bg-gray-800 text-white">
-        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 text-center">
-            <h3 class="text-xl font-bold">Stay Updated</h3>
-            <p class="mt-2 text-base text-gray-300">Regulations can change. Always refer to the official source for the latest information.</p>
-            <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft" target="_blank" class="mt-4 inline-block bg-white text-gray-800 font-bold py-2 px-4 rounded-lg hover:bg-gray-200 transition-colors">
-                Official CAAS Website
-            </a>
-            <p class="mt-8 text-sm text-gray-400">This is an informational guide and not legal advice. Information is based on CAAS regulations as of August 2025.</p>
+    <footer class="bg-[#262626] text-white">
+        <div class="max-w-7xl mx-auto py-16 px-6 text-center">
+            <h3 class="font-serif text-2xl font-bold">Stay Updated</h3>
+            <p class="mt-3 text-lg text-[#FFE066]">Regulations can change. Always refer to the official source for the latest information.</p>
+            <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft" target="_blank" class="mt-6 ergo-button inline-block">Official CAAS Website</a>
+            <p class="mt-10 text-base text-gray-300">This is an informational guide and not legal advice. Information is based on CAAS regulations as of August 2025.</p>
         </div>
     </footer>
 
@@ -278,13 +288,13 @@
             const form = document.getElementById('requirementsForm');
             const resultsContent = document.getElementById('results-content');
             
-            Chart.defaults.font.family = 'Helvetica, Arial, sans-serif';
+            Chart.defaults.font.family = "'DM Sans', Arial, sans-serif";
 
             function updateRequirements() {
                 const weight = form.querySelector('input[name="drone-weight"]:checked').value;
                 const purpose = form.querySelector('input[name="drone-purpose"]:checked').value;
                 
-                let html = '<ul class="list-disc pl-5 space-y-1">';
+                let html = '<ul class="list-disc pl-5 space-y-2 text-base text-[#484040] font-sans">';
 
                 if (purpose === 'commercial') {
                     html += '<li><strong>UA Pilot Licence (UAPL)</strong> is required for the pilot.</li>';
@@ -333,14 +343,14 @@
                         label: 'Max Fine (S$)',
                         data: [10000, 50000],
                         backgroundColor: [
-                            'rgba(163, 173, 168, 0.6)',
-                            'rgba(58, 95, 75, 0.6)'
+                            'rgba(255, 224, 102, 0.7)', // Ergo yellow
+                            'rgba(89, 169, 106, 0.7)'    // Ergo green
                         ],
                         borderColor: [
-                            'rgba(163, 173, 168, 1)',
-                            'rgba(58, 95, 75, 1)'
+                            'rgba(255, 224, 102, 1)',
+                            'rgba(89, 169, 106, 1)'
                         ],
-                        borderWidth: 1
+                        borderWidth: 2
                     }]
                 },
                 options: {
@@ -369,18 +379,32 @@
                             display: true,
                             text: 'Maximum Fines for First-Time Offences',
                             font: {
-                                size: 16,
-                                weight: 'bold'
+                                size: 18,
+                                weight: 'bold',
+                                family: "'DM Serif Display', serif"
                             },
-                            color: '#3D3D3D'
+                            color: '#262626'
                         }
                     },
                     scales: {
                         x: {
                             beginAtZero: true,
                             ticks: {
+                                color: '#59A96A',
                                 callback: function(value, index, values) {
                                     return 'S$' + value / 1000 + 'k';
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(89,169,106,0.1)'
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                color: '#262626',
+                                font: {
+                                    family: "'DM Sans', Arial, sans-serif",
+                                    size: 16
                                 }
                             }
                         }
@@ -391,4 +415,3 @@
     </script>
 </body>
 </html>
-
