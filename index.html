@@ -33,6 +33,10 @@
             height: 400px;
             max-height: 50vh;
         }
+        .faq-answer {
+            display: none;
+            transition: all 0.3s ease-in-out;
+        }
     </style>
 </head>
 <body class="text-gray-800">
@@ -50,6 +54,7 @@
                         <a href="#penalties" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Penalties</a>
                         <a href="#flying-areas" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Flying Areas</a>
                         <a href="#checklist" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Checklist</a>
+                        <a href="#faq" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">FAQ</a>
                     </div>
                 </div>
             </div>
@@ -269,6 +274,58 @@
                 </ul>
             </div>
         </section>
+
+        <section id="faq" class="py-16 sm:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div>
+                    <h2 class="text-base text-[#5e5def] font-semibold tracking-wide uppercase">Common questions</h2>
+                    <p class="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl">
+                        Frequently asked questions
+                    </p>
+                </div>
+                <div class="mt-12 max-w-3xl mx-auto">
+                    <div class="space-y-4">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-gray-900">
+                                <span>Can I fly my drone at any open field?</span>
+                                <span class="transform transition-transform duration-200">+</span>
+                            </button>
+                            <div class="faq-answer mt-2 text-gray-600">
+                                <p>Not all open fields are approved flying areas. You must check the OneMap app before flying to ensure the area is not within 5km of an airport, an airbase, or any restricted, danger, or protected areas. Always respect "No Unmanned Aircraft" signs.</p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-gray-900">
+                                <span>Can tourists fly drones at attractions like Marina Bay?</span>
+                                <span class="transform transition-transform duration-200">+</span>
+                            </button>
+                            <div class="faq-answer mt-2 text-gray-600">
+                                <p>Tourist attractions like Marina Bay Sands, the Merlion, and Gardens by the Bay are located within restricted airspace and are often designated as "protected areas." Flying a drone in these locations is generally not allowed without special permits, which can be difficult to obtain for recreational purposes. Always assume flying is prohibited at major tourist spots unless you have explicit permission.</p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-gray-900">
+                                <span>Do I need to register my drone if I only fly it indoors?</span>
+                                <span class="transform transition-transform duration-200">+</span>
+                            </button>
+                            <div class="faq-answer mt-2 text-gray-600">
+                                <p>No, registration is not required for drones that are flown exclusively indoors. The rules and regulations, including registration and pilot licensing, apply to outdoor flights.</p>
+                            </div>
+                        </div>
+                         <div class="bg-gray-50 p-4 rounded-lg">
+                            <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-gray-900">
+                                <span>What is the difference between Class 1 and Class 2 permits?</span>
+                                <span class="transform transition-transform duration-200">+</span>
+                            </button>
+                            <div class="faq-answer mt-2 text-gray-600">
+                                <p>A <strong>Class 1 Activity Permit</strong> is for commercial or non-recreational flights. This permit requires you to also have an Operator Permit.</p>
+                                <p class="mt-2">A <strong>Class 2 Activity Permit</strong> is for recreational or educational flights that take place under specific conditions, such as flying higher than 200ft (60m) or within 5km of an airport. You do not need an Operator Permit to apply for a Class 2 permit.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="bg-gray-800 text-white">
@@ -333,6 +390,21 @@
 
             form.addEventListener('change', updateRequirements);
             updateRequirements();
+
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(button => {
+                button.addEventListener('click', () => {
+                    const answer = button.nextElementSibling;
+                    const icon = button.querySelector('span:last-child');
+                    if (answer.style.display === 'block') {
+                        answer.style.display = 'none';
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        answer.style.display = 'block';
+                        icon.style.transform = 'rotate(45deg)';
+                    }
+                });
+            });
 
         });
     </script>
