@@ -266,15 +266,6 @@
                         </ul>
                     </div>
                 </div>
-                 <div class="mt-12 bg-white p-8 rounded-2xl shadow-lg w-full">
-                    <h3 class="text-xl font-bold text-gray-900">✨ Flight Plan Assistant</h3>
-                    <p class="mt-2 text-gray-600">Enter a location in Singapore to get a creative and safe flight plan.</p>
-                    <div class="mt-4 flex gap-2">
-                        <input type="text" id="flight-location" placeholder="e.g., East Coast Park" class="flex-grow p-2 border border-gray-300 rounded-md">
-                        <button id="generate-plan" class="bg-[#5e5def] text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors">Generate</button>
-                    </div>
-                    <div id="flight-plan-output" class="mt-4 p-4 bg-indigo-50 rounded-lg hidden"></div>
-                </div>
             </div>
         </section>
 
@@ -310,10 +301,6 @@
                         <p class="text-gray-700">Drone in good working condition?</p>
                     </li>
                 </ul>
-                <div class="mt-8">
-                    <button id="generate-briefing" class="w-full bg-[#5e5def] text-white font-bold py-3 px-4 rounded-lg hover:bg-indigo-700 transition-colors">✨ Generate Pre-Flight Safety Briefing</button>
-                    <div id="briefing-output" class="mt-4 p-4 bg-indigo-50 rounded-lg hidden"></div>
-                </div>
             </div>
         </section>
 
@@ -395,62 +382,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('requirementsForm');
             const resultsContent = document.getElementById('results-content');
-            const generatePlanBtn = document.getElementById('generate-plan');
-            const flightLocationInput = document.getElementById('flight-location');
-            const flightPlanOutput = document.getElementById('flight-plan-output');
-            const generateBriefingBtn = document.getElementById('generate-briefing');
-            const briefingOutput = document.getElementById('briefing-output');
             
             Chart.defaults.font.family = 'Helvetica, Arial, sans-serif';
             Chart.defaults.color = '#1F2937';
-
-            async function callGemini(prompt, outputElement) {
-                outputElement.innerHTML = 'Generating...';
-                outputElement.classList.remove('hidden');
-
-                let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
-                const payload = { contents: chatHistory };
-                const apiKey = "";
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    const result = await response.json();
-                    if (result.candidates && result.candidates.length > 0 &&
-                        result.candidates[0].content && result.candidates[0].content.parts &&
-                        result.candidates[0].content.parts.length > 0) {
-                        const text = result.candidates[0].content.parts[0].text;
-                        outputElement.innerHTML = text.replace(/\n/g, '<br>');
-                    } else {
-                        outputElement.innerHTML = 'Sorry, something went wrong. Please try again.';
-                    }
-                } catch (error) {
-                    console.error('Error calling Gemini API:', error);
-                    outputElement.innerHTML = 'Sorry, there was an error connecting to the service.';
-                }
-            }
-
-            generatePlanBtn.addEventListener('click', () => {
-                const location = flightLocationInput.value;
-                if (location) {
-                    const prompt = `Create a creative and safe drone flight plan for "${location}, Singapore". Include suggestions for interesting shots, potential hazards to be aware of (like trees or foot traffic), and reminders about specific Singapore drone rules (like staying away from crowds and respecting privacy).`;
-                    callGemini(prompt, flightPlanOutput);
-                } else {
-                    flightPlanOutput.innerHTML = 'Please enter a location.';
-                    flightPlanOutput.classList.remove('hidden');
-                }
-            });
-
-            generateBriefingBtn.addEventListener('click', () => {
-                const weight = form.querySelector('input[name="drone-weight"]:checked').labels[0].innerText;
-                const purpose = form.querySelector('input[name="drone-purpose"]:checked').labels[0].innerText;
-                const prompt = `Generate a personalized, plain-language pre-flight safety briefing for a drone pilot in Singapore. The drone's weight class is "${weight}" and the flight purpose is "${purpose}". Reinforce the most critical safety rules for this specific situation.`;
-                callGemini(prompt, briefingOutput);
-            });
 
             function updateRequirements() {
                 const weight = form.querySelector('input[name="drone-weight"]:checked').value;
