@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drone SG: How to fly your drone legally in Singapore</title>
+    <title>Drone SG - Interactive Guide</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Chosen Palette: Indigo Dream (Vibrant Indigo, Soft Lavender, White) -->
@@ -188,9 +188,9 @@
                         <p class="mt-2 text-base text-gray-600">Do not fly over private property or take photos/videos of people without their consent.</p>
                     </div>
                     <div class="p-6 bg-gray-50 rounded-lg">
-                        <span class="inline-block bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded-full uppercase">Don't</span>
-                        <h3 class="mt-2 text-lg font-bold text-gray-900">Fly over crowds or events</h3>
-                        <p class="mt-2 text-base text-gray-600">Avoid flying over groups of people. Flying at events with more than 50 people requires special permits.</p>
+                        <span class="inline-block bg-yellow-100 text-yellow-800 text-xs font-bold px-2 py-1 rounded-full uppercase">Upcoming</span>
+                        <h3 class="mt-2 text-lg font-bold text-gray-900">Use Remote ID</h3>
+                        <p class="mt-2 text-base text-gray-600">From 1 Dec 2025, all drones over 250g must have Broadcast Remote ID (B-RID), a digital license plate.</p>
                     </div>
                 </div>
             </div>
@@ -270,6 +270,10 @@
                     </li>
                     <li class="flex items-start p-4 bg-white rounded-lg shadow-sm">
                         <span class="h-6 w-6 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-800 mr-4 font-bold">✓</span>
+                        <p class="text-gray-700">Remote ID equipped? (For >250g drones from 1 Dec 2025)</p>
+                    </li>
+                    <li class="flex items-start p-4 bg-white rounded-lg shadow-sm">
+                        <span class="h-6 w-6 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-800 mr-4 font-bold">✓</span>
                         <p class="text-gray-700">Airspace checked on OneMap? (For outdoor flights)</p>
                     </li>
                     <li class="flex items-start p-4 bg-white rounded-lg shadow-sm">
@@ -279,10 +283,6 @@
                     <li class="flex items-start p-4 bg-white rounded-lg shadow-sm">
                         <span class="h-6 w-6 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-800 mr-4 font-bold">✓</span>
                         <p class="text-gray-700">Drone in good working condition?</p>
-                    </li>
-                     <li class="flex items-start p-4 bg-white rounded-lg shadow-sm">
-                        <span class="h-6 w-6 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-800 mr-4 font-bold">✓</span>
-                        <p class="text-gray-700">Flight area clear and safe?</p>
                     </li>
                 </ul>
             </div>
@@ -298,6 +298,25 @@
                 </div>
                 <div class="mt-12 max-w-3xl mx-auto">
                     <div class="space-y-4">
+                         <div class="bg-gray-50 p-4 rounded-lg">
+                            <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-gray-900">
+                                <span>What is Remote ID (B-RID)?</span>
+                                <span class="transform transition-transform duration-200">+</span>
+                            </button>
+                            <div class="faq-answer mt-2 text-gray-600">
+                                <p>Broadcast Remote Identification (B-RID) is like a digital license plate for your drone. It transmits information like the drone's serial number, position, and the operator's location. <strong>Starting from 1 December 2025</strong>, all drones weighing over 250g must be equipped with B-RID to be flown outdoors in Singapore. This can be a built-in feature or an external module attached to the drone.</p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-gray-900">
+                                <span>Where can I find approved Remote ID products?</span>
+                                <span class="transform transition-transform duration-200">+</span>
+                            </button>
+                            <div class="faq-answer mt-2 text-gray-600">
+                                <p>CAAS maintains an official list of approved B-RID modules and drone models that have compliant, built-in B-RID functionality. You should consult this list before purchasing a drone or a separate module to ensure it meets the technical requirements. You can view the official list via the link below.</p>
+                                <a href="https://file.go.gov.sg/brid-products.pdf" target="_blank" class="mt-2 inline-block text-indigo-600 hover:text-indigo-800 font-semibold">View Approved B-RID Products List (PDF)</a>
+                            </div>
+                        </div>
                          <div class="bg-gray-50 p-4 rounded-lg">
                             <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-gray-900">
                                 <span>What is the UA Basic Training Certificate?</span>
@@ -324,24 +343,6 @@
                             <div class="faq-answer mt-2 text-gray-600">
                                 <p>An <strong>Operator Permit</strong> is for the company or business and is valid for one year. CAAS assesses the company's safety procedures, drone airworthiness, and personnel competency before issuing it.</p>
                                 <p class="mt-2">An <strong>Activity Permit</strong> is for a specific flight or block of flights. A <strong>Class 1</strong> permit is for commercial operations and requires an Operator Permit. A <strong>Class 2</strong> permit is for recreational flights under special conditions (e.g., above 200ft) and does not require an Operator Permit.</p>
-                            </div>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-lg">
-                            <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-gray-900">
-                                <span>Do I need to register my drone if I only fly it indoors?</span>
-                                <span class="transform transition-transform duration-200">+</span>
-                            </button>
-                            <div class="faq-answer mt-2 text-gray-600">
-                                <p>Generally, no. Registration is not required for drones flown exclusively indoors in a private space. However, the rules change if the indoor space is <strong>publicly accessible</strong> (like a shopping mall or stadium) or if the flight is for an event with more than 50 people. In those specific indoor cases, a UA Pilot Licence and permits may be required.</p>
-                            </div>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-lg">
-                            <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-gray-900">
-                                <span>Can tourists fly drones at attractions like Marina Bay?</span>
-                                <span class="transform transition-transform duration-200">+</span>
-                            </button>
-                            <div class="faq-answer mt-2 text-gray-600">
-                                <p>Tourist attractions like Marina Bay Sands, the Merlion, and Gardens by the Bay are located within restricted airspace and are often designated as "protected areas." Flying a drone in these locations is generally not allowed without special permits, which can be difficult to obtain for recreational purposes. A permit from the Singapore Police Force (SPF) may also be required. Always assume flying is prohibited at major tourist spots unless you have explicit permission.</p>
                             </div>
                         </div>
                     </div>
@@ -375,6 +376,7 @@
                 const location = form.querySelector('input[name="flying-location"]:checked').value;
                 
                 let html = '<ul class="list-disc pl-5 space-y-1">';
+                let requiresRemoteID = false;
 
                 if (location === 'indoors') {
                     html += '<li>For private indoor spaces, registration and pilot licenses are generally not required.</li>';
@@ -385,6 +387,7 @@
                         html += '<li>A <strong>UA Pilot Licence (UAPL)</strong> is required for the pilot. This involves theory and practical tests.</li>';
                         if (weight !== 'under_250g') {
                              html += '<li>Drone must be <strong>registered</strong>.</li>';
+                             requiresRemoteID = true;
                         }
                     } else { // Recreational
                         switch (weight) {
@@ -394,17 +397,23 @@
                             case '250g_to_1.5kg':
                                 html += '<li>Drone must be <strong>registered</strong>.</li>';
                                 html += '<li>No pilot license is required for basic recreational flying.</li>';
+                                requiresRemoteID = true;
                                 break;
                             case '1.5kg_to_7kg':
                                 html += '<li>Drone must be <strong>registered</strong>.</li>';
                                 html += '<li>A <strong>UA Basic Training Certificate</strong> is required. This involves a simple online theory course and test.</li>';
+                                requiresRemoteID = true;
                                 break;
                             case 'over_7kg':
                                 html += '<li>Drone must be <strong>registered</strong>.</li>';
                                 html += '<li>A full <strong>UA Pilot Licence (UAPL)</strong> is required. This involves theory and practical tests.</li>';
+                                requiresRemoteID = true;
                                 break;
                         }
                          html += '<li>A <strong>Class 2 Activity Permit</strong> is required for flying at events with >50 people, flying above 200ft, or within restricted areas.</li>';
+                    }
+                    if(requiresRemoteID) {
+                        html += '<li><strong>Upcoming:</strong> From <strong>1 Dec 2025</strong>, your drone must have Broadcast Remote ID (B-RID).</li>';
                     }
                 }
                 
