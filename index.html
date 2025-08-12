@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drone SG - Interactive Guide</title>
+    <title>Drone SG: How to fly your drone legally in Singapore</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <!-- Chosen Palette: Indigo Dream (Vibrant Indigo, Soft Lavender, White) -->
@@ -298,6 +298,34 @@
                 </div>
                 <div class="mt-12 max-w-3xl mx-auto">
                     <div class="space-y-4">
+                         <div class="bg-gray-50 p-4 rounded-lg">
+                            <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-gray-900">
+                                <span>What is the UA Basic Training Certificate?</span>
+                                <span class="transform transition-transform duration-200">+</span>
+                            </button>
+                            <div class="faq-answer mt-2 text-gray-600">
+                                <p>The UA Basic Training Certificate is required for anyone flying a drone between 1.5kg and 7kg for recreational or educational purposes. To get it, you must be at least 16 years old, complete a one-time online theory course, and pass an online theory test. The training is conducted by CAAS-approved organisations.</p>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-gray-900">
+                                <span>What is the UA Pilot Licence (UAPL)?</span>
+                                <span class="transform transition-transform duration-200">+</span>
+                            </button>
+                            <div class="faq-answer mt-2 text-gray-600">
+                                <p>The UAPL is a more advanced license required for anyone flying a drone for commercial purposes (regardless of weight) or for recreational/educational purposes if the drone is over 7kg. To obtain a UAPL, you must be at least 16 years old, pass a theory test administered by CAAS, and pass a practical assessment with an authorised flight examiner.</p>
+                            </div>
+                        </div>
+                         <div class="bg-gray-50 p-4 rounded-lg">
+                            <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-gray-900">
+                                <span>What are Operator and Activity Permits?</span>
+                                <span class="transform transition-transform duration-200">+</span>
+                            </button>
+                            <div class="faq-answer mt-2 text-gray-600">
+                                <p>An <strong>Operator Permit</strong> is for the company or business and is valid for one year. CAAS assesses the company's safety procedures, drone airworthiness, and personnel competency before issuing it.</p>
+                                <p class="mt-2">An <strong>Activity Permit</strong> is for a specific flight or block of flights. A <strong>Class 1</strong> permit is for commercial operations and requires an Operator Permit. A <strong>Class 2</strong> permit is for recreational flights under special conditions (e.g., above 200ft) and does not require an Operator Permit.</p>
+                            </div>
+                        </div>
                         <div class="bg-gray-50 p-4 rounded-lg">
                             <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-gray-900">
                                 <span>Do I need to register my drone if I only fly it indoors?</span>
@@ -309,30 +337,11 @@
                         </div>
                         <div class="bg-gray-50 p-4 rounded-lg">
                             <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-gray-900">
-                                <span>Can I fly my drone at any open field?</span>
-                                <span class="transform transition-transform duration-200">+</span>
-                            </button>
-                            <div class="faq-answer mt-2 text-gray-600">
-                                <p>Not all open fields are approved flying areas. You must check the OneMap app before flying to ensure the area is not within 5km of an airport, an airbase, or any restricted, danger, or protected areas. Always respect "No Unmanned Aircraft" signs.</p>
-                            </div>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-lg">
-                            <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-gray-900">
                                 <span>Can tourists fly drones at attractions like Marina Bay?</span>
                                 <span class="transform transition-transform duration-200">+</span>
                             </button>
                             <div class="faq-answer mt-2 text-gray-600">
                                 <p>Tourist attractions like Marina Bay Sands, the Merlion, and Gardens by the Bay are located within restricted airspace and are often designated as "protected areas." Flying a drone in these locations is generally not allowed without special permits, which can be difficult to obtain for recreational purposes. A permit from the Singapore Police Force (SPF) may also be required. Always assume flying is prohibited at major tourist spots unless you have explicit permission.</p>
-                            </div>
-                        </div>
-                         <div class="bg-gray-50 p-4 rounded-lg">
-                            <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-gray-900">
-                                <span>What is the difference between Class 1 and Class 2 permits?</span>
-                                <span class="transform transition-transform duration-200">+</span>
-                            </button>
-                            <div class="faq-answer mt-2 text-gray-600">
-                                <p>A <strong>Class 1 Activity Permit</strong> is for commercial or non-recreational flights. This permit requires you to also have an Operator Permit.</p>
-                                <p class="mt-2">A <strong>Class 2 Activity Permit</strong> is for recreational or educational flights that take place under specific conditions, such as flying higher than 200ft (60m) or within 5km of an airport. You do not need an Operator Permit to apply for a Class 2 permit.</p>
                             </div>
                         </div>
                     </div>
@@ -373,7 +382,7 @@
                 } else { // Outdoors
                     if (purpose === 'commercial') {
                         html += '<li>An <strong>Operator Permit</strong> and <strong>Class 1 Activity Permit</strong> are required.</li>';
-                        html += '<li>A <strong>UA Pilot Licence (UAPL)</strong> is required for the pilot, regardless of drone weight.</li>';
+                        html += '<li>A <strong>UA Pilot Licence (UAPL)</strong> is required for the pilot. This involves theory and practical tests.</li>';
                         if (weight !== 'under_250g') {
                              html += '<li>Drone must be <strong>registered</strong>.</li>';
                         }
@@ -388,14 +397,14 @@
                                 break;
                             case '1.5kg_to_7kg':
                                 html += '<li>Drone must be <strong>registered</strong>.</li>';
-                                html += '<li>A <strong>UA Basic Training Certificate</strong> is required for the pilot.</li>';
+                                html += '<li>A <strong>UA Basic Training Certificate</strong> is required. This involves a simple online theory course and test.</li>';
                                 break;
                             case 'over_7kg':
                                 html += '<li>Drone must be <strong>registered</strong>.</li>';
-                                html += '<li>A full <strong>UA Pilot Licence (UAPL)</strong> is required.</li>';
+                                html += '<li>A full <strong>UA Pilot Licence (UAPL)</strong> is required. This involves theory and practical tests.</li>';
                                 break;
                         }
-                         html += '<li>Regardless of weight, permits are required for flying at events with >50 people, flying above 200ft, or within restricted areas.</li>';
+                         html += '<li>A <strong>Class 2 Activity Permit</strong> is required for flying at events with >50 people, flying above 200ft, or within restricted areas.</li>';
                     }
                 }
                 
