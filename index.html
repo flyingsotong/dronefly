@@ -22,12 +22,19 @@
         }
         body {
             font-family: Helvetica, Arial, sans-serif;
-            background-color: #111827;
+            background-color: #F5F3FF;
+            color: #1F2937;
+        }
+        html.dark body {
+            background-color: #1F2937;
             color: #d1d5db;
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: Helvetica, Arial, sans-serif;
             font-weight: 700;
+            color: #1F2937;
+        }
+        html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6 {
             color: #ffffff;
         }
         .chart-container {
@@ -113,7 +120,7 @@
                     </p>
                 </div>
 
-                <div class="mt-12 bg-gray-800 p-8 rounded-2xl shadow-lg max-w-4xl mx-auto">
+                <div class="mt-12 bg-gray-900 p-8 rounded-2xl shadow-lg max-w-4xl mx-auto">
                     <form id="requirementsForm" class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
                             <h3 class="text-lg font-bold text-white">1. What is your drone's total weight?</h3>
@@ -198,7 +205,7 @@
             </div>
         </section>
 
-        <section id="rules" class="py-16 sm:py-24 bg-gray-800">
+        <section id="rules" class="py-16 sm:py-24 bg-gray-900">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div>
                     <h2 class="text-base text-[#5e5def] font-semibold tracking-wide uppercase">The essentials</h2>
@@ -210,32 +217,32 @@
                     </p>
                 </div>
                 <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                    <div class="p-6 bg-gray-700/50 rounded-lg">
+                    <div class="p-6 bg-gray-800 rounded-lg">
                         <span class="inline-block bg-green-900 text-green-300 text-xs font-bold px-2 py-1 rounded-full uppercase">Do</span>
                         <h3 class="mt-2 text-lg font-bold text-white">Maintain visual line-of-sight</h3>
                         <p class="mt-2 text-base text-gray-400">Always keep your drone where you can see it with your own eyes, not just on a screen.</p>
                     </div>
-                    <div class="p-6 bg-gray-700/50 rounded-lg">
+                    <div class="p-6 bg-gray-800 rounded-lg">
                         <span class="inline-block bg-red-900 text-red-300 text-xs font-bold px-2 py-1 rounded-full uppercase">Don't</span>
                         <h3 class="mt-2 text-lg font-bold text-white">Fly beyond visual line-of-sight (BVLOS)</h3>
                         <p class="mt-2 text-base text-gray-400">Flying a drone where you cannot see it is strictly prohibited without an Operator and Class 1 Activity Permit.</p>
                     </div>
-                    <div class="p-6 bg-gray-700/50 rounded-lg">
+                    <div class="p-6 bg-gray-800 rounded-lg">
                         <span class="inline-block bg-red-900 text-red-300 text-xs font-bold px-2 py-1 rounded-full uppercase">Don't</span>
                         <h3 class="mt-2 text-lg font-bold text-white">Fly over 200ft (60m)</h3>
                         <p class="mt-2 text-base text-gray-400">Do not fly higher than 200 feet above Mean Sea Level (not AGL) unless you have a specific permit.</p>
                     </div>
-                    <div class="p-6 bg-gray-700/50 rounded-lg">
+                    <div class="p-6 bg-gray-800 rounded-lg">
                         <span class="inline-block bg-red-900 text-red-300 text-xs font-bold px-2 py-1 rounded-full uppercase">Don't</span>
                         <h3 class="mt-2 text-lg font-bold text-white">Fly in restricted areas</h3>
                         <p class="mt-2 text-base text-gray-400">Do not fly within 5km of an airport or airbase. Always check <a href="https://www.onemap.gov.sg/">OneMap</a> before flying.</p>
                     </div>
-                    <div class="p-6 bg-gray-700/50 rounded-lg">
+                    <div class="p-6 bg-gray-800 rounded-lg">
                         <span class="inline-block bg-green-900 text-green-300 text-xs font-bold px-2 py-1 rounded-full uppercase">Do</span>
                         <h3 class="mt-2 text-lg font-bold text-white">Respect privacy</h3>
                         <p class="mt-2 text-base text-gray-400">Do not fly over private property or take photos/videos of people without their consent.</p>
                     </div>
-                    <div class="p-6 bg-gray-700/50 rounded-lg">
+                    <div class="p-6 bg-gray-800 rounded-lg">
                         <span class="inline-block bg-yellow-900 text-yellow-300 text-xs font-bold px-2 py-1 rounded-full uppercase">Upcoming</span>
                         <h3 class="mt-2 text-lg font-bold text-white">Use Remote ID</h3>
                         <p class="mt-2 text-base text-gray-400">From 1 Dec 2025, all drones over 250g must have Broadcast Remote ID (B-RID), a digital license plate.</p>
@@ -272,7 +279,7 @@
             </div>
         </section>
 
-        <section id="flying-areas" class="py-16 sm:py-24 bg-gray-800">
+        <section id="flying-areas" class="py-16 sm:py-24 bg-gray-900">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div>
                     <h2 class="text-base text-[#5e5def] font-semibold tracking-wide uppercase">Where to fly</h2>
@@ -284,12 +291,12 @@
                     </p>
                 </div>
                 <div class="mt-12 grid gap-8 md:grid-cols-2">
-                    <div class="p-8 bg-gray-700/50 rounded-lg">
+                    <div class="p-8 bg-gray-800 rounded-lg">
                         <h3 class="text-xl font-bold text-white">Official resource: OneMap</h3>
                         <p class="mt-3 text-base text-gray-400">The OneMap application is the definitive source for identifying no-fly zones and permitted areas. It is essential to consult this map before every single flight.</p>
                         <a href="https://www.onemap.gov.sg/" target="_blank" class="mt-4 inline-block bg-[#5e5def] text-white font-bold py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors">Open OneMap</a>
                     </div>
-                    <div class="p-8 bg-gray-700/50 rounded-lg">
+                    <div class="p-8 bg-gray-800 rounded-lg">
                         <h3 class="text-xl font-bold text-white">Designated flying areas</h3>
                         <p class="mt-3 text-base text-gray-400">CAAS has designated specific areas for recreational flying:</p>
                         <ul class="mt-2 list-disc list-inside text-gray-400">
