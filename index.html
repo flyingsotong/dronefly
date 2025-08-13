@@ -68,8 +68,27 @@
                         <a href="#community" class="text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Community</a>
                     </div>
                 </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-200/50 focus:outline-none">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </nav>
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#checker" class="mobile-menu-link text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">What you need</a>
+                <a href="#rules" class="mobile-menu-link text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Safety rules</a>
+                <a href="#penalties" class="mobile-menu-link text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Penalties</a>
+                <a href="#flying-areas" class="mobile-menu-link text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Flying areas</a>
+                <a href="#checklist" class="mobile-menu-link text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Checklist</a>
+                <a href="#faq" class="mobile-menu-link text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">FAQ</a>
+                <a href="#community" class="mobile-menu-link text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Community</a>
+            </div>
+        </div>
     </header>
 
     <main>
@@ -390,9 +409,9 @@
             </div>
         </section>
         
-        <section id="community" class="py-16 sm:py-24 bg-gray-300">
+        <section id="community" class="py-16 sm:py-24 bg-gray-100">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
-                <h2 class="text-3xl font-bold tracking-tight text-gray-900">Join the community 👋</h2>
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900">Join the community</h2>
                 <p class="mt-4 text-xl text-gray-500">Got more questions? The Dronefly community has answers. Join our Discord.</p>
                 <a href="https://discord.gg/M4EcptYhYb" target="_blank" class="mt-8 inline-block bg-[#5e5def] text-white font-bold py-3 px-6 rounded-lg hover:bg-indigo-700 transition-colors">
                     Join Discord
@@ -415,7 +434,7 @@
                 Official CAAS Website
             </a>
             <div class="mt-8 text-sm text-indigo-200">
-                <p>This is an informational guide maintained by Alan Soon.<br>Information is based on CAAS regulations as of August 2025.<br>Spot any inaccuracies? <a href="mailto:alansoon@gmail.com" class="text-white hover:underline">Email us</a>.</p>
+                <p>This is an informational guide maintained by Alan Soon.<br>Information is based on CAAS regulations as of August 2025.<br>Spot any inaccuracies? <a href="mailto:alansoon@gmail.com" class="text-white hover:underline">Email Alan Soon</a>.</p>
                 <div class="mt-4">
                     <p>&copy; 2025 Dronefly.sg. All rights reserved.</p>
                     <p>Made in 🇸🇬</p>
@@ -428,9 +447,22 @@
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('requirementsForm');
             const resultsContent = document.getElementById('results-content');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
             
             Chart.defaults.font.family = 'Helvetica, Arial, sans-serif';
             Chart.defaults.color = '#1F2937';
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
 
             function updateRequirements() {
                 const weight = form.querySelector('input[name="drone-weight"]:checked').value;
