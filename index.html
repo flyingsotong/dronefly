@@ -641,7 +641,7 @@
                     </svg>
                 </div>
                 <div class="mt-8 text-sm text-indigo-200">
-                    <p>Dronefly.sg is an informational guide maintained by Alan Soon based on <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft" target="_blank" class="text-white hover:underline">CAAS regulations</a> as of August 2025.<br>Spot any inaccuracies? <a href="mailto:alansoon@gmail.com" class="text-white hover:underline">Email us</a>.</p>
+                    <p>Dronefly.sg is an informational guide maintained by Alan Soon based on <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft" target="_blank" class="text-white hover:underline">CAAS regulations</a> as of August 2025.<br>Spot any inaccuracies? <a href="mailto:alansoon@gmail.com" class="text-white hover:underline">Email us</a> or find us on <a href="https://www.instagram.com/dronefly.sg/" target="_blank" class="text-white hover:underline">Instagram</a>.</p>
                     <div class="mt-4">
                         <p>© <span id="copyright-year">2025</span> Dronefly.sg. All rights reserved.<br><br>Made in 🇸🇬</p>
                     </div>
@@ -649,6 +649,9 @@
             </div>
         </footer>
     </div>
+    <a href="#" id="back-to-top-button" class="hidden fixed bottom-5 right-5 bg-[#5e5def] text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-colors z-50" aria-label="Go to top">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+    </a>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Dynamic Copyright Year
@@ -747,6 +750,26 @@
                     }
                 });
             });
+
+            // Back to Top Button
+            const backToTopButton = document.getElementById('back-to-top-button');
+            if (backToTopButton) {
+                window.addEventListener('scroll', () => {
+                    if (window.pageYOffset > 300) { // Show button after scrolling 300px
+                        backToTopButton.classList.remove('hidden');
+                    } else {
+                        backToTopButton.classList.add('hidden');
+                    }
+                });
+
+                backToTopButton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
         });
     </script>
 </body>
