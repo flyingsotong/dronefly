@@ -675,10 +675,10 @@
                 let requiresRemoteID = false;
                 if (location === 'indoors') {
                     html += '<li>For private indoor spaces, registration and pilot licenses are generally not required.</li>';
-                    html += '<li><strong>However</strong>, if flying in a <strong>publicly accessible indoor area</strong> (e.g., a mall, stadium) or for an event with <strong>more than 50 people</strong>, a <strong>UA Pilot Licence</strong> and permits are required.</li>';
+                    html += '<li><strong>However</strong>, if flying in a <strong>publicly accessible indoor area</strong> (e.g., a mall, stadium) or for an event with <strong>more than 50 people</strong>, a <strong>UA Pilot Licence</strong> and <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft/ua-regulatory-requirements/ua-operator-and-activity-permits" target="_blank" class="text-indigo-400 hover:underline">permits</a> are required.</li>';
                 } else { // Outdoors
                     if (purpose === 'commercial') {
-                        html += '<li>An <strong>Operator Permit</strong> and <strong>Class 1 Activity Permit</strong> are required.</li>';
+                        html += '<li>An <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft/ua-regulatory-requirements/ua-operator-and-activity-permits" target="_blank" class="text-indigo-400 hover:underline"><strong>Operator Permit</strong> and <strong>Class 1 Activity Permit</strong></a> are required.</li>';
                         html += '<li>A <strong>UA Pilot Licence (UAPL)</strong> is required for the pilot. This involves theory and practical tests.</li>';
                         if (weight !== 'under_250g') {
                             html += '<li>Drone must be <a href="#faq" class="text-indigo-400 hover:underline"><strong>registered</strong></a>.</li>';
@@ -705,7 +705,7 @@
                                 requiresRemoteID = true;
                                 break;
                         }
-                        html += '<li>A <strong>Class 2 Activity Permit</strong> is required for flying at events with >50 people, flying above 200ft, or within restricted areas.</li>';
+                        html += '<li>A <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft/ua-regulatory-requirements/ua-operator-and-activity-permits" target="_blank" class="text-indigo-400 hover:underline"><strong>Class 2 Activity Permit</strong></a> is required for flying at events with >50 people, flying above 200ft, or within restricted areas.</li>';
                     }
                     if (requiresRemoteID) {
                         html += '<li><strong>Upcoming:</strong> From <strong>1 Dec 2025</strong>, your drone must have Broadcast Remote ID (B-RID).</li>';
