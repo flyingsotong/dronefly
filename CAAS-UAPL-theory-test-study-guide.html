@@ -276,6 +276,9 @@
 
                     <div>
                         <h2 class="text-3xl font-bold text-white mb-6">Detailed syllabus & learning outcomes</h2>
+                        <div class="text-right mb-4">
+                            <button id="expand-all-button" class="text-indigo-400 font-bold hover:underline focus:outline-none">Expand all</button>
+                        </div>
                         <div class="space-y-4">
                             <!-- Accordion Item 1 -->
                             <div class="bg-gray-800 rounded-lg">
@@ -556,34 +559,44 @@
             document.getElementById('copyright-year').textContent = new Date().getFullYear();
 
             // Accordion functionality for study guide
-            const accordionButtons = document.querySelectorAll('.accordion-content + button, .bg-gray-800.rounded-lg > button');
+            const accordionButtons = document.querySelectorAll('.bg-gray-800.rounded-lg > button');
             accordionButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const content = button.nextElementSibling;
                     const icon = button.querySelector('span:last-child');
 
-                    // Close all other accordions
-                    accordionButtons.forEach(otherButton => {
-                        if (otherButton !== button) {
-                            const otherContent = otherButton.nextElementSibling;
-                            const otherIcon = otherButton.querySelector('span:last-child');
-                            if (otherContent && otherContent.style.maxHeight) {
-                                otherContent.style.maxHeight = null;
-                                if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
-                            }
-                        }
-                    });
-
                     // Toggle current accordion
-                    if (content && content.style.maxHeight) {
+                    if (content.style.maxHeight) {
                         content.style.maxHeight = null;
                         if (icon) icon.style.transform = 'rotate(0deg)';
-                    } else if (content) {
+                    } else {
                         content.style.maxHeight = content.scrollHeight + "px";
                         if (icon) icon.style.transform = 'rotate(45deg)';
                     }
                 });
             });
+
+            // Expand/Collapse all functionality
+            const expandAllButton = document.getElementById('expand-all-button');
+            if (expandAllButton) {
+                expandAllButton.addEventListener('click', () => {
+                    const isExpanding = expandAllButton.textContent.trim() === 'Expand all';
+                    expandAllButton.textContent = isExpanding ? 'Collapse all' : 'Expand all';
+
+                    accordionButtons.forEach(button => {
+                        const content = button.nextElementSibling;
+                        const icon = button.querySelector('span:last-child');
+
+                        if (isExpanding) {
+                            content.style.maxHeight = content.scrollHeight + "px";
+                            if (icon) icon.style.transform = 'rotate(45deg)';
+                        } else {
+                            content.style.maxHeight = null;
+                            if (icon) icon.style.transform = 'rotate(0deg)';
+                        }
+                    });
+                });
+            }
 
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
