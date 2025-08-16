@@ -466,7 +466,7 @@
                     </div>
                     <div class="mt-12 max-w-3xl mx-auto">
                         <div class="space-y-4">
-                            <div class="bg-gray-700/50 p-4 rounded-lg">
+                            <div id="faq-register" class="bg-gray-700/50 p-4 rounded-lg">
                                 <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-white">
                                     <span>How do I register my drone?</span>
                                     <span class="transform transition-transform duration-200">+</span>
@@ -503,7 +503,7 @@
                                     <p>The <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft/ua-regulatory-requirements/ua-basic-training" target="_blank" class="text-indigo-400 hover:underline">UA Basic Training Certificate</a> is required for anyone flying a drone between 1.5kg and 7kg for recreational or educational purposes. To get it, you must be at least 16 years old, complete a one-time online theory course, and pass an online theory test. The training is conducted by <a href="https://file.go.gov.sg/list-of-uabtos.pdf" target="_blank" class="text-indigo-400 hover:underline">CAAS-approved organisations</a>. (Not to be confused with the UAPL)</p>
                                 </div>
                             </div>
-                            <div class="bg-gray-700/50 p-4 rounded-lg">
+                            <div id="faq-uapl" class="bg-gray-700/50 p-4 rounded-lg">
                                 <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-white">
                                     <span>What is the UA Pilot Licence (UAPL)?</span>
                                     <span class="transform transition-transform duration-200">+</span>
@@ -682,9 +682,9 @@
                 } else { // Outdoors
                     if (purpose === 'commercial') {
                         html += '<li>An <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft/ua-regulatory-requirements/ua-operator-and-activity-permits" target="_blank" class="text-indigo-400 hover:underline"><strong>Operator Permit</strong> and <strong>Class 1 Activity Permit</strong></a> are required.</li>';
-                        html += '<li>A <strong>UA Pilot Licence (UAPL)</strong> is required for the pilot. This involves theory and practical tests.</li>';
+                        html += '<li>A <a href="#faq-uapl" class="text-indigo-400 hover:underline"><strong>UA Pilot Licence (UAPL)</strong></a> is required for the pilot. This involves theory and practical tests.</li>';
                         if (weight !== 'under_250g') {
-                            html += '<li>Drone must be <a href="#faq" class="text-indigo-400 hover:underline"><strong>registered</strong></a>.</li>';
+                            html += '<li>Drone must be <a href="#faq-register" class="text-indigo-400 hover:underline"><strong>registered</strong></a>.</li>';
                             requiresRemoteID = true;
                         }
                     } else { // Recreational
@@ -693,18 +693,18 @@
                                 html += '<li>No registration or license required for basic recreational flying.</li>';
                                 break;
                             case '250g_to_1.5kg':
-                                html += '<li>Drone must be <a href="#faq" class="text-indigo-400 hover:underline"><strong>registered</strong></a>.</li>';
+                                html += '<li>Drone must be <a href="#faq-register" class="text-indigo-400 hover:underline"><strong>registered</strong></a>.</li>';
                                 html += '<li>No pilot license is required for basic recreational flying.</li>';
                                 requiresRemoteID = true;
                                 break;
                             case '1.5kg_to_7kg':
-                                html += '<li>Drone must be <a href="#faq" class="text-indigo-400 hover:underline"><strong>registered</strong></a>.</li>';
+                                html += '<li>Drone must be <a href="#faq-register" class="text-indigo-400 hover:underline"><strong>registered</strong></a>.</li>';
                                 html += '<li>A <a href="#faq-uabt" class="text-indigo-400 hover:underline"><strong>UA Basic Training (UABT)</strong></a> certificate is required. This involves a simple online theory course and test.</li>';
                                 requiresRemoteID = true;
                                 break;
                             case 'over_7kg':
-                                html += '<li>Drone must be <a href="#faq" class="text-indigo-400 hover:underline"><strong>registered</strong></a>.</li>';
-                                html += '<li>A full <strong>UA Pilot Licence (UAPL)</strong> is required. This involves theory and practical tests.</li>';
+                                html += '<li>Drone must be <a href="#faq-register" class="text-indigo-400 hover:underline"><strong>registered</strong></a>.</li>';
+                                html += '<li>A full <a href="#faq-uapl" class="text-indigo-400 hover:underline"><strong>UA Pilot Licence (UAPL)</strong></a> is required. This involves theory and practical tests.</li>';
                                 requiresRemoteID = true;
                                 break;
                         }
