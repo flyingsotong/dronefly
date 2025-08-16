@@ -465,6 +465,9 @@
                         </p>
                     </div>
                     <div class="mt-12 max-w-3xl mx-auto">
+                        <div class="text-right mb-4">
+                            <button id="expand-all-faq" class="text-sm font-medium text-indigo-400 hover:text-indigo-300">Expand all</button>
+                        </div>
                         <div class="space-y-4">
                             <div id="faq-register" class="bg-gray-700/50 p-4 rounded-lg">
                                 <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-white">
@@ -734,6 +737,25 @@
                     }
                 });
             });
+
+            const expandAllButton = document.getElementById('expand-all-faq');
+            if (expandAllButton) {
+                expandAllButton.addEventListener('click', () => {
+                    const allAnswers = document.querySelectorAll('.faq-answer');
+                    const allIcons = document.querySelectorAll('.faq-question span:last-child');
+                    const isExpanded = expandAllButton.textContent === 'Collapse all';
+
+                    allAnswers.forEach(answer => {
+                        answer.style.display = isExpanded ? 'none' : 'block';
+                    });
+
+                    allIcons.forEach(icon => {
+                        icon.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(45deg)';
+                    });
+
+                    expandAllButton.textContent = isExpanded ? 'Expand all' : 'Collapse all';
+                });
+            }
             // Accessible Tooltips on Click            
             const tooltipTriggers = document.querySelectorAll('.group .cursor-pointer');
             tooltipTriggers.forEach(trigger => {
