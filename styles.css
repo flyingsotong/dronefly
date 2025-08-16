@@ -1,0 +1,51 @@
+html,
+body {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: #F5F3FF;
+    color: #1F2937;
+}
+
+html.dark body {
+    background-color: #4B5563;
+    /* Lighter dark background */
+    color: #d1d5db;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    color: #1F2937;
+}
+
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6 {
+    color: #ffffff;
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 400px;
+    max-height: 50vh;
+}
+
+.faq-answer {
+    display: none;
+    transition: all 0.3s ease-in-out;
+}
