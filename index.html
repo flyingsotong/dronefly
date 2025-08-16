@@ -494,13 +494,13 @@
                                     <a href="https://file.go.gov.sg/brid-products.pdf" target="_blank" class="mt-2 inline-block text-indigo-400 hover:underline">View Approved B-RID Products List (PDF)</a>
                                 </div>
                             </div>
-                            <div class="bg-gray-700/50 p-4 rounded-lg">
+                            <div id="faq-uabt" class="bg-gray-700/50 p-4 rounded-lg">
                                 <button class="faq-question w-full text-left flex justify-between items-center text-lg font-bold text-white">
-                                    <span>What is the UA Basic Training Certificate?</span>
+                                    <span>What is the UA Basic Training Certificate (UABT)?</span>
                                     <span class="transform transition-transform duration-200">+</span>
                                 </button>
                                 <div class="faq-answer mt-2 text-gray-400">
-                                    <p>The <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft/ua-regulatory-requirements/ua-basic-training" target="_blank" class="text-indigo-400 hover:underline">UA Basic Training Certificate</a> is required for anyone flying a drone between 1.5kg and 7kg for recreational or educational purposes. To get it, you must be at least 16 years old, complete a one-time online theory course, and pass an online theory test. The training is conducted by <a href="https://file.go.gov.sg/list-of-uabtos.pdf" target="_blank" class="text-indigo-400 hover:underline">CAAS-approved organisations</a>.</p>
+                                    <p>The <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft/ua-regulatory-requirements/ua-basic-training" target="_blank" class="text-indigo-400 hover:underline">UA Basic Training Certificate</a> is required for anyone flying a drone between 1.5kg and 7kg for recreational or educational purposes. To get it, you must be at least 16 years old, complete a one-time online theory course, and pass an online theory test. The training is conducted by <a href="https://file.go.gov.sg/list-of-uabtos.pdf" target="_blank" class="text-indigo-400 hover:underline">CAAS-approved organisations</a>. (Not to be confused with the UAPL)</p>
                                 </div>
                             </div>
                             <div class="bg-gray-700/50 p-4 rounded-lg">
@@ -699,7 +699,7 @@
                                 break;
                             case '1.5kg_to_7kg':
                                 html += '<li>Drone must be <a href="#faq" class="text-indigo-400 hover:underline"><strong>registered</strong></a>.</li>';
-                                html += '<li>A <strong>UA Basic Training Certificate</strong> is required. This involves a simple online theory course and test.</li>';
+                                html += '<li>A <a href="#faq-uabt" class="text-indigo-400 hover:underline"><strong>UA Basic Training (UABT)</strong></a> certificate is required. This involves a simple online theory course and test.</li>';
                                 requiresRemoteID = true;
                                 break;
                             case 'over_7kg':
