@@ -49,3 +49,18 @@ html.dark h6 {
     display: none;
     transition: all 0.3s ease-in-out;
 }
+
+/* Glass effect styles */
+.glass-effect {
+    background-color: rgba(255, 255, 255, 0.15); /* Semi-transparent white background */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px; /* Add some padding */
+}
+
+html.dark .glass-effect {
+    background-color: rgba(0, 0, 0, 0.2); /* Darker semi-transparent background for dark mode */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
