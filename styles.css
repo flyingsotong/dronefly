@@ -5,7 +5,7 @@ body {
 
 body {
     font-family: Helvetica, Arial, sans-serif;
-    background-color: #F5F3FF;
+    background-color: #E0E0E0; /* Changed from #F5F3FF to a light grey */
     color: #1F2937;
 }
 
