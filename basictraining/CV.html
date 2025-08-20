@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alan Soon | Co-Founder & CEO, Splice Media</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #4a4a4a; /* Dark grey for primary elements */
+            --secondary-color: #7f8c8d; /* Medium grey for accents */
+            --dark-color: #2c3e50; /* Dark blue-grey for headings (kept for contrast) */
+            --body-color: #34495e; /* Slightly lighter blue-grey for body text (kept for contrast) */
+            --bg-color: #dcdcdc; /* Lighter grey for background */
+            --card-bg: #f0f0f0; /* Off-white/light grey for card backgrounds */
+            --border-color: #a0a0a0; /* Medium grey for borders */
+            --heading-font: 'Sora', sans-serif;
+            --body-font: 'Inter', sans-serif;
+            --shadow-light: 0 2px 8px rgba(0,0,0,0.1);
+            --shadow-medium: 0 6px 20px rgba(0,0,0,0.15);
+            /* Glass effect variables */
+            --glass-bg: rgba(255, 255, 255, 0.15); /* Slightly transparent white */
+            --glass-border: rgba(255, 255, 255, 0.2); /* Lighter border for glass effect */
+            --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Larger, softer shadow */
+            --glass-backdrop-blur: 10px; /* Blur effect */
+        }
+
+        body {
+            font-family: var(--body-font);
+            background-color: var(--bg-color);
+            color: var(--body-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            /* Background for glass effect */
+            background-image: url('https://source.unsplash.com/random/1920x1080/?abstract,nature'); /* Example background */
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        .container {
+            max-width: 760px; /* Made narrower */
+            margin: 0 auto;
+            padding: 15px; /* Adjusted padding */
+        }
+
+        /* --- Header --- */
+        header {
+            text-align: left;
+            padding: 30px 20px; /* Adjusted padding to fit the rest of the page */
+            background: var(--glass-bg); /* Use glass background */
+            backdrop-filter: blur(var(--glass-backdrop-blur)); /* Apply blur */
+            -webkit-backdrop-filter: blur(var(--glass-backdrop-blur)); /* For Safari */
+            border: 1px solid var(--glass-border); /* Glass border */
+            color: #ffffff;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: var(--glass-shadow); /* Use glass shadow */
+        }
+
+        header h1 {
+            font-family: var(--heading-font);
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: -0.05em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header .tagline {
+            font-size: 1.2rem;
+            margin-top: 15px;
+            margin-bottom: 25px;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+        
+        header .social-links a {
+            color: #ffffff;
+            font-size: 1.8rem;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        header .social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        /* --- Section Styling --- */
+        section {
+            background: var(--glass-bg); /* Use glass background */
+            backdrop-filter: blur(var(--glass-backdrop-blur)); /* Apply blur */
+            -webkit-backdrop-filter: blur(var(--glass-backdrop-blur)); /* For Safari */
+            border: 1px solid var(--glass-border); /* Glass border */
+            padding: 25px; /* Adjusted padding */
+            margin-bottom: 25px; /* Adjusted margin */
+            border-radius: 15px;
+            box-shadow: var(--glass-shadow); /* Use glass shadow */
+            transition: transform 0.2s ease-in-out;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            font-family: var(--heading-font);
+            color: var(--dark-color);
+            font-size: 2rem;
+            padding-bottom: 15px;
+            margin-top: 0;
+            margin-bottom: 30px;
+            text-align: left;
+            position: relative;
+        }
+        
+        h3 {
+            font-family: var(--heading-font);
+            color: var(--dark-color);
+            font-size: 1.4rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 10px;
+        }
+        
+        p {
+            margin-bottom: 1.2em;
+            color: #333333; /* Adjusted for better readability on glass background */
+        }
+        
+        a {
+            color: var(--dark-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        /* --- About Section Tags --- */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+        
+        .tag {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            box-shadow: var(--shadow-light);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .tag:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* --- Experience Timeline --- */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 45px;
+            padding-bottom: 15px;
+            box-shadow: 0 1px 0 rgba(0,0,0,0.05); /* Subtle shadow instead of dashed border */
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            box-shadow: none;
+        }
+
+
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin: 0;
+        }
+
+        .company-name {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--secondary-color);
+            margin-bottom: 8px;
+        }
+
+        .job-details {
+            font-size: 0.95rem;
+            color: var(--body-color);
+            margin-bottom: 15px;
+        }
+        
+        .job-description ul {
+            padding-left: 25px;
+            margin-top: 10px;
+            list-style: disc;
+        }
+        
+        .job-description li {
+            margin-bottom: 10px;
+        }
+        
+        .skills-list {
+            margin-top: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .skills-list strong {
+            color: var(--dark-color);
+            margin-right: 5px;
+        }
+
+        /* --- Education & Organizations --- */
+        .card-list-item {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            box-shadow: 0 1px 0 rgba(0,0,0,0.05); /* Subtle shadow instead of solid border */
+        }
+        
+        .card-list-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            box-shadow: none;
+        }
+
+        .item-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin: 0;
+        }
+
+        .item-subtitle {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--secondary-color);
+            margin: 5px 0;
+        }
+        
+        .item-details {
+            font-size: 0.95rem;
+            color: var(--body-color);
+            margin-bottom: 10px;
+        }
+        
+        .item-description {
+            font-size: 0.95rem;
+            margin-top: 5px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 30px;
+            font-size: 0.9rem;
+            color: #ffffff; /* Adjust color for better contrast on glass */
+            opacity: 0.9;
+            background: var(--glass-bg); /* Use glass background */
+            backdrop-filter: blur(var(--glass-backdrop-blur)); /* Apply blur */
+            -webkit-backdrop-filter: blur(var(--glass-backdrop-blur)); /* For Safari */
+            border: 1px solid var(--glass-border); /* Glass border */
+            border-radius: 15px; /* Match other elements */
+            box-shadow: var(--glass-shadow); /* Use glass shadow */
+            margin-top: 25px; /* Add some space above footer */
+        }
+        
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            header {
+                padding: 30px 15px;
+                border-radius: 10px;
+            }
+            header h1 {
+                font-size: 2.5rem;
+                text-align: left;
+            }
+            header .tagline {
+                font-size: 1rem;
+                text-align: left;
+            }
+            section {
+                padding: 25px;
+                border-radius: 10px;
+            }
+            h2 {
+                font-size: 1.7rem;
+                margin-bottom: 20px;
+                text-align: left;
+            }
+            h2::after {
+                left: 0;
+                transform: translateX(0);
+            }
+            h3 {
+                font-size: 1.2rem;
+                margin-top: 20px;
+            }
+            .timeline {
+                padding-left: 30px;
+            }
+            .timeline-item::before {
+                left: -35px;
+                width: 10px;
+                height: 10px;
+                border: 3px solid var(--bg-color);
+                box-shadow: 0 0 0 1px var(--secondary-color);
+            }
+            .job-title {
+                font-size: 1.1rem;
+            }
+            .company-name {
+                font-size: 1rem;
+            }
+            .tag {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+            <h1>Alan Soon</h1>
+            <p class="tagline">Co-Founder & CEO, Splice Media | Media Entrepreneur | ICF-Certified Coach | Pilot</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/alansoon/" target="_blank" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </header>
+
+        <main>
+            
+            <section id="about">
+                <h2>About Me</h2>
+                <p>My career has been dedicated to building systems and communities that thrive on the cusp of major technological shifts. As an entrepreneur with nearly three decades of experience in media, I've had the privilege of leading organizations through digital transformation, from running Asia's largest digital news operations at Yahoo to co-founding Splice Media to support the next generation of media startups.</p>
+                <p>This journey has been guided by a core belief: that with the right training, tools, and community, individuals can achieve incredible things. Whether it's coaching media founders or developing new operational workflows, my focus has always been on creating clear, accessible pathways to success.</p>
+                <p>My lifelong passion for aviation has evolved in parallel. As a certified pilot, I bring a deep, personal understanding of the principles of airmanship, safety, and regulatory responsibility. This isn't just a hobby; it's a discipline that shapes my approach to every new venture.</p>
+                <p>It was at the intersection of these passions—for education, community-building, and aviation—that <strong>Dronefly.sg</strong> was born. I created it as a public resource to demystify Singapore's drone laws and promote a culture of safety and responsibility among pilots. The work we've done in supporting the education of the drone community is a natural extension of my professional experience and personal commitment to safe skies.</p>
+                <p>As the Accountable Manager for the Dronefly.sg UABTO, I aim to combine my entrepreneurial experience in building robust systems with my dedication as an aviator to establish a training organization that is not only compliant but sets a new standard for excellence and safety in unmanned aviation.</p>
+            </section>
+
+            <section id="experience">
+                <h2>Experience</h2>
+                <div class="timeline">
+                    
+                    <article class="timeline-item">
+                        <h4 class="job-title">Co-Founder & CEO</h4>
+                        <p class="company-name">Splice Media</p>
+                        <p class="job-details">Full-time · Jul 2017 - Present · 8 yrs 2 mos · Singapore</p>
+                        <div class="job-description">
+                            <p>Splice helps you build a media business that serves a need, creates value, and ultimately makes money. We're consultants, coaches, trainers, and community builders.</p>
+                            <p>The Splice story started with an irritation: that media wasn’t making the most of the arrival of the internet. We believe that a healthy, viable media ecosystem requires a broader definition of media, an obsessive focus on serving users’ needs, and monetary value from that service.</p>
+                            <p>Our current and previous clients include Google, Meta, Australian Broadcasting Corporation, CNN, Craig Newmark Graduate School of Journalism at CUNY, Deutsche Welle Akademie, Fojo Media Institute, International Center for Journalists, International Fund for Public Interest Media, International Media Support, Konrad-Adenauer-Stiftung, Luminate, Media Development Investment Fund, and the United Nations Development Program.</p>
+                            <div class="skills-list">
+                                <strong>Skills:</strong> Digital Media · Entrepreneurship · Executive Coaching · Product Management · Journalism
+                            </div>
+                            <h3>Articles:</h3>
+                            <ul>
+                                <li><a href="#">The Change Log: This is how we’re re-building Splice</a></li>
+                                <li><a href="#">Why Splice is building a service to cover the transformation of newsrooms in Asia</a></li>
+                            </ul>
+                        </div>
+                    </article>
+                    
+                    <article class="timeline-item">
+                        <h4 class="job-title">Founder & CEO</h4>
+                        <p class="company-name">The Splice Newsroom (precursor to Splice Media)</p>
+                        <p class="job-details">Mar 2015 - Present · 10 yrs 6 mos</p>
+                        <div class="job-description">
+                           <p>I started The Splice Newsroom, the precursor to Splice Media, to help solve a difficult problem: Getting newsrooms to adapt and evolve in the ongoing shift to digital. We help transform traditional newsrooms and support the development of editorial startups.</p>
+                            <h3>Areas of focus:</h3>
+                            <ul>
+                                <li>Digital transformation</li>
+                                <li>Content strategy</li>
+                                <li>Social distribution</li>
+                                <li>Newsroom operational workflows</li>
+                                <li>Mobile strategy</li>
+                                <li>Editorial tools</li>
+                                <li>Staff development/training</li>
+                                <li>Media tech startups</li>
+                                <li>Editorial startups</li>
+                                <li>Metrics and analytics</li>
+                            </ul>
+                            <h3>Awards/Speaking Engagements:</h3>
+                            <ul>
+                                <li>Giving out the award for Disruptor of the Year at the Mumbrella Asia Awards 2017</li>
+                                <li>Speaking at ICEEfest 2016 in Bucharest -- "Death by a million page views: How the mindless pursuit of reach is killing publishers"</li>
+                                <li>On the judging panel of Hyper Haze Hack 2015, Singapore.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item">
+                        <h4 class="job-title">Managing Director, Singapore</h4>
+                        <p class="company-name">Rockstart</p>
+                        <p class="job-details">May 2016 - Sep 2016 · 5 mos · Singapore · Remote</p>
+                        <div class="job-description">
+                            <p>I ran the Singapore program, which aimed to pull in fantastic startup teams, ideas and products from across Asia. I worked on connecting with the international investor community supporting the Singapore program and engaging a diverse mentor network.</p>
+                        </div>
+                    </article>
+                    
+                    <article class="timeline-item">
+                        <h4 class="job-title">Managing Editor, India & Southeast Asia / Country Manager, Singapore</h4>
+                        <p class="company-name">Yahoo</p>
+                        <p class="job-details">Dec 2014 - Mar 2015 · 4 mos · Singapore</p>
+                        <div class="job-description">
+                           <p>My role as Managing Editor of Southeast Asia was expanded in Dec 2014 to include India.</p>
+                           <p>As the editorial head for Southeast Asia at Yahoo, I was responsible for articulating and executing Yahoo’s editorial vision for the region.</p>
+                           <p>In this director-level role, I led the business through a historic shift from primarily aggregated to original content, harnessing the best technology to deliver the most compelling content experience on PCs and mobile. I built an in-house team of journalists and expanded our partner relationships to include bloggers and other freelancers to drive our content strategy around videos, photos and text articles. The changes we made ensured that Yahoo extended its leadership position across key categories such as news and entertainment as tracked by comScore.</p>
+                           <p>I put together a team from scratch by hiring and training editors and producers across Singapore, Kuala Lumpur, Ho Chi Minh City, Manila and Jakarta to shepherd, engage and measure an audience of millions of people. We built great content that helped drive great conversations in our community and the clients who wanted to reach them.</p>
+                           <p>I managed a staff of more than 70 people in Southeast Asia and worked with numerous bloggers and other contributors to deliver content that was unique, diverse and engaging.</p>
+                            <h3>Events:</h3>
+                            <ul>
+                                <li>Moderating a social media panel at Broadcast Asia (2014)</li>
+                                <li>Financial Times-Asia Business Summit (2013)</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item">
+                        <h4 class="job-title">Senior Producer</h4>
+                        <p class="company-name">CNBC</p>
+                        <p class="job-details">Dec 2005 - Apr 2009 · 3 yrs 5 mos · Singapore</p>
+                        <div class="job-description">
+                            <p>I was responsible for editorial oversight on several shows, including Worldwide Exchange – a 2-hour live TV program that brought together CNBC’s coverage of the global markets, tapping our anchors and reporters in Asia, Europe and North America.</p>
+                            <p>I was responsible for the news judgment and editorial integrity of this international show. I led and managed a team of anchors, producers and reporters across the globe in planning and executing coverage of the top stories of the day. Our focus was on breaking news. As a senior newsroom manager, I also interviewed, recruited and trained journalists for CNBC.</p>
+                            <h3>Events:</h3>
+                            <ul>
+                                <li>Coordinating CNBC's coverage of the 2007 UN Climate Change Conference in Bali.</li>
+                                <li>Lining up one of my last evening shows at CNBC.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item">
+                        <h4 class="job-title">Editor</h4>
+                        <p class="company-name">Kyodo News International, Inc</p>
+                        <p class="job-details">Jun 2004 - Aug 2005 · 1 yr 3 mos · Tokyo, Japan</p>
+                        <div class="job-description">
+                            <p>I edited financial, political and photo wires for the worldwide section of Kyodo News, playing a crucial role in making sure stories were written in a clear, concise format, and delivered with accuracy and speed. I ensured that stories maintained a “big picture” perspective for global clients, which included newspapers, news agencies, broadcasters and international organizations.</p>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item">
+                        <h4 class="job-title">Producer</h4>
+                        <p class="company-name">Bloomberg</p>
+                        <p class="job-details">Feb 2001 - Mar 2004 · 3 yrs 2 mos · Tokyo, Japan</p>
+                        <div class="job-description">
+                            <p>I led a team that produced the live three-hour morning business flagship TV program Moneycast Asia. The program bridged the closing day on Wall Street with the start of the trading day in Asia, drawing on global newsmakers, economists, analysts and reporters from cities such as Sydney, London, Beijing, New York, San Francisco and Seoul.</p>
+                            <p>I was responsible for assigning, writing and line producing the show with a team of producers, writers, anchors and reporters, and helping ensure editorial and production consistencies. I was also responsible for nurturing some of the newer members on the team.</p>
+                            <p>I was also the producer and creator of a live two-hour lunchtime business program called Newsday Asia-Pacific.</p>
+                        </div>
+                    </article>
+                    
+                    <article class="timeline-item">
+                        <h4 class="job-title">Associate Producer</h4>
+                        <p class="company-name">Star TV</p>
+                        <p class="job-details">Feb 2000 - Jan 2001 · 1 yr · Hong Kong</p>
+                        <div class="job-description">
+                            <p>I helped produce the evening’s flagship live TV news program STAR News Asia, seen by viewers in Asia and the Middle East. The show covered international politics, business news with Bloomberg, and business features with Businessweek.</p>
+                            <p>The job covered the entire circle of news production: selecting stories, scripting, voice-overs, arranging graphics, line producing, arranging phone interviews, and coordinating feeds or crosses with other News Corp networks such as Sky News and the Fox News Channel.</p>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item">
+                        <h4 class="job-title">Senior Reporter</h4>
+                        <p class="company-name">IDG News Service</p>
+                        <p class="job-details">1999 - 2000 · 1 yr · Hong Kong SAR</p>
+                        <div class="job-description">
+                            <p>This position in Hong Kong’s most reputable computing newspaper provided an across-the-board coverage of Greater China’s technology scene during the dot-com boom in Asia. I was responsible for generating proprietary news and features, and sub-editing. I followed the dot-com plans of businesses, their e-commerce strategies and other trends in the industry.</p>
+                        </div>
+                    </article>
+                    
+                    <article class="timeline-item">
+                        <h4 class="job-title">Reporter / Producer</h4>
+                        <p class="company-name">Channel NewsAsia</p>
+                        <p class="job-details">1997 - 1999 · 2 yrs · Singapore</p>
+                        <div class="job-description">
+                            <p>I was a producer and researcher for In Conversation, a flagship 30-minute weekly TV current affairs interview program. The show had a strong focus on foreign relations and technology issues. I was responsible for securing, researching and producing interviews with distinguished politicians and individuals such as Bill Gates, Jerry Yang, Jacques Santer, Tung Chee-Hwa and Sadako Ogata.</p>
+                            <p>The success of this program hinged greatly on my ability to work with diplomatic sources as well as public relations companies. Secondary duties included scripting, producing and voice-overs. I also produced the company’s first webcast interview, and created and ran the network’s first program website -- a first for Singapore TV.</p>
+                        </div>
+                    </article>
+                    
+                    <article class="timeline-item">
+                        <h4 class="job-title">Reporter</h4>
+                        <p class="company-name">Safra Radio</p>
+                        <p class="job-details">1995 - 1997 · 2 yrs · Singapore</p>
+                        <div class="job-description">
+                            <p>I was a radio journalist covering defense and technology. I wrote and produced the daily news bulletins and current affairs features. I covered key political events, such as the WTO Ministerial Meeting in Singapore, the ASEAN Regional Forum, the Asia-Europe Meeting and the Five Power Defense Arrangement. I also created the company’s – and Singapore’s first – 24-hour Internet radio webcast and managed the network’s online services on the Internet.</p>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+            
+            <section id="education">
+                <h2>Education</h2>
+                
+                <div class="card-list-item">
+                    <p class="item-title">Bachelor of Arts (B.A.), Communication</p>
+                    <p class="item-subtitle">Simon Fraser University</p>
+                    <p class="item-details">1990 - 1994</p>
+                    <p class="item-description">The School of Communication has a long-standing tradition of critical, interdisciplinary approaches to the study of media and technology, with a commitment to social theory and political economy. The school bridges the critical and the applied in its undergraduate programs, and is committed to offering students the opportunities and the means to explore, analyze and critically evaluate the complexities and interplay between the numerous and diverse dimensions of communication.</p>
+                </div>
+
+                <div class="card-list-item">
+                    <p class="item-title">Certificate, Liberal Arts</p>
+                    <p class="item-subtitle">Simon Fraser University</p>
+                    <p class="item-details">1990 - 1994</p>
+                    <p class="item-description">The Certificate in Liberal Arts (CLA) is tailored for students with an interest in a broad range of courses that would be helpful in a well-rounded liberal education.</p>
+                </div>
+
+                <div class="card-list-item">
+                    <p class="item-title">Master of Arts (M.A.), Asia Pacific Studies</p>
+                    <p class="item-subtitle">University of Leeds</p>
+                    <p class="item-details">1995 - 2000</p>
+                    <p class="item-description">I wrote my dissertation on Sino-U.S. Relations Under the Clinton Administration.</p>
+                </div>
+                
+                <div class="card-list-item">
+                    <p class="item-title">Professional Certificate, Coaching</p>
+                    <p class="item-subtitle">Singapore Management University</p>
+                    <p class="item-details">Jan 2023 - Jul 2023</p>
+                    <p class="item-description">The program is recognized as accredited training by the International Coaching Federation, the world’s largest organization of professionally trained coaches. The first three modules provided me with the required number of training hours related to the ICF competencies. The last module allowed me to better understand the requirements of ICF credentialing and the preparation needed for my coaching career.
+The program fulfils the 60 training hours required my journey toward ICF credentialing as an Associate Certified Coach (ACC). Currently working toward attaining 100 hours of client coaching experience.</p>
+                </div>
+            </section>
+
+            <section id="certifications">
+                <h2>Certifications</h2>
+                <div class="card-list-item">
+                    <p class="item-title">Unmanned Aircraft Basic Training (UABT) / CAAS approved</p>
+                    <p class="item-subtitle">Republic Polytechnic</p>
+                    <p class="item-details">Issued Jul 2025 · Credential ID 20911460</p>
+                    <div class="skills-list">
+                        <strong>Skills:</strong> Drone Piloting · Air Legislation · Unmanned Aircraft Knowledge · Unmanned Aircraft Safety
+                    </div>
+                </div>
+                <div class="card-list-item">
+                    <p class="item-title">Recreational Pilot Certificate (RPC)</p>
+                    <p class="item-subtitle">Recreational Aviation Australia</p>
+                    <p class="item-details">Issued May 2025 · Credential ID 074801</p>
+                    <div class="skills-list">
+                        <strong>Skills:</strong> Private Piloting · Aerodynamics · Aviation · Air Legislation · Human Performance
+                    </div>
+                </div>
+            </section>
+            
+            <section id="organizations">
+                <h2>Organizations</h2>
+
+                <div class="card-list-item">
+                    <p class="item-title">Member</p>
+                    <p class="item-subtitle">Recreational Aviation Australia (RAAus)</p>
+                    <p class="item-details">Apr 2025 - Present</p>
+                    <p class="item-description">Recreational Aviation Australia is the country’s largest administrator of pilots, maintainers and aircraft. It trains people through 160+ RAAus approved flight training schools and 29 affiliated clubs around the country and promotes the advancement of aviation for all Australians.</p>
+                </div>
+
+                <div class="card-list-item">
+                    <p class="item-title">Member</p>
+                    <p class="item-subtitle">International Coaching Federation (ICF)</p>
+                    <p class="item-details">Jan 2024 - Present</p>
+                    <p class="item-description">The International Coaching Federation (ICF) is the leading global organization for coaches and coaching. ICF is dedicated to advancing the coaching profession by setting high standards, providing independent certification and building a worldwide network of trained coaching professionals.</p>
+                </div>
+
+                <div class="card-list-item">
+                    <p class="item-title">Knight Fellowship</p>
+                    <p class="item-subtitle">International Center for Journalists (ICFJ)</p>
+                    <p class="item-details">Jun 2024 - Jun 2025</p>
+                    <p class="item-description">As part of our fellowship, we created Splice Nano, a program to help solo creators build viable media businesses with the help of AI. We offered consulting, coaching, and access to a community of like-minded founders.</p>
+                </div>
+                
+                <div class="card-list-item">
+                    <p class="item-title">Co-Founder, Co-Organizer</p>
+                    <p class="item-subtitle">Online News Association, Singapore</p>
+                    <p class="item-details">Feb 2015 - Feb 2016</p>
+                    <p class="item-description">The Online News Association is a leader in the rapidly changing world of journalism; a catalyst for innovation in story-telling across all platforms; a resource for journalists seeking guidance and growth, and a champion of best practices through training, awards, community outreach.</p>
+                </div>
+
+                <div class="card-list-item">
+                    <p class="item-title">Content Quality & Standards Committee</p>
+                    <p class="item-subtitle">Interactive Advertising Bureau Southeast Asia (Singapore Chapter)</p>
+                    <p class="item-details">Apr 2014 - Jan 2015</p>
+                    <p class="item-description">The IAB SEA, Singapore Chapter represents a global industry composed of Publishers, Platforms, Ad-Technology Companies, Creative and Media Agencies operating in South East Asia. We are committed to promoting the value of Interactive Advertising, evaluating and recommending standards & practices, and developing and distributing research on Interactive Advertising.</p>
+                </div>
+
+                <div class="card-list-item">
+                    <p class="item-title">Member</p>
+                    <p class="item-subtitle">Asian American Journalists Association</p>
+                    <p class="item-details">Oct 2013 - Oct 2014</p>
+                    <p class="item-description">AAJA offers a variety of educational, skills training and professional development programs for its student and professional members, as well as guidance on coverage of AAPI issues for the journalism industry and resources on working with the media for AAPI communities.</p>
+                </div>
+
+                <div class="card-list-item">
+                    <p class="item-title">Sub-Committee Member</p>
+                    <p class="item-subtitle">Foreign Correspondents Association of Singapore</p>
+                </div>
+
+                <div class="card-list-item">
+                    <p class="item-title">Member</p>
+                    <p class="item-subtitle">Foreign Correspondents Club of Japan</p>
+                </div>
+
+                <div class="card-list-item">
+                    <p class="item-title">Member</p>
+                    <p class="item-subtitle">Taipei Foreign Correspondents Club</p>
+                </div>
+                
+            </section>
+
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Alan Soon. All Rights Reserved.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html
