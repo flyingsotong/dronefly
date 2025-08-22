@@ -24,6 +24,12 @@ function loadFooter() {
         })
         .then(html => {
             console.log('Footer HTML loaded, length:', html.length);
+            
+            // Fix image paths for basictraining subdirectory
+            if (window.location.pathname.includes('/basictraining/')) {
+                html = html.replace(/src="images\//g, 'src="../images/');
+            }
+            
             footerContainer.innerHTML = html;
             console.log('Footer HTML inserted');
             
@@ -153,7 +159,7 @@ function loadFooter() {
                                 <p>© <span id="copyright-year">${new Date().getFullYear()}</span> Dronefly.sg. All rights reserved.</p>
                                 <p class="mt-1 font-semibold">Made in 🇸🇬</p>
                                 <div class="mt-12">
-                                    <img src="images/Dronefly-v2-bug.png" alt="Dronefly Bug Logo" class="dronefly-bug-logo">
+                                    <img src="${window.location.pathname.includes('/basictraining/') ? '../images/Dronefly-v2-bug.png' : 'images/Dronefly-v2-bug.png'}" alt="Dronefly Bug Logo" class="dronefly-bug-logo">
                                 </div>
                             </div>
                         </div>
