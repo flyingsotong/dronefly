@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alan Soon's RotorCraft UAPL Theory Exam Review</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+            font-size: 16px;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Background gradient and glow effects */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header styling */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            color: #a0a0a0;
+            font-weight: 400;
+            margin-bottom: 40px;
+        }
+
+        /* Glass card styling */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        }
+
+        /* Score section */
+        .score-section {
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .score-section:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .score-section h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .score-section .score {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #7c77c6 0%, #ff77c6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .score-section p {
+            color: #a0a0a0;
+            font-size: 1.1rem;
+        }
+
+        /* Question cards */
+        .question-card {
+            margin-bottom: 32px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .question-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .question-card:hover::before {
+            opacity: 1;
+        }
+
+        .question-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, rgba(124, 119, 198, 0.3), rgba(255, 119, 198, 0.3));
+            border-radius: 22px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .question-header {
+            padding: 32px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .question-number {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #7c77c6;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+        }
+
+        .question-text {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .user-answer {
+            font-size: 1rem;
+            color: #ff6b6b;
+            font-weight: 500;
+            padding: 12px 16px;
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid rgba(255, 107, 107, 0.2);
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .user-answer::before {
+            content: "Your Answer: ";
+            color: #ff9999;
+            font-weight: 400;
+        }
+
+        .answer-section {
+            padding: 32px;
+        }
+
+        .correct-answer {
+            font-size: 1rem;
+            color: #4ade80;
+            font-weight: 500;
+            margin-bottom: 24px;
+            padding: 12px 16px;
+            background: rgba(74, 222, 128, 0.1);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .correct-answer::before {
+            content: "Correct Answer: ";
+            color: #86efac;
+            font-weight: 400;
+        }
+
+        .explanation {
+            font-size: 1rem;
+            color: #e0e0e0;
+            line-height: 1.7;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+        }
+
+        .explanation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #7c77c6, #ff77c6);
+            border-radius: 2px;
+        }
+
+        .explanation strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* Concepts section */
+        .concepts-section {
+            margin-top: 80px;
+            padding-top: 60px;
+            position: relative;
+        }
+
+        .concepts-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        }
+
+        .concepts-section h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .concept-group {
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .concept-group:hover {
+            transform: translateY(-2px);
+        }
+
+        .concept-header {
+            padding: 24px 32px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .concept-header:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .concept-header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .concept-header h3::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: #7c77c6;
+            transition: transform 0.3s ease;
+        }
+
+        .concept-header.active h3::after {
+            transform: rotate(45deg);
+        }
+
+        .concept-content {
+            padding: 0 32px 32px;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .concept-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .concept-content ul {
+            list-style: none;
+        }
+
+        .concept-content li {
+            margin-bottom: 16px;
+            padding-left: 24px;
+            position: relative;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .concept-content li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 6px;
+            height: 6px;
+            background: linear-gradient(135deg, #7c77c6, #ff77c6);
+            border-radius: 50%;
+        }
+
+        .concept-content strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+            
+            .question-header,
+            .answer-section,
+            .concept-header {
+                padding: 24px;
+            }
+            
+            .score-section {
+                padding: 32px 24px;
+            }
+            
+            .score-section .score {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection styling */
+        ::selection {
+            background: rgba(124, 119, 198, 0.3);
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>RotorCraft UAPL Theory Exam Review</h1>
+            <p>Alan Soon's Study Guide</p>
+        </div>
+
+        <div class="glass-card score-section">
+            <h2>Exam Results</h2>
+            <span class="score">71/122</span>
+            <p>Review the questions below to focus on areas for improvement</p>
+        </div>
+
+        <!-- Question 1 -->
+        <div class="glass-card question-card">
+            <div class="question-header">
+                <div class="question-number">Question 1</div>
+                <div class="question-text">Which one is Mode 1 transmitter?</div>
+                <div class="user-answer">iii</div>
+            </div>
+            <div class="answer-section">
+                <div class="correct-answer">i</div>
+                <div class="explanation">
+                    Mode 1 and Mode 2 refer to different configurations of control stick functions on the remote control transmitter. <strong>Mode 1</strong> is often used in certain regions, while <strong>Mode 2</strong> is a global standard.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="glass-card question-card">
+            <div class="question-header">
+                <div class="question-number">Question 2</div>
+                <div class="question-text">When will the aeroplane stall?</div>
+                <div class="user-answer">Maximum angle of attack, airflow separates at the top of the wing</div>
+            </div>
+            <div class="answer-section">
+                <div class="correct-answer">Exceed angle of attack, airflow separates at the top of the wing</div>
+                <div class="explanation">
+                    An aerodynamic stall occurs when the <strong>critical angle of attack</strong> of the wing is <strong>exceeded</strong>, leading to a loss of lift and the inability of the UA to produce enough lift to support its weight.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="glass-card question-card">
+            <div class="question-header">
+                <div class="question-number">Question 3</div>
+                <div class="question-text">Which hazardous attribute best describe over estimate one's ability and under estimate the situation?</div>
+                <div class="user-answer">Invulnerability</div>
+            </div>
+            <div class="answer-section">
+                <div class="correct-answer">Macho</div>
+                <div class="explanation">
+                    The <strong>"Macho"</strong> hazardous attitude is characterized by an overestimation of one's abilities and an underestimation of the situation. This is often linked to the mindset of "get-home-itis".
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="glass-card question-card">
+            <div class="question-header">
+                <div class="question-number">Question 4</div>
+                <div class="question-text">Which circumstance will cause aircraft performance to suffer?</div>
+                <div class="user-answer">Low density altitude</div>
+            </div>
+            <div class="answer-section">
+                <div class="correct-answer">High density altitude</div>
+                <div class="explanation">
+                    Aircraft performance suffers when the air is <strong>less dense</strong>. High density altitude correlates with less dense air, which reduces aircraft performance because less air flows over the wing, generating less lift.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="glass-card question-card">
+            <div class="question-header">
+                <div class="question-number">Question 5</div>
+                <div class="question-text">What is the penalty for dangerous flying?</div>
+                <div class="user-answer">fine not exceeding $50,000 or to imprisonment for a term not exceeding 3 years or to both.</div>
+            </div>
+            <div class="answer-section">
+                <div class="correct-answer">fine not exceeding $100,000 or to imprisonment for a term not exceeding 5 years or to both</div>
+                <div class="explanation">
+                    Dangerous flying carries a penalty for a first offense of a fine not exceeding <strong>$100,000</strong> or imprisonment for a term not exceeding <strong>5 years</strong>, or both.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="glass-card question-card">
+            <div class="question-header">
+                <div class="question-number">Question 6</div>
+                <div class="question-text">When is Class 2 AP required for operating an unmanned aircraft under 250g?</div>
+                <div class="user-answer">Flying for non-recreational or non-educational purpose, in a restricted, danger or protected area or within 5km from aerodrome or above 200ft AMSL.</div>
+            </div>
+            <div class="answer-section">
+                <div class="correct-answer">Flying for recreational or educational purpose, in a restricted, danger or protected area or within 5km from aerodrome or above 200ft AMSL.</div>
+                <div class="explanation">
+                    A <strong>Class 2 Activity Permit (AP)</strong> is for <strong>recreational or educational purposes</strong>. Class 1 AP is for non-recreational/non-educational purposes.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="glass-card question-card">
+            <div class="question-header">
+                <div class="question-number">Question 7</div>
+                <div class="question-text">How does a powered-lift pitch forward?</div>
+                <div class="user-answer">Thrust > Weight</div>
+            </div>
+            <div class="answer-section">
+                <div class="correct-answer">Thrust > Drag</div>
+                <div class="explanation">
+                    To increase speed forward or accelerate, the <strong>thrust</strong> must be greater than <strong>drag</strong>. Thrust overcomes drag for forward motion, while lift overcomes weight for vertical motion.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="glass-card question-card">
+            <div class="question-header">
+                <div class="question-number">Question 8</div>
+                <div class="question-text">You had volunteered to use a 200g UA to help a charity event to do photography free of charge (FOC). What should you need to prepare?</div>
+                <div class="user-answer">I do not need any permit as this is FOC volunteer work and the UA is under 250g</div>
+            </div>
+            <div class="answer-section">
+                <div class="correct-answer">UAPL, Operator Permit, Class 1 Activity Permit</div>
+                <div class="explanation">
+                    Volunteer work for a charity event, even if free of charge and with a UA under 250g, is considered a <strong>non-recreational or non-educational purpose</strong>. This requires a UAPL, an Operator Permit, and a Class 1 Activity Permit.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 9 -->
+        <div class="glass-card question-card">
+            <div class="question-header">
+                <div class="question-number">Question 9</div>
+                <div class="question-text">I want to play my FPV for fun using the goggle alone in an outdoor fly-zone area. My FPV weighs 1kg. What do I need?</div>
+                <div class="user-answer">Nothing else is needed as I am flying for recreational purpose in a fly-zone and my FPV is under 1.5kg</div>
+            </div>
+            <div class="answer-section">
+                <div class="correct-answer">I need to bring a visual observer</div>
+                <div class="explanation">
+                    The Air Navigation Act requires a UA pilot to ensure the unmanned aircraft is within <strong>visual line of sight (VLOS)</strong> at all times. When flying with goggles, a visual observer is needed to maintain VLOS.
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="glass-card question-card">
+            <div class="question-header">
+                <div class="question-number">Question 10</div>
+                <div class="question-text">Which of the following model describes the decision making?</div>
+                <div class="user-answer">3P</div>
+            </div>
+            <div class="answer-section">
+                <div class="correct-answer">DECIDE</div>
+                <div class="explanation">
+                    The <strong>DECIDE Model</strong> is a continuous loop process for decision making in aviation, including Detect, Estimate, Choose, Identify, Do, and Evaluate.
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Concepts Section -->
+        <div class="concepts-section">
+            <h2>Important Concepts & Definitions</h2>
+            
+            <div class="glass-card concept-group">
+                <div class="concept-header" onclick="toggleConcept(this)">
+                    <h3>Principles of Flight</h3>
+                </div>
+                <div class="concept-content">
+                    <ul>
+                        <li><strong>Four Forces of Flight:</strong> Lift (upward), Weight (downward), Thrust (forward), Drag (backward resistance)</li>
+                        <li><strong>Stall:</strong> Occurs when the critical angle of attack is exceeded, leading to loss of lift</li>
+                        <li><strong>Ground Effect:</strong> Reduced drag when flying less than one-half wingspan above ground</li>
+                        <li><strong>Vortex Ring State:</strong> Dangerous aerodynamic effect in rotorcraft causing instability and rapid descent</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="glass-card concept-group">
+                <div class="concept-header" onclick="toggleConcept(this)">
+                    <h3>Air Law & Permits</h3>
+                </div>
+                <div class="concept-content">
+                    <ul>
+                        <li><strong>Class A UAPL:</strong> Operates UA up to 25kg maximum weight</li>
+                        <li><strong>Class 1 AP:</strong> Required for non-recreational/non-educational purposes</li>
+                        <li><strong>Class 2 AP:</strong> Required for recreational/educational purposes in restricted areas</li>
+                        <li><strong>VLOS:</strong> Visual Line of Sight must be maintained at all times during flight</li>
+                        <li><strong>UABT Certificate:</strong> Required for drones 1.5kg-7kg for recreational use</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="glass-card concept-group">
+                <div class="concept-header" onclick="toggleConcept(this)">
+                    <h3>Human Factors & Safety</h3>
+                </div>
+                <div class="concept-content">
+                    <ul>
+                        <li><strong>DECIDE Model:</strong> Detect, Estimate, Choose, Identify, Do, Evaluate</li>
+                        <li><strong>Macho Attitude:</strong> Overestimating ability, underestimating situation</li>
+                        <li><strong>PAEOS Framework:</strong> Pilot, Aircraft, Environment, Operation, Situation</li>
+                        <li><strong>IMSAFE Checklist:</strong> Illness, Medication, Stress, Alcohol, Fatigue, Emotion</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="glass-card concept-group">
+                <div class="concept-header" onclick="toggleConcept(this)">
+                    <h3>Technical Systems</h3>
+                </div>
+                <div class="concept-content">
+                    <ul>
+                        <li><strong>GNSS Requirements:</strong> Minimum of 4 satellites needed for accurate positioning</li>
+                        <li><strong>LiPo Battery:</strong> Fully charged cell = 4.2V (6S battery = 25.2V)</li>
+                        <li><strong>RTK:</strong> Real-Time Kinematics for high-precision positioning</li>
+                        <li><strong>Frequency Hopping:</strong> Technique to reduce interference between transmitter/receiver</li>
+                        <li><strong>Binding:</strong> Process of pairing specific receiver with specific transmitter</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleConcept(header) {
+            const conceptGroup = header.closest('.concept-group');
+            const content = conceptGroup.querySelector('.concept-content');
+            const isActive = content.classList.contains('active');
+            
+            // Close all other concept groups
+            document.querySelectorAll('.concept-content').forEach(c => {
+                c.classList.remove('active');
+            });
+            document.querySelectorAll('.concept-header').forEach(h => {
+                h.classList.remove('active');
+            });
+            
+            // Toggle current concept group
+            if (!isActive) {
+                content.classList.add('active');
+                header.classList.add('active');
+            }
+        }
+
+        // Add smooth scroll behavior for better UX
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add intersection observer for fade-in animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            // Observe all question cards
+            document.querySelectorAll('.question-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
