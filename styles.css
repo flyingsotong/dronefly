@@ -64,3 +64,11 @@ html.dark .glass-effect {
     background-color: rgba(0, 0, 0, 0.2); /* Darker semi-transparent background for dark mode */
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+.dronefly-bug-logo {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 80px; /* Adjust size as needed */
+    z-index: 100; /* Ensure it's above other content */
+}
