@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Dynamic Copyright Year
-    document.getElementById('copyright-year').textContent = new Date().getFullYear();
     const form = document.getElementById('requirementsForm');
     const resultsContent = document.getElementById('results-content');
     const mobileMenuButton = document.getElementById('mobile-menu-button');
