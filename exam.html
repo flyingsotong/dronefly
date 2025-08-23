@@ -250,6 +250,7 @@
             overflow-y: hidden;
             -webkit-overflow-scrolling: touch;
             scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
             padding: 20px 0;
             margin: 0 -20px;
         }
@@ -277,6 +278,7 @@
             transition: all 0.3s ease;
             position: relative;
             scroll-snap-align: start;
+            scroll-snap-stop: always;
         }
 
         .question-card:hover {
@@ -584,16 +586,20 @@
             }
 
             .question-card {
-                flex: 0 0 300px;
+                flex: 0 0 calc(100vw - 40px);
                 min-height: 350px;
+                scroll-snap-align: center;
             }
 
             .questions-scroll-wrapper {
                 margin: 0 -16px;
+                padding-left: 16px;
+                padding-right: 16px;
             }
 
             .questions-row {
-                padding: 0 16px;
+                padding: 0;
+                gap: 16px;
             }
 
             .scroll-arrow {
@@ -617,7 +623,13 @@
 
         @media (max-width: 480px) {
             .question-card {
-                flex: 0 0 280px;
+                flex: 0 0 calc(100vw - 32px);
+                scroll-snap-align: center;
+            }
+            
+            .questions-scroll-wrapper {
+                padding-left: 16px;
+                padding-right: 16px;
             }
         }
 
