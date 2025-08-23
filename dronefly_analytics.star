@@ -94,7 +94,7 @@ def draw_text_with_title(title_line1, title_line2, value):
     Renders a two-line title and a value on the Tidbyt screen.
     """
     return render.Column(
-        main_align = "space_evenly",
+        main_align = "center",
         cross_align = "center",
         children = [
             render.Column(
