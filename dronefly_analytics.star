@@ -30,6 +30,7 @@ UMAMI_URL = "https://api.umami.is/v1"
 SHARE_ID = "8894fbc1-d127-4d15-84aa-27fa8a2d0bf4"
 API_KEY = os.environ.get("API_KEY", "default_api_key")
 
+
 # The period for which to fetch analytics data.
 # Options: "24h", "7d", "30d", "90d", "365d", "1y", "all"
 PERIOD = "all"
