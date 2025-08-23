@@ -113,12 +113,16 @@ def draw_text_with_title(title_line1, title_line2, value):
                     ),
                     render.Box(
                         width = 64,
-                        height = 3
+                        height = 22
                     ),
                     render.Text(
                         content = value,
                         font = "6x13",
                         color = "#20A0FF",
+                    ),
+                    render.Box(
+                        width = 64,
+                        height = 22
                     ),
                 ]
             )
