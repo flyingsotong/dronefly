@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAPL Theory Study Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+            font-size: 16px;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Background gradient and glow effects */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 119, 198, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header styling */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #a0a0a0;
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        /* Glass card styling */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        }
+
+        /* Score section */
+        .score-section {
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .score-section:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .score-section h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .score-section .score {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #7c77c6 0%, #ff77c6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .score-section p {
+            color: #a0a0a0;
+            font-size: 1.1rem;
+        }
+
+        /* Navigation section */
+        .navigation-section {
+            margin-bottom: 50px;
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .topic-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .topic-box:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .topic-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #7c77c6, #ff77c6);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .topic-box:hover::before {
+            opacity: 1;
+        }
+
+        .topic-number {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #7c77c6;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+
+        .topic-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .topic-stats {
+            font-size: 0.875rem;
+            color: #a0a0a0;
+            margin-bottom: 12px;
+        }
+
+        .topic-description {
+            font-size: 0.8rem;
+            color: #b0b0b0;
+            line-height: 1.4;
+        }
+
+        /* Theme section styling */
+        .theme-section {
+            margin: 50px 0 30px 0;
+            text-align: center;
+        }
+
+        .theme-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #7c77c6 0%, #ff77c6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .theme-section p {
+            color: #a0a0a0;
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+
+        /* Horizontal scrolling container for questions */
+        .questions-container {
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .questions-scroll-wrapper {
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            padding: 20px 0;
+            margin: 0 -20px;
+        }
+
+        .questions-scroll-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .questions-scroll-wrapper {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .questions-row {
+            display: flex;
+            gap: 24px;
+            padding: 0 20px;
+            min-width: max-content;
+        }
+
+        /* Question cards */
+        .question-card {
+            flex: 0 0 350px;
+            min-height: 400px;
+            transition: all 0.3s ease;
+            position: relative;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+        }
+
+        .question-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .question-card:hover::before {
+            opacity: 1;
+        }
+
+        .question-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, rgba(124, 119, 198, 0.3), rgba(255, 119, 198, 0.3));
+            border-radius: 22px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        /* Navigation dots */
+        .scroll-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .scroll-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .scroll-dot.active {
+            background: #7c77c6;
+            transform: scale(1.2);
+        }
+
+        /* Scroll arrows for desktop */
+        .scroll-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            color: #ffffff;
+            font-size: 18px;
+        }
+
+        .scroll-arrow:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .scroll-arrow.left {
+            left: -20px;
+        }
+
+        .scroll-arrow.right {
+            right: -20px;
+        }
+
+        /* Theme section modifications */
+        .theme-questions {
+            position: relative;
+        }
+
+        .question-header {
+            padding: 32px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .question-number {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #7c77c6;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+        }
+
+        .question-text {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+
+
+        .answer-section {
+            padding: 20px;
+        }
+
+        .correct-answer {
+            font-size: 1rem;
+            color: #4ade80;
+            font-weight: 500;
+            margin-bottom: 24px;
+            padding: 12px 16px;
+            background: rgba(74, 222, 128, 0.1);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .correct-answer::before {
+            content: "Answer: ";
+            color: #86efac;
+            font-weight: 400;
+        }
+
+        .explanation {
+            font-size: 1rem;
+            color: #e0e0e0;
+            line-height: 1.7;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+        }
+
+        .explanation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #7c77c6, #ff77c6);
+            border-radius: 2px;
+        }
+
+        .explanation strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* Concepts section */
+        .concepts-section {
+            margin-top: 60px;
+            padding-top: 40px;
+            position: relative;
+        }
+
+        .concepts-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        }
+
+        .concepts-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .concept-group {
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .concept-group:hover {
+            transform: translateY(-2px);
+        }
+
+        .concept-header {
+            padding: 24px 32px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .concept-header:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .concept-header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .concept-header h3::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: #7c77c6;
+            transition: transform 0.3s ease;
+        }
+
+        .concept-header.active h3::after {
+            transform: rotate(45deg);
+        }
+
+        .concept-content {
+            padding: 0 32px 32px;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .concept-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .concept-content ul {
+            list-style: none;
+        }
+
+        .concept-content li {
+            margin-bottom: 16px;
+            padding-left: 24px;
+            position: relative;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .concept-content li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 6px;
+            height: 6px;
+            background: linear-gradient(135deg, #7c77c6, #ff77c6);
+            border-radius: 50%;
+        }
+
+        .concept-content strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+            
+            .question-header,
+            .answer-section,
+            .concept-header {
+                padding: 20px;
+            }
+            
+            .score-section {
+                padding: 32px 24px;
+            }
+            
+            .score-section .score {
+                font-size: 2.5rem;
+            }
+
+            .question-card {
+                flex: 0 0 calc(100vw - 40px);
+                min-height: 350px;
+                scroll-snap-align: center;
+            }
+
+            .questions-scroll-wrapper {
+                margin: 0 -16px;
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .questions-row {
+                padding: 0;
+                gap: 16px;
+            }
+
+            .scroll-arrow {
+                display: none;
+            }
+
+            .question-text {
+                font-size: 1.1rem;
+            }
+
+            .user-answer,
+            .correct-answer {
+                font-size: 0.9rem;
+            }
+
+            .explanation {
+                font-size: 0.9rem;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .question-card {
+                flex: 0 0 calc(100vw - 32px);
+                scroll-snap-align: center;
+            }
+            
+            .questions-scroll-wrapper {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection styling */
+        ::selection {
+            background: rgba(124, 119, 198, 0.3);
+            color: #ffffff;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: rgba(124, 119, 198, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: rgba(124, 119, 198, 1);
+            transform: translateY(-2px);
+        }
+
+        .back-to-top::before {
+            content: '↑';
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Progress Indicators */
+        .topic-progress {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .topic-progress.completed {
+            background: #4ade80;
+            box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+        }
+
+        .topic-progress.in-progress {
+            background: #fbbf24;
+            box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+            }
+
+            .back-to-top::before {
+                font-size: 18px;
+            }
+
+            .topic-progress {
+                width: 10px;
+                height: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>UAPL Theory Study Guide</h1>
+            <p>Comprehensive overview of Unmanned Aircraft Pilot Licence theory</p>
+        </div>
+
+
+
+        <!-- Navigation Section -->
+        <div class="navigation-section">
+            <div class="topic-grid">
+                <a href="#theme-1" class="topic-box" data-topic="1">
+                    <div class="topic-progress"></div>
+                    <div class="topic-number">Topic 1</div>
+                    <div class="topic-title">Principles of Flight</div>
+                    <div class="topic-stats">Aerodynamics & Stability</div>
+                    <div class="topic-description">Four forces, aerodynamics, stability, control systems</div>
+                </a>
+                
+                <a href="#theme-2" class="topic-box" data-topic="2">
+                    <div class="topic-progress"></div>
+                    <div class="topic-number">Topic 2</div>
+                    <div class="topic-title">Unmanned Aircraft Systems</div>
+                    <div class="topic-stats">Components & Operations</div>
+                    <div class="topic-description">UAS components, flight control, operational procedures</div>
+                </a>
+                
+                <a href="#theme-3" class="topic-box" data-topic="3">
+                    <div class="topic-progress"></div>
+                    <div class="topic-number">Topic 3</div>
+                    <div class="topic-title">Human Factors</div>
+                    <div class="topic-stats">Psychology & Physiology</div>
+                    <div class="topic-description">SHELL model, decision-making, hazardous attitudes</div>
+                </a>
+                
+                <a href="#theme-4" class="topic-box" data-topic="4">
+                    <div class="topic-progress"></div>
+                    <div class="topic-number">Topic 4</div>
+                    <div class="topic-title">Navigation & Meteorology</div>
+                    <div class="topic-stats">Weather & Navigation</div>
+                    <div class="topic-description">Coordinate systems, GNSS, weather conditions</div>
+                </a>
+                
+                <a href="#theme-5" class="topic-box" data-topic="5">
+                    <div class="topic-progress"></div>
+                    <div class="topic-number">Topic 5</div>
+                    <div class="topic-title">Air Law</div>
+                    <div class="topic-stats">Regulations & Permits</div>
+                    <div class="topic-description">Air Navigation Act, permits, licenses</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- TOPIC 1: PRINCIPLES OF FLIGHT -->
+        <div class="theme-section" id="theme-1">
+            <h2>1. Principles of Flight</h2>
+            <p>Aerodynamics, stability, and control systems governing aircraft movement</p>
+        </div>
+
+        <div class="questions-container theme-questions">
+            <div class="scroll-arrow left" onclick="scrollTheme('theme1', -1)">‹</div>
+            <div class="scroll-arrow right" onclick="scrollTheme('theme1', 1)">›</div>
+            
+            <div class="questions-scroll-wrapper" id="theme1-scroll">
+                <div class="questions-row">
+                    <!-- Four Forces of Flight -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Question 1</div>
+                            <div class="question-text">What are the four fundamental forces acting on an aircraft during flight?</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">Lift, Weight, Thrust, and Drag</div>
+                            <div class="explanation">
+                                <strong>Lift:</strong> Upward force created by wings or propellers<br>
+                                <strong>Weight:</strong> Downward force due to gravity<br>
+                                <strong>Thrust:</strong> Force pulling aircraft forward, created by propellers or engines<br>
+                                <strong>Drag:</strong> Force opposing thrust, caused by air resistance and aircraft shape<br><br>
+                                <strong>Flight Conditions:</strong><br>
+                                • To ascend: Lift > Weight<br>
+                                • To maintain altitude: Lift = Weight<br>
+                                • To descend: Lift < Weight<br>
+                                • To increase speed: Thrust > Drag<br>
+                                • To maintain constant speed: Thrust = Drag<br>
+                                • To reduce speed: Thrust < Drag
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aerodynamics -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Question 2</div>
+                            <div class="question-text">When does an aerodynamic stall occur?</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">When the critical angle of attack is exceeded</div>
+                            <div class="explanation">
+                                <strong>Airfoil:</strong> Body shaped to produce aerodynamic reaction (lift) perpendicular to motion<br>
+                                <strong>Bernoulli's Principle:</strong> Higher air speed = reduced pressure, lower air speed = increased pressure<br>
+                                <strong>Angle of Attack (AOA):</strong> Angle between wing chord line and oncoming wind<br>
+                                <strong>Critical AOA:</strong> Maximum lift achieved; exceeding causes stall<br>
+                                <strong>Aerodynamic Stall:</strong> Occurs when UA cannot produce enough lift to support weight
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stability -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Question 3</div>
+                            <div class="question-text">What are the two main types of aircraft stability?</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">Static and Dynamic Stability</div>
+                            <div class="explanation">
+                                <strong>Static Stability:</strong><br>
+                                • Positive: Tendency to return to original state<br>
+                                • Neutral: Tendency to remain at new state<br>
+                                • Negative: Tendency to diverge further<br><br>
+                                <strong>Dynamic Stability:</strong><br>
+                                • Positive: Dampens oscillations toward original state<br>
+                                • Neutral: Maintains oscillation magnitude<br>
+                                • Negative: Diverges with increasing oscillations<br><br>
+                                Aircraft must be both statically and dynamically stable
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Center of Gravity -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Question 4</div>
+                            <div class="question-text">What happens when an aircraft's center of gravity moves forward?</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">Stability increases and pitch maneuverability decreases</div>
+                            <div class="explanation">
+                                <strong>Forward CG:</strong><br>
+                                • Increases longitudinal stability<br>
+                                • Decreases pitch maneuverability<br>
+                                • Higher stall speed<br>
+                                • Longer take-off distance<br><br>
+                                <strong>Aft CG:</strong><br>
+                                • Decreases longitudinal stability<br>
+                                • Increases pitch maneuverability<br>
+                                • Lower stall speed<br>
+                                • Poor stall/spin recovery
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Control Surfaces -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Question 5</div>
+                            <div class="question-text">Which control surface is responsible for changes in pitch?</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">Elevator</div>
+                            <div class="explanation">
+                                <strong>Elevator:</strong> Controls pitch (nose up/down) around lateral axis<br>
+                                <strong>Ailerons:</strong> Control roll (wing tilting) around longitudinal axis<br>
+                                <strong>Rudder:</strong> Controls yaw (nose left/right) around vertical axis<br><br>
+                                <strong>Multi-Rotor Controls:</strong> Pitch, roll, and yaw controlled by varying motor speeds<br>
+                                <strong>Helicopter Controls:</strong> Swashplate for pitch/roll, tail motor AOA for yaw
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ground Effect -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Question 6</div>
+                            <div class="question-text">At what distance from the ground does ground effect occur?</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">Within ½ wingspan of the ground</div>
+                            <div class="explanation">
+                                <strong>Ground Effect:</strong> Occurs when wing or multi-rotor is less than ½ wingspan above ground<br><br>
+                                <strong>Effects:</strong><br>
+                                • Reduces induced drag<br>
+                                • Increases lift coefficient<br>
+                                • May allow premature lift-off<br>
+                                • Can cause controllability issues<br><br>
+                                <strong>Vortex Ring State (VRS):</strong> Unwanted aerodynamic effect affecting helicopters and multi-rotors
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-indicators" id="theme1-indicators"></div>
+        </div>
+
+        <!-- TOPIC 2: UNMANNED AIRCRAFT SYSTEMS -->
+        <div class="theme-section" id="theme-2">
+            <h2>2. Unmanned Aircraft Systems</h2>
+            <p>UAS components, flight control systems, and operational procedures</p>
+        </div>
+
+        <div class="questions-container theme-questions">
+            <div class="scroll-arrow left" onclick="scrollTheme('theme2', -1)">‹</div>
+            <div class="scroll-arrow right" onclick="scrollTheme('theme2', 1)">›</div>
+            
+            <div class="questions-scroll-wrapper" id="theme2-scroll">
+                <div class="questions-row">
+                    <!-- UAS Introduction -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Question 7</div>
+                            <div class="question-text">What is the difference between a UA and a UAS?</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">UA is the aircraft, UAS includes the aircraft and associated elements</div>
+                            <div class="explanation">
+                                <strong>Unmanned Aircraft (UA):</strong> Aircraft flown without individuals on board<br>
+                                <strong>Unmanned Aircraft System (UAS):</strong> UA and associated elements<br><br>
+                                <strong>UA Categories:</strong><br>
+                                • <strong>Aeroplane:</strong> Fixed-wing, higher endurance than rotorcraft<br>
+                                • <strong>Rotorcraft:</strong> Multi-rotors, helicopters<br>
+                                • <strong>Powered-lift:</strong> VTOL capable, engine-driven lift devices<br>
+                                • <strong>Airship:</strong> Lighter-than-air, prolonged surveillance capability<br><br>
+                                <strong>Applications:</strong> Military, inspection, agriculture, photography, surveying, surveillance, law enforcement, search and rescue
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Power Systems -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Question 8</div>
+                            <div class="question-text">What is the maximum voltage of a fully charged 6S LiPo battery?</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">25.2V</div>
+                            <div class="explanation">
+                                <strong>LiPo Batteries:</strong><br>
+                                • Lighter with high energy density<br>
+                                • Safest charge rate: 1C (1x capacity in Amps)<br>
+                                • 6S LiPo at 100% charge: 25.2V maximum<br>
+                                • Charge with approved equipment, operator present<br><br>
+                                <strong>Power Distribution Board (PDB):</strong> Connects and distributes power from battery to all electrical components and ESCs
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Propulsion System -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Question 10</div>
+                            <div class="question-text">What are the main components of a UAS propulsion system?</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">ESCs, Motors, Propellers</div>
+                            <div class="explanation">
+                                <strong>Electronic Speed Controllers (ESCs):</strong><br>
+                                • Interpret flight controller inputs<br>
+                                • Convert to pulses for motor speed control<br>
+                                • Must be paired with compatible motor<br><br>
+                                <strong>Motors:</strong> Brushless DC motors, adjacent motors spin opposite directions<br><br>
+                                <strong>Propellers:</strong> Convert spinning motion to controlled forward motion
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Flight Control System -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Question 9</div>
+                            <div class="question-text">What is the minimum number of satellites needed for GPS positioning?</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">4 satellites</div>
+                            <div class="explanation">
+                                <strong>Flight Controller (FC):</strong> Onboard computer for piloting UA<br><br>
+                                <strong>Sensors:</strong><br>
+                                • <strong>Accelerometer:</strong> Measures acceleration, detects vibrations<br>
+                                • <strong>Gyroscope:</strong> Measures orientation<br>
+                                • <strong>Magnetic Compass:</strong> Measures direction<br>
+                                • <strong>Barometer:</strong> Measures atmospheric pressure<br><br>
+                                <strong>GPS:</strong> Minimum 4 satellites needed for position calculation
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Command & Control -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Question 11</div>
+                            <div class="question-text">What are the two main components of a radio control system?</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">RC Transmitter and Receiver</div>
+                            <div class="explanation">
+                                <strong>Remote Control Transmitter (RC Tx):</strong><br>
+                                • Operates at 2.4GHz frequency<br>
+                                • Sends basic flight commands (throttle, elevator, aileron, rudder)<br><br>
+                                <strong>Radio Receiver (Rx):</strong> Receives and translates signals to flight controller<br><br>
+                                <strong>Binding:</strong> Links specific receiver to specific transmitter<br><br>
+                                <strong>Range:</strong> Line of Sight for 2.4GHz radio<br><br>
+                                <strong>Channels:</strong> Multi-rotor UA requires minimum 4 channels
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Flight Control Modes -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Question 12</div>
+                            <div class="question-text">What is the most difficult flight control mode for UA operation?</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">Manual/Rates Mode</div>
+                            <div class="explanation">
+                                <strong>Manual/Rates Mode:</strong> Most difficult, no control augmentation<br>
+                                <strong>Attitude Hold:</strong> Keeps UA level when sticks centered<br>
+                                <strong>Altitude Hold:</strong> Maintains constant altitude/height<br>
+                                <strong>GPS Mode:</strong> Position hold, autonomous flight, RTH functions<br>
+                                <strong>Return-to-Home (RTH):</strong> Climbs to predetermined altitude, flies to home point<br>
+                                <strong>Collision Avoidance:</strong> UA avoids obstacles<br>
+                                <strong>Headless Mode:</strong> Control without considering UA orientation
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Guidance Systems -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Guidance Systems</div>
+                            <div class="question-text">Advanced navigation and sensing technologies</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">RTK, Infrared, Vision, Ultrasound, LiDAR</div>
+                            <div class="explanation">
+                                <strong>Real Time Kinematic (RTK):</strong> High-performance locating near base station<br>
+                                <strong>Infrared Sensor:</strong> Detects obstacles without visible light<br>
+                                <strong>Vision-based System:</strong> Forward-facing cameras for collision avoidance<br>
+                                <strong>Ultrasound System:</strong> High-frequency sound pulses for ground detection<br>
+                                <strong>LiDAR System:</strong> Pulsed laser beams for long-distance sensing
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- UAS Operations -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">UAS Operations</div>
+                            <div class="question-text">Operational phases and procedures</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">Pre-flight, In-flight, Post-flight</div>
+                            <div class="explanation">
+                                <strong>Pre-flight:</strong> Environment evaluation, control link checks, power levels, structural checks, calibration<br>
+                                <strong>In-flight:</strong> Basic flight control checks, concentrate on operations<br>
+                                <strong>Post-flight:</strong> Disarm UA, visual inspection, document flight logs<br><br>
+                                <strong>Emergency Procedures:</strong><br>
+                                • Loss of control link: Move closer, adjust antenna, RTH after 8 seconds<br>
+                                • Loss of power: RTH at 10% battery<br>
+                                • Loss of GPS: Fly manually, avoid obstacles<br>
+                                • Loss of orientation: Ensure GPS mode, hover, confirm orientation
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-indicators" id="theme2-indicators"></div>
+        </div>
+
+        <!-- TOPIC 3: HUMAN FACTORS -->
+        <div class="theme-section" id="theme-3">
+            <h2>3. Human Factors</h2>
+            <p>Psychology, physiology, and decision-making in aviation operations</p>
+        </div>
+
+        <div class="questions-container theme-questions">
+            <div class="scroll-arrow left" onclick="scrollTheme('theme3', -1)">‹</div>
+            <div class="scroll-arrow right" onclick="scrollTheme('theme3', 1)">›</div>
+            
+            <div class="questions-scroll-wrapper" id="theme3-scroll">
+                <div class="questions-row">
+                    <!-- SHELL Model -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Question 13</div>
+                            <div class="question-text">What does the SHELL model analyze in aviation systems?</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">The interaction between Software, Hardware, Environment, and Liveware</div>
+                            <div class="explanation">
+                                <strong>SHELL Model:</strong> Analyzes interaction between system components<br><br>
+                                <strong>Software:</strong> Rules, methods, documentation, standard operating procedures<br>
+                                <strong>Hardware:</strong> Physical components like ATC suites, controls, displays, systems<br>
+                                <strong>Environment:</strong> Operating conditions including social, economic, and natural surroundings<br>
+                                <strong>Liveware:</strong> Human beings within the system (controllers, flight crews, engineers, management)<br><br>
+                                Human error often caused by mismatch between human factors and other components
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Physiology Limitations -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Question 15</div>
+                            <div class="question-text">What is autokinesis in aviation?</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">A fixed light appears to move in a dark environment</div>
+                            <div class="explanation">
+                                <strong>Vision Illusions:</strong><br>
+                                • <strong>Autokinesis:</strong> Fixed light appears to move in dark environment<br>
+                                • <strong>Disorientation:</strong> Can occur when UA flies further away, in foggy weather, with extended landing gear, or near buildings<br>
+                                • <strong>Visual Scanning:</strong> Short, regularly spaced eye movements<br><br>
+                                <strong>Sun-blindness (Photokeratitis):</strong> Painful eye condition from UV exposure<br><br>
+                                <strong>Medication:</strong> Must be physically and mentally fit; avoid medications causing drowsiness, lethargy, nausea, hand tremors, dizziness, or delayed response
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Psychoactive Substances -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Question 14</div>
+                            <div class="question-text">How long must a UA pilot wait after consuming alcohol before flying?</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">At least 8 hours</div>
+                            <div class="explanation">
+                                <strong>8-Hour Rule:</strong> UA pilots not permitted to fly after consuming alcohol or under influence of drugs for at least 8 hours<br><br>
+                                <strong>Penalties:</strong><br>
+                                • <strong>First Offence:</strong> Fine not exceeding $50,000 or imprisonment not exceeding 2 years, or both<br>
+                                • <strong>Second Offence:</strong> Fine not exceeding $100,000 or imprisonment not exceeding 5 years, or both<br><br>
+                                <strong>Psychoactive Substances:</strong> Chemicals affecting central nervous system (alcohol, caffeine, nicotine, marijuana)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Psychology -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Question 16</div>
+                            <div class="question-text">Which hazardous attitude is characterized by "Do it quickly"?</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">Impulsivity</div>
+                            <div class="explanation">
+                                <strong>Fatigue:</strong> Overall feeling of tiredness leading to accidents, loss of control, delayed responses<br><br>
+                                <strong>Stress:</strong> Can be physical, psychological, or physiological<br>
+                                • Sources: Unfavorable weather, completion bias, "Get-home-itis"<br>
+                                • Management: Identify source, seek support, time management, balanced lifestyle<br><br>
+                                <strong>Hazardous Attitudes:</strong><br>
+                                • <strong>Impulsivity:</strong> "Do it quickly" - Counter: "Not so fast. Think first."<br>
+                                • <strong>Macho:</strong> Overestimating ability, underestimating situation<br>
+                                • <strong>Anti-authority:</strong> "Don't tell me"<br>
+                                • <strong>Invulnerability:</strong> "It won't happen to me"
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Decision Making -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Decision Making</div>
+                            <div class="question-text">Aeronautical decision-making models and frameworks</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">ADM Models and Frameworks</div>
+                            <div class="explanation">
+                                <strong>Aeronautical Decision-Making (ADM):</strong> Methodical approach to choosing optimal course of action<br><br>
+                                <strong>5 Decision-Making Subject Areas (PAEOS):</strong><br>
+                                • <strong>P</strong>ilot<br>
+                                • <strong>A</strong>ircraft<br>
+                                • <strong>E</strong>nvironment<br>
+                                • <strong>O</strong>peration<br>
+                                • <strong>S</strong>ituation<br><br>
+                                <strong>DECIDE Model:</strong> Continuous loop process<br>
+                                • <strong>D</strong>etect, <strong>E</strong>stimate, <strong>C</strong>hoose, <strong>I</strong>dentify, <strong>D</strong>o, <strong>E</strong>valuate<br><br>
+                                <strong>3P Model:</strong> Perceive, Process, Perform
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PAVE Model -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">PAVE Model</div>
+                            <div class="question-text">Framework for evaluating hazards in aviation</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">Pilot, Aircraft, enVironment, External Pressures</div>
+                            <div class="explanation">
+                                <strong>PAVE Model:</strong> Framework for evaluating hazards<br><br>
+                                <strong>P</strong>ilot-in-Charge (PIC)<br>
+                                <strong>A</strong>ircraft<br>
+                                <strong>V</strong>Environment<br>
+                                <strong>E</strong>xternal Pressures<br><br>
+                                <strong>PIC (IMSAFE):</strong> Self-assessment tool<br>
+                                • <strong>I</strong>llness<br>
+                                • <strong>M</strong>edication<br>
+                                • <strong>S</strong>tress<br>
+                                • <strong>A</strong>lcohol<br>
+                                • <strong>F</strong>atigue<br>
+                                • <strong>E</strong>motion
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Crew Resource Management -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Crew Resource Management</div>
+                            <div class="question-text">Effective use of available resources for safe operations</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">Effective Resource Use</div>
+                            <div class="explanation">
+                                <strong>Crew Resource Management (CRM):</strong> Effective use of all available resources<br><br>
+                                <strong>Resources:</strong><br>
+                                • Spotter<br>
+                                • Second pilot<br>
+                                • Three-person team<br><br>
+                                <strong>Benefits:</strong><br>
+                                • Ensure safe and efficient operations<br>
+                                • Reduce errors<br>
+                                • Avoid stress<br>
+                                • Increase efficiency
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-indicators" id="theme3-indicators"></div>
+        </div>
+
+        <!-- TOPIC 4: NAVIGATION & METEOROLOGY -->
+        <div class="theme-section" id="theme-4">
+            <h2>4. Navigation & Meteorology</h2>
+            <p>Coordinate systems, weather conditions, and atmospheric properties</p>
+        </div>
+
+        <div class="questions-container theme-questions">
+            <div class="scroll-arrow left" onclick="scrollTheme('theme4', -1)">‹</div>
+            <div class="scroll-arrow right" onclick="scrollTheme('theme4', 1)">›</div>
+            
+            <div class="questions-scroll-wrapper" id="theme4-scroll">
+                <div class="questions-row">
+                    <!-- Navigation -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Navigation</div>
+                            <div class="question-text">Coordinate systems and navigation technologies</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">Coordinate Systems and GNSS</div>
+                            <div class="explanation">
+                                <strong>Geographic Coordinate System:</strong> Set of numbers to specify location on Earth<br><br>
+                                <strong>Longitude:</strong> Angle east/west of Prime Meridian (Greenwich)<br>
+                                • Earth rotates 15° per hour<br>
+                                • Every 15° corresponds to distinct time zone<br><br>
+                                <strong>Latitude:</strong> Angle between equatorial plane and location to Earth's center<br>
+                                • Equator (0° latitude) separates Northern and Southern Hemispheres<br><br>
+                                <strong>UTM:</strong> 60 zones, each 6-degree segment of Earth<br><br>
+                                <strong>GNSS:</strong> Constellation of satellites (GPS, GLONASS, BeiDou, Galileo)<br>
+                                • Two common errors: timing and satellite orbit<br><br>
+                                <strong>OneMap:</strong> Most accurate fly-zone information (www.OneMap.gov.sg)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Atmospheric Properties -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Atmospheric Properties</div>
+                            <div class="question-text">Air density, pressure, temperature, and humidity effects</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">Air Density and Performance</div>
+                            <div class="explanation">
+                                <strong>Air Density:</strong> Mass of air per unit volume<br><br>
+                                <strong>Factors Affecting Density:</strong><br>
+                                • <strong>Temperature:</strong> Warmer air is less dense<br>
+                                • <strong>Pressure:</strong> Decreases with height<br>
+                                • <strong>Humidity:</strong> Humid air is less dense<br><br>
+                                <strong>Aircraft Performance:</strong><br>
+                                • Better performance in denser air<br>
+                                • More lift generation possible<br>
+                                • Air is denser under: higher pressure, low temperature, low humidity, low altitude<br><br>
+                                <strong>Density Altitude:</strong> Same reading as pressure altitude when standard temperature exists
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Altimetry -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Altimetry</div>
+                            <div class="question-text">Altitude measurements and terminology</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">Altitude Terms and Measurements</div>
+                            <div class="explanation">
+                                <strong>Above Ground Level (AGL):</strong> Height above the ground<br>
+                                <strong>Above Mean Sea Level (AMSL):</strong> Height above average sea level datum<br>
+                                <strong>At Take-off (ATO):</strong> Elevation at take-off, measured above mean sea level<br><br>
+                                <strong>Example Calculation:</strong><br>
+                                UA launched from 20ft, climbs to 30ft = 50ft altitude<br><br>
+                                <strong>Altimeter Operation:</strong> Measures decrease in static pressure to determine altitude
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Weather Conditions -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Weather Conditions</div>
+                            <div class="question-text">Clouds, wind types, and weather information</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">Clouds and Wind Types</div>
+                            <div class="explanation">
+                                <strong>Cloud Types:</strong><br>
+                                • <strong>Cumulus:</strong> Puffy, fluffy looking, resembling cotton balls<br>
+                                • <strong>Cumulonimbus:</strong> Tower-like with bulging upper regions<br><br>
+                                <strong>Wind Types:</strong><br>
+                                • <strong>Headwind:</strong> Acts against flight path, aids take-offs and landings<br>
+                                • <strong>Tailwind:</strong> Acts in direction of flight path, beneficial during cruising<br>
+                                • <strong>Crosswind:</strong> Perpendicular to line of motion, causes lateral movement<br><br>
+                                <strong>Weather Information:</strong><br>
+                                • <strong>Meteorological Services Singapore:</strong> weather.gov.sg<br>
+                                • <strong>METAR:</strong> Weather-reporting format, typically valid for 1 hour<br>
+                                • <strong>Okta:</strong> Unit of measurement for cloud cover
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Weather Reports -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Weather Reports</div>
+                            <div class="question-text">METAR format and weather reporting</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">METAR Information</div>
+                            <div class="explanation">
+                                <strong>METAR (METeorological Terminal Aviation Routine):</strong><br>
+                                • Weather-reporting format<br>
+                                • Typically valid for 1 hour<br><br>
+                                <strong>Information Included:</strong><br>
+                                • Wind direction and speed<br>
+                                • Visibility<br>
+                                • Cloud cover (e.g., FEW020TCU, BKN280)<br>
+                                • Temperature/dewpoint<br>
+                                • Atmospheric pressure (QNH)<br><br>
+                                <strong>Cloud Cover Examples:</strong><br>
+                                • FEW020TCU: Few towering cumulus clouds at 2000ft AGL<br>
+                                • BKN280: Broken clouds at 28000ft AGL
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wind Effects -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Wind Effects</div>
+                            <div class="question-text">Impact of wind on aircraft performance</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">Take-off and Landing Effects</div>
+                            <div class="explanation">
+                                <strong>Tailwind during Take-off:</strong><br>
+                                • Requires more take-off distance<br>
+                                • Increases ground speed<br><br>
+                                <strong>Headwind during Take-off:</strong><br>
+                                • Lower ground speed<br>
+                                • Shorter runway distance needed<br>
+                                • Creates additional lift<br><br>
+                                <strong>Crosswind:</strong><br>
+                                • Perpendicular to flight path<br>
+                                • Causes lateral movement<br>
+                                • Requires compensation during flight
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-indicators" id="theme4-indicators"></div>
+        </div>
+
+        <!-- TOPIC 5: AIR LAW -->
+        <div class="theme-section" id="theme-5">
+            <h2>5. Air Law</h2>
+            <p>Air Navigation Act, permits, licenses, and operational requirements</p>
+        </div>
+
+        <div class="questions-container theme-questions">
+            <div class="scroll-arrow left" onclick="scrollTheme('theme5', -1)">‹</div>
+            <div class="scroll-arrow right" onclick="scrollTheme('theme5', 1)">›</div>
+            
+            <div class="questions-scroll-wrapper" id="theme5-scroll">
+                <div class="questions-row">
+                    <!-- Air Navigation Act -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Question 12</div>
+                            <div class="question-text">What is the penalty for dangerous flying under the Air Navigation Act?</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">Fine not exceeding $100,000 or imprisonment not exceeding 10 years, or both</div>
+                            <div class="explanation">
+                                <strong>Air Navigation Act 1966 (ANA):</strong><br>
+                                • Provides control and regulation of aviation<br>
+                                • Promotes safety and security<br>
+                                • Implements international obligations<br><br>
+                                <strong>Key Provisions:</strong><br>
+                                • Applicability of UAS<br>
+                                • Permits for overflight<br>
+                                • Prohibition of dangerous materials<br>
+                                • Regulations on discharge from UA<br>
+                                • Dangerous activity regulations<br>
+                                • Flying without satisfying safety requirements<br>
+                                • Trespassing at aerodromes
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Penalties -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Penalties for Offences</div>
+                            <div class="question-text">Fines and imprisonment for various violations</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">Penalty Structure</div>
+                            <div class="explanation">
+                                <strong>Dangerous flying / Endangering life or property:</strong><br>
+                                • Fine not exceeding $100,000 or imprisonment not exceeding 10 years, or both<br><br>
+                                <strong>Operating unregistered registrable UA / Tampering with registration labels:</strong><br>
+                                • Fine up to $10,000 or imprisonment not exceeding 6 months, or both<br><br>
+                                <strong>Failure to report accidents:</strong><br>
+                                • 1st offence: Fine not exceeding $50,000<br>
+                                • 2nd offence: Fine not exceeding $100,000<br><br>
+                                <strong>Unauthorised photography over protected areas:</strong><br>
+                                • 1st offence: Fine not exceeding $50,000 or 2 years imprisonment, or both<br>
+                                • 2nd offence: Fine not exceeding $100,000 or 5 years imprisonment, or both
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- UAS Operations Purposes -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">UAS Operations Purposes</div>
+                            <div class="question-text">Different categories of UA operations</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">Recreation, Education, Commercial</div>
+                            <div class="explanation">
+                                <strong>Recreation Purpose:</strong><br>
+                                • Activities for enjoyment, relaxation, or leisure<br>
+                                • Excludes organized sporting, business-provided recreational activities, or flying displays<br><br>
+                                <strong>Education Purpose:</strong><br>
+                                • Lectures, tutorials, demonstrations, or classes on UA<br>
+                                • Offered by educational institutions to enrolled students<br><br>
+                                <strong>Non-Recreation or Non-Education Purpose (Commercial/Business):</strong><br>
+                                • Subject to more stringent regulations<br>
+                                • Examples: sharing aerial photographs for marketing, educational institutions taking photos for events, volunteers using UA for charity events
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Airspace Restrictions -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Airspace Restrictions</div>
+                            <div class="question-text">No-fly zones and restricted areas in Singapore</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">No-Fly Zones and Restricted Areas</div>
+                            <div class="explanation">
+                                <strong>OneMap:</strong> Useful tool showing No-Fly Zones (www.OneMap.gov.sg)<br><br>
+                                <strong>No-Fly Zones Include:</strong><br>
+                                • Areas within 5km of aerodromes (Changi Airport, Seletar Airport, Tengah Airbase)<br>
+                                • Danger Areas<br>
+                                • Protected Areas under Section 32 of ANA (MINDEF/SAF training camps, police facilities, government buildings, Jurong Island, Tuas Power Station, prisons, checkpoints, offshore islands)<br>
+                                • Prohibited Areas (Central Water Catchment, Cable Car Services from Mt. Faber to Sentosa)<br>
+                                • Restricted Areas<br>
+                                • Temporary Restricted Areas (TRA) established by CAAS
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- UA Registration -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Question 13</div>
+                            <div class="question-text">What is the weight threshold for UA registration with CAAS?</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">250 grams</div>
+                            <div class="explanation">
+                                <strong>Registration Requirement:</strong><br>
+                                • All UA exceeding 250 grams must be registered with CAAS<br>
+                                • Registrant must be at least 16 years old<br><br>
+                                <strong>Registration Process:</strong><br>
+                                • Purchase registration label with unique UA registration number<br>
+                                • Complete online registration<br>
+                                • Labels available online or at designated SingPost post offices<br><br>
+                                <strong>Purchase Limits:</strong><br>
+                                • Citizens/permanent residents: up to 5 labels<br>
+                                • Others: 1 label<br>
+                                • Each label costs $25<br><br>
+                                <strong>Label Placement:</strong><br>
+                                • Must be affixed on outer surface of non-detachable part of UA<br>
+                                • Must be clearly visible<br>
+                                • Not on removable batteries or propeller blades
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Permits and Licenses -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Permits and Licenses</div>
+                            <div class="question-text">Different types of permits and licensing requirements</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">Operator Permit, Activity Permit, UAPL</div>
+                            <div class="explanation">
+                                <strong>Operator Permit:</strong><br>
+                                • Granted by CAAS to organization or individual<br>
+                                • Demonstrates ability to operate UA safely<br>
+                                • Valid for up to one year<br><br>
+                                <strong>Activity Permit (AP):</strong><br>
+                                • Granted for single or block activities<br>
+                                • Considers location, type of operation, date/time, altitude, mitigation measures<br><br>
+                                <strong>Class 1 Activity Permit:</strong><br>
+                                • Required for non-recreational/non-educational purposes<br>
+                                • Or if recreational UA over 25kg, educational UA over 7kg<br>
+                                • Not valid without UA Operator Permit<br><br>
+                                <strong>Class 2 Activity Permit:</strong><br>
+                                • Required for recreational UA (25kg or below) or educational UA (7kg or below)<br>
+                                • When flying above 200 feet AMSL or within No-Fly Zone
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- UAPL -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">Unmanned Aircraft Pilot Licence</div>
+                            <div class="question-text">UAPL requirements and classifications</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">Class A and Class B UAPL</div>
+                            <div class="explanation">
+                                <strong>UAPL Process:</strong><br>
+                                • Register CAPELS account<br>
+                                • Pass UAPL theory test ($125)<br>
+                                • Attend training (CAAS-approved UATO recommended)<br>
+                                • Pass practical assessment by Authorised Flight Examiner (AFE)<br>
+                                • Submit application ($500 fee)<br>
+                                • Applicant must be at least 16 years old<br><br>
+                                <strong>Class A UAPL:</strong><br>
+                                • Operate UA with total mass not exceeding 25 kg<br>
+                                • Does not cover Military Drones<br><br>
+                                <strong>Class B UAPL:</strong><br>
+                                • Operate UA with total mass exceeding 25 kg<br><br>
+                                <strong>Requirements:</strong><br>
+                                • Pass proficiency check every 4 years<br>
+                                • Class B holders need annual refresher training<br>
+                                • Maintain Visual Line of Sight (VLOS) at all times unless licensed for BVLOS
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- UABT -->
+                    <div class="glass-card question-card">
+                        <div class="question-header">
+                            <div class="question-number">UA Basic Training Certificate</div>
+                            <div class="question-text">UABT requirements and supervision</div>
+                        </div>
+                        <div class="answer-section">
+                            <div class="correct-answer">UABT Requirements</div>
+                            <div class="explanation">
+                                <strong>UA Basic Training Certificate (UABT):</strong><br>
+                                • Required for operating drone between 1.5kg and 7kg for recreational or educational purposes<br>
+                                • Applicant must be at least 16 years old<br>
+                                • Complete e-learning course and online quiz<br><br>
+                                <strong>Supervision:</strong><br>
+                                • 12-year-old son allowed to operate 20kg UA if supervised by father with relevant UAPL<br>
+                                • 12-year-old son flying 5kg UA for recreational purposes in fly zone within 100ft allowed if supervised by father with relevant UABT<br><br>
+                                <strong>FPV Operations:</strong><br>
+                                • 1kg FPV for fun in outdoor fly-zone requires visual observer
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-indicators" id="theme5-indicators"></div>
+        </div>
+
+
+
+
+        <!-- Concepts Section -->
+        <div class="concepts-section">
+            <h2>Key Concepts & Study Areas</h2>
+            
+            <div class="glass-card concept-group">
+                <div class="concept-header">
+                    <h3>Principles of Flight</h3>
+                </div>
+                <div class="concept-content">
+                    <ul>
+                        <li><strong>Four Forces:</strong> Lift, Weight, Thrust, Drag - must be balanced for stable flight</li>
+                        <li><strong>Stall Conditions:</strong> Occurs when critical angle of attack is exceeded</li>
+                        <li><strong>Ground Effect:</strong> Occurs within ½ wingspan of ground, reduces drag</li>
+                        <li><strong>Center of Gravity:</strong> Forward CG = more stability, less maneuverability</li>
+                        <li><strong>Control Surfaces:</strong> Elevator (pitch), Ailerons (roll), Rudder (yaw)</li>
+                        <li><strong>Vortex Ring State:</strong> Affects helicopters and multi-rotors during descent</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="glass-card concept-group">
+                <div class="concept-header">
+                    <h3>Unmanned Aircraft Systems</h3>
+                </div>
+                <div class="concept-content">
+                    <ul>
+                        <li><strong>UA Categories:</strong> Aeroplane, Rotorcraft, Powered-lift, Airship</li>
+                        <li><strong>LiPo Batteries:</strong> 1C charge rate, 6S = 25.2V max, charge with operator present</li>
+                        <li><strong>GPS Requirements:</strong> Minimum 4 satellites for 3D positioning</li>
+                        <li><strong>Radio Control:</strong> 2.4GHz Line of Sight, minimum 4 channels for multi-rotor</li>
+                        <li><strong>Flight Modes:</strong> Manual, Attitude Hold, Altitude Hold, GPS, RTH</li>
+                        <li><strong>Guidance Systems:</strong> RTK, Infrared, Vision, Ultrasound, LiDAR</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="glass-card concept-group">
+                <div class="concept-header">
+                    <h3>Human Factors</h3>
+                </div>
+                <div class="concept-content">
+                    <ul>
+                        <li><strong>SHELL Model:</strong> Software, Hardware, Environment, Liveware interactions</li>
+                        <li><strong>8-Hour Rule:</strong> No flying after alcohol/drugs for at least 8 hours</li>
+                        <li><strong>Hazardous Attitudes:</strong> Impulsivity, Macho, Anti-authority, Invulnerability</li>
+                        <li><strong>Decision Models:</strong> DECIDE, PAVE, IMSAFE, 5P, 3P frameworks</li>
+                        <li><strong>Vision Illusions:</strong> Autokinesis, Disorientation, False horizon</li>
+                        <li><strong>Stress Management:</strong> Identify source, seek support, balanced lifestyle</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="glass-card concept-group">
+                <div class="concept-header">
+                    <h3>Navigation & Meteorology</h3>
+                </div>
+                <div class="concept-content">
+                    <ul>
+                        <li><strong>Coordinate Systems:</strong> Longitude (15°/hour), Latitude, UTM (60 zones)</li>
+                        <li><strong>Air Density:</strong> Higher pressure, low temp, low humidity, low altitude = better performance</li>
+                        <li><strong>Altitude Terms:</strong> AGL (Above Ground), AMSL (Above Mean Sea Level)</li>
+                        <li><strong>Wind Effects:</strong> Headwind aids take-off/landing, Tailwind requires more distance</li>
+                        <li><strong>Weather Reports:</strong> METAR format, valid 1 hour, includes cloud cover (Okta)</li>
+                        <li><strong>OneMap:</strong> Most accurate fly-zone information source</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="glass-card concept-group">
+                <div class="concept-header">
+                    <h3>Air Law</h3>
+                </div>
+                <div class="concept-content">
+                    <ul>
+                        <li><strong>Registration:</strong> Required for UA over 250g, minimum age 16</li>
+                        <li><strong>UAPL Classifications:</strong> Class A (up to 25kg), Class B (over 25kg)</li>
+                        <li><strong>UABT:</strong> Required for 1.5kg-7kg recreational/educational operations</li>
+                        <li><strong>Activity Permits:</strong> Class 1 (commercial), Class 2 (recreational above 200ft)</li>
+                        <li><strong>No-Fly Zones:</strong> 5km from aerodromes, protected areas, prohibited areas</li>
+                        <li><strong>Penalties:</strong> Dangerous flying ($100k/10 years), substance influence ($100k/5 years)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="glass-card concept-group">
+                <div class="concept-header">
+                    <h3>Emergency Procedures</h3>
+                </div>
+                <div class="concept-content">
+                    <ul>
+                        <li><strong>Loss of Control Link:</strong> Move closer, adjust antenna, RTH after 8 seconds</li>
+                        <li><strong>Loss of Power:</strong> RTH at 10% battery, auto-land if GPS lost</li>
+                        <li><strong>Loss of GPS:</strong> Fly manually, avoid obstacles, switch to manual mode</li>
+                        <li><strong>Loss of Orientation:</strong> Ensure GPS mode, hover, confirm orientation</li>
+                        <li><strong>Pre-flight:</strong> Environment evaluation, control checks, structural inspection</li>
+                        <li><strong>Post-flight:</strong> Disarm, visual inspection, document flight logs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Horizontal scrolling functionality
+        function scrollTheme(themeId, direction) {
+            const scrollWrapper = document.getElementById(themeId + '-scroll');
+            const cardWidth = 350 + 24; // card width + gap
+            const scrollAmount = cardWidth * direction;
+            
+            scrollWrapper.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        // Initialize scroll indicators and touch support
+        document.addEventListener('DOMContentLoaded', function() {
+            // Concept accordion functionality
+            const conceptHeaders = document.querySelectorAll('.concept-header');
+            
+            conceptHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const isActive = this.classList.contains('active');
+                    
+                    // Close all other accordions
+                    conceptHeaders.forEach(h => {
+                        h.classList.remove('active');
+                        h.nextElementSibling.classList.remove('active');
+                    });
+                    
+                    // Toggle current accordion
+                    if (!isActive) {
+                        this.classList.add('active');
+                        content.classList.add('active');
+                    }
+                });
+            });
+
+            // Initialize scroll indicators for each theme
+            const themes = ['theme1', 'theme2', 'theme3', 'theme4', 'theme5'];
+            
+            themes.forEach(themeId => {
+                const scrollWrapper = document.getElementById(themeId + '-scroll');
+                const indicators = document.getElementById(themeId + '-indicators');
+                
+                if (scrollWrapper && indicators) {
+                    const cards = scrollWrapper.querySelectorAll('.question-card');
+                    const cardWidth = 350 + 24; // card width + gap
+                    
+                    // Create indicator dots
+                    for (let i = 0; i < cards.length; i++) {
+                        const dot = document.createElement('div');
+                        dot.className = 'scroll-dot';
+                        if (i === 0) dot.classList.add('active');
+                        dot.addEventListener('click', () => {
+                            scrollWrapper.scrollTo({
+                                left: i * cardWidth,
+                                behavior: 'smooth'
+                            });
+                        });
+                        indicators.appendChild(dot);
+                    }
+                    
+                    // Update active indicator on scroll
+                    scrollWrapper.addEventListener('scroll', () => {
+                        const scrollLeft = scrollWrapper.scrollLeft;
+                        const activeIndex = Math.round(scrollLeft / cardWidth);
+                        
+                        indicators.querySelectorAll('.scroll-dot').forEach((dot, index) => {
+                            dot.classList.toggle('active', index === activeIndex);
+                        });
+                    });
+                }
+            });
+
+            // Touch/swipe support for mobile
+            let startX = 0;
+            let scrollLeft = 0;
+            let isDown = false;
+
+            document.querySelectorAll('.questions-scroll-wrapper').forEach(wrapper => {
+                wrapper.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    startX = e.pageX - wrapper.offsetLeft;
+                    scrollLeft = wrapper.scrollLeft;
+                    wrapper.style.cursor = 'grabbing';
+                });
+
+                wrapper.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    wrapper.style.cursor = 'grab';
+                });
+
+                wrapper.addEventListener('mouseup', () => {
+                    isDown = false;
+                    wrapper.style.cursor = 'grab';
+                });
+
+                wrapper.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - wrapper.offsetLeft;
+                    const walk = (x - startX) * 2;
+                    wrapper.scrollLeft = scrollLeft - walk;
+                });
+
+                // Touch events for mobile
+                wrapper.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].pageX - wrapper.offsetLeft;
+                    scrollLeft = wrapper.scrollLeft;
+                });
+
+                wrapper.addEventListener('touchmove', (e) => {
+                    if (!startX) return;
+                    const x = e.touches[0].pageX - wrapper.offsetLeft;
+                    const walk = (x - startX) * 2;
+                    wrapper.scrollLeft = scrollLeft - walk;
+                });
+
+                wrapper.addEventListener('touchend', () => {
+                    startX = 0;
+                });
+            });
+        });
+
+        // Back to Top functionality
+        const backToTop = document.createElement('div');
+        backToTop.className = 'back-to-top';
+        document.body.appendChild(backToTop);
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Show/hide back to top button
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Progress tracking
+        const topicProgress = {};
+        const progressIndicators = document.querySelectorAll('.topic-progress');
+
+        // Initialize progress from localStorage
+        for (let i = 1; i <= 5; i++) {
+            const saved = localStorage.getItem(`topic-${i}-progress`);
+            if (saved) {
+                topicProgress[i] = JSON.parse(saved);
+                updateProgressIndicator(i);
+            }
+        }
+
+        // Track when user views questions in each topic
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -50% 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const topicId = entry.target.closest('.theme-section')?.id?.replace('theme-', '');
+                    if (topicId) {
+                        const topicNum = parseInt(topicId);
+                        if (!topicProgress[topicNum]) {
+                            topicProgress[topicNum] = { viewed: true, completed: false };
+                        } else {
+                            topicProgress[topicNum].viewed = true;
+                        }
+                        localStorage.setItem(`topic-${topicNum}-progress`, JSON.stringify(topicProgress[topicNum]));
+                        updateProgressIndicator(topicNum);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all theme sections
+        document.querySelectorAll('.theme-section').forEach(section => {
+            observer.observe(section);
+        });
+
+        function updateProgressIndicator(topicNum) {
+            const indicator = document.querySelector(`[data-topic="${topicNum}"] .topic-progress`);
+            if (indicator && topicProgress[topicNum]) {
+                indicator.classList.remove('completed', 'in-progress');
+                if (topicProgress[topicNum].completed) {
+                    indicator.classList.add('completed');
+                } else if (topicProgress[topicNum].viewed) {
+                    indicator.classList.add('in-progress');
+                }
+            }
+        }
+
+        // Mark topic as completed when user scrolls through all questions
+        document.querySelectorAll('.questions-scroll-wrapper').forEach((wrapper, index) => {
+            wrapper.addEventListener('scroll', () => {
+                const topicNum = index + 1;
+                const scrollPercentage = (wrapper.scrollLeft / (wrapper.scrollWidth - wrapper.clientWidth)) * 100;
+                
+                if (scrollPercentage > 80) { // Mark as completed when 80% scrolled
+                    if (!topicProgress[topicNum]) {
+                        topicProgress[topicNum] = { viewed: true, completed: true };
+                    } else {
+                        topicProgress[topicNum].completed = true;
+                    }
+                    localStorage.setItem(`topic-${topicNum}-progress`, JSON.stringify(topicProgress[topicNum]));
+                    updateProgressIndicator(topicNum);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
