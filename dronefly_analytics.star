@@ -88,28 +88,39 @@ def format_number(n):
 # RENDERING LOGIC
 # ==============================================================================
 
-def draw_text_with_title(title, value):
+def draw_text_with_title(title_line1, title_line2, value):
     """
-    Renders a title and a value on the Tidbyt screen.
+    Renders a two-line title and a value on the Tidbyt screen.
     """
     return render.Column(
-        main_align = "center",
+        main_align = "space_evenly",
         cross_align = "center",
         children = [
-            render.Box(
-                height = 16,
-                child = render.Text(
-                    content = title.upper(),
-                    font = "CG-pixel-3x5-mono",
-                    height = 10,
-                    color = "#FFFFFF",
-                ),
-            ),
-            render.Text(
-                content = value,
-                font = "6x13",
-                color = "#20A0FF",
-            ),
+            render.Column(
+                main_align = "center",
+                cross_align = "center",
+                children = [
+                    render.Text(
+                        content = title_line1.upper(),
+                        font = "tom-thumb",
+                        color = "#FFFFFF",
+                    ),
+                    render.Text(
+                        content = title_line2.upper(),
+                        font = "tom-thumb",
+                        color = "#FFFFFF",
+                    ),
+                    render.Box(
+                        width = 64,
+                        height = 3
+                    ),
+                    render.Text(
+                        content = value,
+                        font = "6x13",
+                        color = "#20A0FF",
+                    ),
+                ]
+            )
         ]
     )
 
@@ -134,10 +145,10 @@ def main(config):
         visitors = stats.get("visitors", {}).get("value", 0)
         pageviews = stats.get("pageviews", {}).get("value", 0)
     
-    # Show only visitors
+    # Show only visitors with two-line title
     return render.Root(
         child = draw_text_with_title(
-            "All-Time Visitors",
+            "Dronefly",
             format_number(visitors)
         )
     )
