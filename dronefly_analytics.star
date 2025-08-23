@@ -97,6 +97,7 @@ def draw_text_with_title(title_line1, title_line2, value):
         main_align = "center",
         cross_align = "center",
         children = [
+            render.Spacer(height = 22),
             render.Column(
                 main_align = "center",
                 cross_align = "center",
@@ -111,21 +112,16 @@ def draw_text_with_title(title_line1, title_line2, value):
                         font = "tom-thumb",
                         color = "#FFFFFF",
                     ),
-                    render.Box(
-                        width = 64,
-                        height = 22
-                    ),
+                    render.Spacer(height = 11),
                     render.Text(
                         content = value,
                         font = "6x13",
                         color = "#20A0FF",
                     ),
-                    render.Box(
-                        width = 64,
-                        height = 22
-                    ),
+                    render.Spacer(height = 11),
                 ]
-            )
+            ),
+            render.Spacer(height = 22),
         ]
     )
 
