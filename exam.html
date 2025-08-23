@@ -131,6 +131,92 @@
             font-size: 1.1rem;
         }
 
+        /* Navigation section */
+        .navigation-section {
+            margin-bottom: 60px;
+        }
+
+        .navigation-section h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #ffffff;
+        }
+
+        .topic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .topic-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .topic-box:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .topic-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #7c77c6, #ff77c6);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .topic-box:hover::before {
+            opacity: 1;
+        }
+
+        .topic-number {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #7c77c6;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+
+        .topic-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .topic-stats {
+            font-size: 0.875rem;
+            color: #a0a0a0;
+            margin-bottom: 12px;
+        }
+
+        .topic-description {
+            font-size: 0.8rem;
+            color: #b0b0b0;
+            line-height: 1.4;
+        }
+
         /* Theme section styling */
         .theme-section {
             margin: 60px 0 40px 0;
@@ -430,8 +516,84 @@
             <p>Review the questions below organized by thematic categories for focused study</p>
         </div>
 
+        <!-- Navigation Section -->
+        <div class="navigation-section">
+            <h2>Jump to Topics</h2>
+            <div class="topic-grid">
+                <a href="#theme-1" class="topic-box">
+                    <div class="topic-number">Theme 1</div>
+                    <div class="topic-title">Regulatory & Legal Requirements</div>
+                    <div class="topic-stats">9 questions (19%)</div>
+                    <div class="topic-description">Permits, licenses, penalties, and legal compliance</div>
+                </a>
+                
+                <a href="#theme-2" class="topic-box">
+                    <div class="topic-number">Theme 2</div>
+                    <div class="topic-title">Aerodynamics & Flight Principles</div>
+                    <div class="topic-stats">13 questions (28%)</div>
+                    <div class="topic-description">Stalls, stability, forces of flight, and aircraft performance</div>
+                </a>
+                
+                <a href="#theme-3" class="topic-box">
+                    <div class="topic-number">Theme 3</div>
+                    <div class="topic-title">Radio Control & Communication</div>
+                    <div class="topic-stats">5 questions (11%)</div>
+                    <div class="topic-description">Transmitter modes, frequency interference, and controller binding</div>
+                </a>
+                
+                <a href="#theme-4" class="topic-box">
+                    <div class="topic-number">Theme 4</div>
+                    <div class="topic-title">Flight Operations & Safety</div>
+                    <div class="topic-stats">4 questions (9%)</div>
+                    <div class="topic-description">VLOS operations, emergency procedures, and operational safety</div>
+                </a>
+                
+                <a href="#theme-5" class="topic-box">
+                    <div class="topic-number">Theme 5</div>
+                    <div class="topic-title">Navigation & Positioning Systems</div>
+                    <div class="topic-stats">3 questions (6%)</div>
+                    <div class="topic-description">GNSS errors, RTK systems, and satellite requirements</div>
+                </a>
+                
+                <a href="#theme-6" class="topic-box">
+                    <div class="topic-number">Theme 6</div>
+                    <div class="topic-title">Aircraft Systems & Sensors</div>
+                    <div class="topic-stats">4 questions (9%)</div>
+                    <div class="topic-description">Orientation systems, pressure sensors, ultrasound, and vibration detection</div>
+                </a>
+                
+                <a href="#theme-7" class="topic-box">
+                    <div class="topic-number">Theme 7</div>
+                    <div class="topic-title">Power Systems & Batteries</div>
+                    <div class="topic-stats">1 question (2%)</div>
+                    <div class="topic-description">Battery specifications and voltage requirements</div>
+                </a>
+                
+                <a href="#theme-8" class="topic-box">
+                    <div class="topic-number">Theme 8</div>
+                    <div class="topic-title">Maintenance & Equipment</div>
+                    <div class="topic-stats">2 questions (4%)</div>
+                    <div class="topic-description">Maintenance procedures and equipment inspection</div>
+                </a>
+                
+                <a href="#theme-9" class="topic-box">
+                    <div class="topic-number">Theme 9</div>
+                    <div class="topic-title">Human Factors & Decision Making</div>
+                    <div class="topic-stats">4 questions (9%)</div>
+                    <div class="topic-description">Hazardous attitudes, decision-making models, and pilot aptitude</div>
+                </a>
+                
+                <a href="#theme-10" class="topic-box">
+                    <div class="topic-number">Theme 10</div>
+                    <div class="topic-title">Risk Assessment & Safety Management</div>
+                    <div class="topic-stats">2 questions (4%)</div>
+                    <div class="topic-description">Risk assessment formats and visual illusions</div>
+                </a>
+            </div>
+        </div>
+
         <!-- THEME 1: REGULATORY & LEGAL REQUIREMENTS -->
-        <div class="theme-section">
+        <div class="theme-section" id="theme-1">
             <h2>1. Regulatory & Legal Requirements</h2>
             <p>9 questions (19%) - Permits, licenses, penalties, and legal compliance</p>
         </div>
@@ -574,7 +736,7 @@
         </div>
 
         <!-- THEME 2: AERODYNAMICS & FLIGHT PRINCIPLES -->
-        <div class="theme-section">
+        <div class="theme-section" id="theme-2">
             <h2>2. Aerodynamics & Flight Principles</h2>
             <p>13 questions (28%) - Stalls, stability, forces of flight, and aircraft performance</p>
         </div>
@@ -775,7 +937,7 @@
         </div>
 
         <!-- THEME 3: RADIO CONTROL & COMMUNICATION SYSTEMS -->
-        <div class="theme-section">
+        <div class="theme-section" id="theme-3">
             <h2>3. Radio Control & Communication Systems</h2>
             <p>5 questions (11%) - Transmitter modes, frequency interference, and controller binding</p>
         </div>
@@ -856,7 +1018,7 @@
         </div>
 
         <!-- THEME 4: FLIGHT OPERATIONS & SAFETY -->
-        <div class="theme-section">
+        <div class="theme-section" id="theme-4">
             <h2>4. Flight Operations & Safety</h2>
             <p>4 questions (9%) - VLOS operations, emergency procedures, and operational safety</p>
         </div>
@@ -922,7 +1084,7 @@
         </div>
 
         <!-- THEME 5: NAVIGATION & POSITIONING SYSTEMS -->
-        <div class="theme-section">
+        <div class="theme-section" id="theme-5">
             <h2>5. Navigation & Positioning Systems</h2>
             <p>3 questions (6%) - GNSS errors, RTK systems, and satellite requirements</p>
         </div>
@@ -973,7 +1135,7 @@
         </div>
 
         <!-- THEME 6: AIRCRAFT SYSTEMS & SENSORS -->
-        <div class="theme-section">
+        <div class="theme-section" id="theme-6">
             <h2>6. Aircraft Systems & Sensors</h2>
             <p>4 questions (9%) - Orientation systems, pressure sensors, ultrasound, and vibration detection</p>
         </div>
@@ -1039,7 +1201,7 @@
         </div>
 
         <!-- THEME 7: POWER SYSTEMS & BATTERIES -->
-        <div class="theme-section">
+        <div class="theme-section" id="theme-7">
             <h2>7. Power Systems & Batteries</h2>
             <p>1 question (2%) - Battery specifications and voltage requirements</p>
         </div>
@@ -1060,7 +1222,7 @@
         </div>
 
         <!-- THEME 8: MAINTENANCE & EQUIPMENT -->
-        <div class="theme-section">
+        <div class="theme-section" id="theme-8">
             <h2>8. Maintenance & Equipment</h2>
             <p>2 questions (4%) - Maintenance procedures and equipment inspection</p>
         </div>
@@ -1096,7 +1258,7 @@
         </div>
 
         <!-- THEME 9: HUMAN FACTORS & DECISION MAKING -->
-        <div class="theme-section">
+        <div class="theme-section" id="theme-9">
             <h2>9. Human Factors & Decision Making</h2>
             <p>4 questions (9%) - Hazardous attitudes, decision-making models, and pilot aptitude</p>
         </div>
@@ -1162,7 +1324,7 @@
         </div>
 
         <!-- THEME 10: RISK ASSESSMENT & SAFETY MANAGEMENT -->
-        <div class="theme-section">
+        <div class="theme-section" id="theme-10">
             <h2>10. Risk Assessment & Safety Management</h2>
             <p>2 questions (4%) - Risk assessment formats and visual illusions</p>
         </div>
