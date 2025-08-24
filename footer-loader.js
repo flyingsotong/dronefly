@@ -151,7 +151,7 @@ function loadFooter() {
                             
                             <!-- Privacy Notice -->
                             <div class="mb-6">
-                                <p class="text-indigo-100">We use anonymized data to understand how people use our website. No personally identifiable information is collected.</p>
+                                <p class="text-indigo-100">We use anonymized data to understand how people use our website. Email addresses are collected for newsletter subscriptions only.</p>
                             </div>
                             
                             <!-- Copyright and Branding -->
