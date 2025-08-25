@@ -3,7 +3,7 @@ function loadFooter() {
     console.log('Loading footer...');
     
     // Determine the correct path based on current location
-    const footerPath = window.location.pathname.includes('/basictraining/') ? 'file:///Users/alansoon/Documents/dronefly/../footer.html' : 'file:///Users/alansoon/Documents/dronefly/footer.html';
+    const footerPath = window.location.pathname.includes('/basictraining/') ? '../footer.html' : 'footer.html';
     console.log('Footer path:', footerPath);
     
     const footerContainer = document.getElementById('footer-container');
@@ -32,6 +32,7 @@ function loadFooter() {
             
             footerContainer.innerHTML = html;
             console.log('Footer HTML inserted');
+            console.log('Footer content:', footerContainer.innerHTML);
             
             // Update copyright year after footer is loaded
             const copyrightYear = document.getElementById('copyright-year');
@@ -50,6 +51,7 @@ function loadFooter() {
         })
         .catch(error => {
             console.error('Error loading footer:', error);
+            console.error('Error stack:', error.stack);
         });
 }
 
