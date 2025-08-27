@@ -19,9 +19,30 @@ document.addEventListener('DOMContentLoaded', function() {
         const location = form.querySelector('input[name="flying-location"]:checked').value;
         let html = '<ul class="list-disc pl-5 space-y-1">';
         let requiresRemoteID = false;
+
         if (location === 'indoors') {
-            html += '<li>For private indoor spaces, registration and pilot licenses are generally not required.</li>';
-            html += '<li><strong>However</strong>, if flying in a <strong>publicly accessible indoor area</strong> (e.g., a mall, stadium) or for an event with <strong>more than 50 people</strong>, a <strong>UA Pilot Licence</strong> and <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft/ua-regulatory-requirements/ua-operator-and-activity-permits" target="_blank" class="text-indigo-400 hover:underline">permits</a> are required.</li>';
+            if (weight !== 'under_250g') {
+                html += '<li>Drone must be <a href="#faq-register" class="text-indigo-400 hover:underline"><strong>registered</strong></a>.</li>';
+            }
+
+            if (purpose === 'commercial') {
+                html += '<li>For private indoor spaces with no public access, no pilot license is required.</li>';
+                html += '<li>A <a href="#faq-uapl" class="text-indigo-400 hover:underline"><strong>UA Pilot Licence (UAPL)</strong></a> is required if flying in a <strong>publicly accessible</strong> area, for a <strong>sporting activity</strong>, or for an event with <strong>>50 people</strong>.</li>';
+                html += '<li>An <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft/ua-regulatory-requirements/ua-operator-and-activity-permits" target="_blank" class="text-indigo-400 hover:underline"><strong>Operator Permit</strong> and <strong>Class 1 Activity Permit</strong></a> are required for a <strong>sporting activity</strong> or an event with <strong>>50 people</strong>.</li>';
+            } else { // Recreational or Educational
+                html += '<li>For private indoor spaces with no public access, no pilot license is required.</li>';
+                html += '<li>If flying in a <strong>publicly accessible</strong> area or for an event with <strong>>50 people</strong>:';
+                html += '<ul class="list-disc pl-8 mt-1 space-y-1">';
+                if (weight === '1.5kg_to_7kg') {
+                    html += '<li>A <a href="#faq-uabt" class="text-indigo-400 hover:underline"><strong>UA Basic Training (UABT)</strong></a> certificate is required.</li>';
+                } else if (weight === 'over_7kg') {
+                    html += '<li>A full <a href="#faq-uapl" class="text-indigo-400 hover:underline"><strong>UA Pilot Licence (UAPL)</strong></a> is required.</li>';
+                } else {
+                    html += '<li>No pilot license is required for this weight class.</li>';
+                }
+                html += '</ul></li>';
+                html += '<li>An <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft/ua-regulatory-requirements/ua-operator-and-activity-permits" target="_blank" class="text-indigo-400 hover:underline"><strong>Operator Permit</strong> and <strong>Class 1 Activity Permit</strong></a> are required for an event with <strong>>50 people</strong>.</li>';
+            }
         } else { // Outdoors
             if (purpose === 'commercial') {
                 html += '<li>An <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft/ua-regulatory-requirements/ua-operator-and-activity-permits" target="_blank" class="text-indigo-400 hover:underline"><strong>Operator Permit</strong> and <strong>Class 1 Activity Permit</strong></a> are required.</li>';
@@ -51,7 +72,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         requiresRemoteID = true;
                         break;
                 }
-                html += '<li>A <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft/ua-regulatory-requirements/ua-operator-and-activity-permits" target="_blank" class="text-indigo-400 hover:underline"><strong>Class 2 Activity Permit</strong></a> is required for flying above 200ft, within 5km of an aerodrome, or within other restricted areas.</li>';
+                const class2WeightLimit = (purpose === 'recreational') ? '25kg' : '7kg';
+                html += `<li>A <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft/ua-regulatory-requirements/ua-operator-and-activity-permits" target="_blank" class="text-indigo-400 hover:underline"><strong>Class 2 Activity Permit</strong></a> is required for a drone <strong>up to ${class2WeightLimit}</strong> when flying above 200ft, within 5km of an aerodrome, or within other restricted areas.</li>`;
+
                 if (purpose === 'recreational') {
                     html += '<li>For more complex operations (e.g., flying a drone over 25kg or flying Beyond Visual Line-of-Sight), an <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft/ua-regulatory-requirements/ua-operator-and-activity-permits" target="_blank" class="text-indigo-400 hover:underline"><strong>Operator Permit</strong> and <strong>Class 1 Activity Permit</strong></a> are required.</li>';
                 } else { // Educational
