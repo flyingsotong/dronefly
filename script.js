@@ -30,14 +30,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     html += '<li>Drone must be <a href="#faq-register" class="text-indigo-400 hover:underline"><strong>registered</strong></a>.</li>';
                     requiresRemoteID = true;
                 }
-            } else { // Recreational
+            } else { // Recreational or Educational
                 switch (weight) {
                     case 'under_250g':
-                        html += '<li>No registration or license required for basic recreational flying.</li>';
+                        html += '<li>No registration or license required for basic flying.</li>';
                         break;
                     case '250g_to_1.5kg':
                         html += '<li>Drone must be <a href="#faq-register" class="text-indigo-400 hover:underline"><strong>registered</strong></a>.</li>';
-                        html += '<li>No pilot license is required for basic recreational flying.</li>';
+                        html += '<li>No pilot license is required for basic flying.</li>';
                         requiresRemoteID = true;
                         break;
                     case '1.5kg_to_7kg':
@@ -52,7 +52,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         break;
                 }
                 html += '<li>A <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft/ua-regulatory-requirements/ua-operator-and-activity-permits" target="_blank" class="text-indigo-400 hover:underline"><strong>Class 2 Activity Permit</strong></a> is required for flying above 200ft, within 5km of an aerodrome, or within other restricted areas.</li>';
-                html += '<li>For more complex operations (e.g., flying a drone over 25kg or flying Beyond Visual Line-of-Sight), an <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft/ua-regulatory-requirements/ua-operator-and-activity-permits" target="_blank" class="text-indigo-400 hover:underline"><strong>Operator Permit</strong> and <strong>Class 1 Activity Permit</strong></a> are required.</li>';
+                if (purpose === 'recreational') {
+                    html += '<li>For more complex operations (e.g., flying a drone over 25kg or flying Beyond Visual Line-of-Sight), an <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft/ua-regulatory-requirements/ua-operator-and-activity-permits" target="_blank" class="text-indigo-400 hover:underline"><strong>Operator Permit</strong> and <strong>Class 1 Activity Permit</strong></a> are required.</li>';
+                } else { // Educational
+                    html += '<li>For more complex operations (e.g., flying a drone over 7kg or flying Beyond Visual Line-of-Sight), an <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft/ua-regulatory-requirements/ua-operator-and-activity-permits" target="_blank" class="text-indigo-400 hover:underline"><strong>Operator Permit</strong> and <strong>Class 1 Activity Permit</strong></a> are required.</li>';
+                }
             }
             if (requiresRemoteID) {
                 html += '<li><strong>Upcoming:</strong> From <strong>1 Dec 2025</strong>, your drone must have <a href="#faq-remote-id" class="text-indigo-400 hover:underline"><strong>Broadcast Remote ID (B-RID)</strong></a>.</li>';
