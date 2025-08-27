@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quality Assurance Manual - Dronefly.sg UABTO</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        .card-hover-effect {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(94, 93, 239, 0.15);
+        }
+        .section-nav {
+            position: sticky;
+            top: 80px;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+        .section-nav a.active {
+            color: #818cf8;
+            background-color: #374151;
+            font-weight: 600;
+        }
+        .metric-card {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            border: 1px solid #374151;
+        }
+        .quality-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .badge-high { background-color: #dc2626; color: white; }
+        .badge-medium { background-color: #f59e0b; color: white; }
+        .badge-low { background-color: #10b981; color: white; }
+        .badge-info { background-color: #3b82f6; color: white; }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-300">
+
+    <!-- Header -->
+    <header class="bg-gray-800/80 backdrop-blur-lg fixed top-0 w-full z-50 shadow-sm">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center"><svg class="h-16 w-auto" xmlns="http://www.w3.org/2000/svg" viewBox="24 0 318.75 113.999999" preserveAspectRatio="xMidYMid meet"><title>Dronefly.sg Logo</title><g style="fill:#ffffff;fill-opacity:1;"><g transform="matrix(1,0,0,1,24,19)"><g><g transform="translate(1.09736, 53.656314)"><path style="stroke:none" d="M 5.578125 -3.734375 C 2.765625 -6.804688 1.359375 -10.578125 1.359375 -15.046875 C 1.359375 -19.515625 2.765625 -23.296875 5.578125 -26.390625 C 8.398438 -29.484375 11.988281 -31.03125 16.34375 -31.03125 C 20.332031 -31.03125 23.617188 -29.773438 26.203125 -27.265625 L 26.203125 -50.53125 L 36.609375 -50.53125 L 36.609375 0 L 26.328125 0 L 26.328125 -3.40625 L 26.203125 -3.40625 C 23.617188 -0.550781 20.332031 0.875 16.34375 0.875 C 11.988281 0.875 8.398438 -0.660156 5.578125 -3.734375 Z M 14.421875 -20.15625 C 13.078125 -18.820312 12.40625 -17.113281 12.40625 -15.03125 C 12.40625 -12.957031 13.050781 -11.265625 14.34375 -9.953125 C 15.632812 -8.640625 17.335938 -7.984375 19.453125 -7.984375 C 21.484375 -7.984375 23.15625 -8.648438 24.46875 -9.984375 C 25.78125 -11.316406 26.4375 -13.003906 26.4375 -15.046875 C 26.4375 -17.117188 25.757812 -18.820312 24.40625 -20.15625 C 23.0625 -21.488281 21.410156 -22.15625 19.453125 -22.15625 C 17.453125 -22.15625 15.773438 -21.488281 14.421875 -20.15625 Z M 14.421875 -20.15625 " /></g></g><g><g transform="translate(35.702492, 53.656314)"><path style="stroke:none" d="M 3.53125 0 L 3.53125 -30.140625 L 13.921875 -30.140625 L 13.921875 -25.796875 L 14.046875 -25.796875 C 14.117188 -25.953125 14.242188 -26.144531 14.421875 -26.375 C 14.597656 -26.613281 14.976562 -27.023438 15.5625 -27.609375 C 16.15625 -28.203125 16.785156 -28.734375 17.453125 -29.203125 C 18.117188 -29.671875 18.976562 -30.09375 20.03125 -30.46875 C 21.09375 -30.84375 22.171875 -31.03125 23.265625 -31.03125 C 24.398438 -31.03125 25.515625 -30.875 26.609375 -30.5625 C 27.710938 -30.25 28.519531 -29.9375 29.03125 -29.625 L 29.859375 -29.140625 L 25.5 -20.328125 C 24.207031 -21.429688 22.40625 -21.984375 20.09375 -21.984375 C 18.84375 -21.984375 17.765625 -21.707031 16.859375 -21.15625 C 15.960938 -20.601562 15.328125 -19.9375 14.953125 -19.15625 C 14.578125 -18.375 14.3125 -17.707031 14.15625 -17.15625 C 14 -16.613281 13.921875 -16.179688 13.921875 -15.859375 L 13.921875 0 Z M 3.53125 0 " /></g></g><g><g transform="translate(90.998333, 53.656314)"><path style="stroke:none" d="M 3.53125 0 L 3.53125 -30.140625 L 13.921875 -30.140625 L 13.921875 -26.96875 L 14.046875 -26.96875 C 16.742188 -29.675781 19.625 -31.03125 22.6875 -31.03125 C 24.175781 -31.03125 25.65625 -30.832031 27.125 -30.4375 C 28.59375 -30.050781 30 -29.445312 31.34375 -28.625 C 32.695312 -27.800781 33.796875 -26.632812 34.640625 -25.125 C 35.484375 -23.613281 35.90625 -21.859375 35.90625 -19.859375 L 35.90625 0 L 25.5 0 L 25.5 -17.046875 C 25.5 -18.609375 25 -19.976562 24 -21.15625 C 23 -22.332031 21.695312 -22.921875 20.09375 -22.921875 C 18.53125 -22.921875 17.109375 -22.3125 15.828125 -21.09375 C 14.554688 -19.882812 13.921875 -18.535156 13.921875 -17.046875 L 13.921875 0 Z M 3.53125 0 " /></g></g><g><g transform="translate(124.310852, 53.656314)"><path style="stroke:none" d="M 34.03125 -13.640625 L 12.171875 -13.640625 C 12.171875 -11.515625 12.851562 -9.941406 14.21875 -8.921875 C 15.59375 -7.910156 17.082031 -7.40625 18.6875 -7.40625 C 20.375 -7.40625 21.707031 -7.628906 22.6875 -8.078125 C 23.664062 -8.523438 24.78125 -9.414062 26.03125 -10.75 L 33.5625 -7 C 30.425781 -1.75 25.210938 0.875 17.921875 0.875 C 13.378906 0.875 9.484375 -0.679688 6.234375 -3.796875 C 2.984375 -6.910156 1.359375 -10.660156 1.359375 -15.046875 C 1.359375 -19.429688 2.984375 -23.191406 6.234375 -26.328125 C 9.484375 -29.460938 13.378906 -31.03125 17.921875 -31.03125 C 22.703125 -31.03125 26.585938 -29.648438 29.578125 -26.890625 C 32.578125 -24.128906 34.078125 -20.179688 34.078125 -15.046875 C 34.078125 -14.335938 34.0625 -13.867188 34.03125 -13.640625 Z M 12.453125 -19.390625 L 23.921875 -19.390625 C 23.679688 -20.960938 23.0625 -22.164062 22.0625 -23 C 21.0625 -23.84375 19.78125 -24.265625 18.21875 -24.265625 C 16.488281 -24.265625 15.113281 -23.8125 14.09375 -22.90625 C 13.082031 -22.007812 12.535156 -20.835938 12.453125 -19.390625 Z M 12.453125 -19.390625 " /></g></g><g><g transform="translate(154.215575, 53.656314)"><path style="stroke:none" d="M 5.28125 -30.140625 L 5.28125 -36.546875 C 5.320312 -41.054688 6.378906 -44.660156 8.453125 -47.359375 C 10.535156 -50.066406 13.414062 -51.421875 17.09375 -51.421875 C 18.664062 -51.421875 20.164062 -51.191406 21.59375 -50.734375 C 23.019531 -50.285156 24.050781 -49.828125 24.6875 -49.359375 L 25.6875 -48.71875 L 22.03125 -41.375 C 21.09375 -41.914062 20.054688 -42.1875 18.921875 -42.1875 C 17.628906 -42.1875 16.765625 -41.742188 16.328125 -40.859375 C 15.898438 -39.984375 15.6875 -38.453125 15.6875 -36.265625 L 15.6875 -30.140625 L 22.625 -30.140625 L 22.625 -22.21875 L 15.6875 -22.21875 L 15.6875 0 L 5.28125 0 L 5.28125 -22.21875 L 0.9375 -22.21875 L 0.9375 -30.140625 Z M 5.28125 -30.140625 " /></g></g><g><g transform="translate(170.724141, 53.656314)"><path style="stroke:none" d="M 3.53125 0 L 3.53125 -50.53125 L 13.921875 -50.53125 L 13.921875 0 Z M 3.53125 0 " /></g></g><g><g transform="translate(182.649812, 53.656314)"><path style="stroke:none" d="M 26.390625 -30.140625 L 38.375 -30.140625 L 14.6875 15.28125 L 2.703125 15.28125 L 13.109375 -4.703125 L -1.171875 -30.140625 L 10.8125 -30.140625 L 19.21875 -14.6875 Z M 26.390625 -30.140625 " /></g></g><g><g transform="translate(214.31719, 53.656314)"><path style="stroke:none" d="M 10.21875 -12.578125 C 12.101562 -12.578125 13.703125 -11.921875 15.015625 -10.609375 C 16.328125 -9.296875 16.984375 -7.695312 16.984375 -5.8125 C 16.984375 -3.976562 16.328125 -2.40625 15.015625 -1.09375 C 13.703125 0.21875 12.101562 0.875 10.21875 0.875 C 8.382812 0.875 6.8125 0.21875 5.5 -1.09375 C 4.1875 -2.40625 3.53125 -3.976562 3.53125 -5.8125 C 3.53125 -7.695312 4.1875 -9.296875 5.5 -10.609375 C 6.8125 -11.921875 8.382812 -12.578125 10.21875 -12.578125 Z M 10.21875 -12.578125 " /></g></g><g><g transform="translate(229.298129, 53.656314)"><path style="stroke:none" d="M 16.625 -31.03125 C 18.351562 -31.03125 20.054688 -30.832031 21.734375 -30.4375 C 23.421875 -30.050781 24.675781 -29.660156 25.5 -29.265625 L 26.734375 -28.671875 L 23.328125 -21.859375 C 20.972656 -23.109375 18.738281 -23.734375 16.625 -23.734375 C 15.457031 -23.734375 14.628906 -23.609375 14.140625 -23.359375 C 13.648438 -23.109375 13.40625 -22.628906 13.40625 -21.921875 C 13.40625 -21.765625 13.421875 -21.609375 13.453125 -21.453125 C 13.492188 -21.296875 13.570312 -21.144531 13.6875 -21 C 13.8125 -20.863281 13.921875 -20.75 14.015625 -20.65625 C 14.109375 -20.5625 14.273438 -20.453125 14.515625 -20.328125 C 14.753906 -20.210938 14.941406 -20.125 15.078125 -20.0625 C 15.210938 -20.007812 15.4375 -19.921875 15.75 -19.796875 C 16.0625 -19.679688 16.296875 -19.59375 16.453125 -19.53125 C 16.609375 -19.476562 16.875 -19.390625 17.25 -19.265625 C 17.625 -19.148438 17.90625 -19.078125 18.09375 -19.046875 C 19.3125 -18.691406 20.367188 -18.296875 21.265625 -17.859375 C 22.171875 -17.429688 23.125 -16.84375 24.125 -16.09375 C 25.125 -15.351562 25.894531 -14.414062 26.4375 -13.28125 C 26.988281 -12.144531 27.265625 -10.851562 27.265625 -9.40625 C 27.265625 -2.550781 22.503906 0.875 12.984375 0.875 C 10.828125 0.875 8.78125 0.546875 6.84375 -0.109375 C 4.90625 -0.773438 3.503906 -1.441406 2.640625 -2.109375 L 1.359375 -3.171875 L 5.578125 -10.28125 C 5.890625 -10.007812 6.300781 -9.6875 6.8125 -9.3125 C 7.320312 -8.9375 8.242188 -8.425781 9.578125 -7.78125 C 10.910156 -7.132812 12.066406 -6.8125 13.046875 -6.8125 C 15.203125 -6.8125 16.28125 -7.535156 16.28125 -8.984375 C 16.28125 -9.648438 16.003906 -10.171875 15.453125 -10.546875 C 14.898438 -10.921875 13.96875 -11.34375 12.65625 -11.8125 C 11.351562 -12.28125 10.328125 -12.710938 9.578125 -13.109375 C 7.703125 -14.085938 6.210938 -15.191406 5.109375 -16.421875 C 4.015625 -17.660156 3.46875 -19.296875 3.46875 -21.328125 C 3.46875 -24.390625 4.648438 -26.769531 7.015625 -28.46875 C 9.390625 -30.175781 12.59375 -31.03125 16.625 -31.03125 Z M 16.625 -31.03125 " /></g></g><g><g transform="translate(252.681044, 53.656314)"><path style="stroke:none" d="M 2.171875 7.40625 L 10.703125 3.234375 C 12.265625 5.816406 14.984375 7.109375 18.859375 7.109375 C 20.660156 7.109375 22.332031 6.53125 23.875 5.375 C 25.425781 4.21875 26.203125 2.445312 26.203125 0.0625 L 26.203125 -2.171875 C 24.367188 -0.140625 21.082031 0.875 16.34375 0.875 C 11.988281 0.875 8.398438 -0.660156 5.578125 -3.734375 C 2.765625 -6.804688 1.359375 -10.578125 1.359375 -15.046875 C 1.359375 -19.515625 2.765625 -23.296875 5.578125 -26.390625 C 8.398438 -29.484375 11.988281 -31.03125 16.34375 -31.03125 C 20.21875 -31.03125 23.445312 -29.832031 26.03125 -27.4375 L 26.203125 -27.4375 L 26.203125 -30.140625 L 36.609375 -30.140625 L 36.609375 0.828125 C 36.609375 5.722656 34.984375 9.5 31.734375 12.15625 C 28.484375 14.820312 24.191406 16.15625 18.859375 16.15625 C 10.242188 16.15625 4.679688 13.238281 2.171875 7.40625 Z M 14.421875 -20.15625 C 13.078125 -18.820312 12.40625 -17.113281 12.40625 -15.03125 C 12.40625 -12.957031 13.050781 -11.265625 14.34375 -9.953125 C 15.632812 -8.640625 17.335938 -7.984375 19.453125 -7.984375 C 21.484375 -7.984375 23.15625 -8.648438 24.46875 -9.984375 C 25.78125 -11.316406 26.4375 -13.003906 26.4375 -15.046875 C 26.4375 -17.117188 25.757812 -18.820312 24.40625 -20.15625 C 23.0625 -21.488281 21.410156 -22.15625 19.453125 -22.15625 C 17.453125 -22.15625 15.773438 -21.488281 14.421875 -20.15625 Z M 14.421875 -20.15625 " /></g></g></g><path style=" stroke:none;fill-rule:nonzero;fill:#ffffff;fill-opacity:1;" d="M 102.03125 54.558594 C 100.835938 54.558594 99.871094 55.53125 99.871094 56.730469 C 99.871094 57.929688 100.835938 58.902344 102.03125 58.902344 C 103.222656 58.902344 104.191406 57.929688 104.191406 56.730469 C 104.191406 55.53125 103.222656 54.558594 102.03125 54.558594 " /><g><path style=" stroke:none;fill-rule:nonzero;fill:#ffffff;fill-opacity:1;" d="M 110.21875 64.96875 C 110.023438 65.167969 109.761719 65.273438 109.492188 65.273438 C 109.378906 65.273438 109.265625 65.253906 109.15625 65.214844 L 98.679688 61.648438 C 97.953125 61.402344 97.371094 60.820312 97.128906 60.089844 L 93.589844 49.550781 C 93.460938 49.175781 93.558594 48.769531 93.839844 48.488281 C 94.121094 48.210938 94.527344 48.117188 94.902344 48.242188 L 105.378906 51.808594 C 106.105469 52.054688 106.6875 52.640625 106.933594 53.367188 L 110.472656 63.90625 C 110.597656 64.285156 110.5 64.691406 110.21875 64.96875 Z M 102.03125 40.339844 C 93.035156 40.339844 85.714844 47.691406 85.714844 56.730469 C 85.714844 65.765625 93.035156 73.117188 102.03125 73.117188 C 111.027344 73.117188 118.347656 65.765625 118.347656 56.730469 C 118.347656 47.691406 111.027344 40.339844 102.03125 40.339844 " /></g></g></a>
+                </div>
+                <div class="hidden md:flex items-center">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+                        <a href="certificate.html" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">My Certificate</a>
+                        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-20 pb-12 bg-gradient-to-br from-indigo-900 via-gray-900 to-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex justify-center mb-6">
+                    <div class="bg-indigo-600/20 p-4 rounded-full">
+                        <i class="fas fa-shield-alt text-4xl text-indigo-400"></i>
+                    </div>
+                </div>
+                <h1 class="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
+                    Quality Assurance Manual
+                </h1>
+                <p class="mt-4 max-w-3xl mx-auto text-xl text-indigo-200">
+                    Comprehensive quality management framework for Dronefly.sg UABTO operations
+                </p>
+                <div class="mt-6 flex flex-wrap justify-center gap-4 text-sm">
+                    <span class="quality-badge badge-info">
+                        <i class="fas fa-file-alt mr-2"></i>Version 1.0
+                    </span>
+                    <span class="quality-badge badge-low">
+                        <i class="fas fa-calendar mr-2"></i>Effective: August 2025
+                    </span>
+                    <span class="quality-badge badge-medium">
+                        <i class="fas fa-user-shield mr-2"></i>Approved by: Alan Soon
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="flex flex-col lg:flex-row gap-8">
+            
+            <!-- Navigation Sidebar -->
+            <aside class="lg:w-1/4">
+                <div class="section-nav bg-gray-800 rounded-2xl shadow-lg p-6">
+                    <h3 class="text-lg font-bold text-white mb-4">
+                        <i class="fas fa-list mr-2 text-indigo-400"></i>Table of Contents
+                    </h3>
+                    <nav class="space-y-1 text-sm">
+                        <a href="#section-1" class="block text-gray-400 hover:bg-gray-700 hover:text-white p-2 rounded-lg transition-colors">1. Introduction and Scope</a>
+                        <a href="#section-2" class="block text-gray-400 hover:bg-gray-700 hover:text-white p-2 rounded-lg transition-colors">2. Quality Policy and Objectives</a>
+                        <a href="#section-3" class="block text-gray-400 hover:bg-gray-700 hover:text-white p-2 rounded-lg transition-colors">3. Organizational Structure</a>
+                        <a href="#section-4" class="block text-gray-400 hover:bg-gray-700 hover:text-white p-2 rounded-lg transition-colors">4. Training Program Standards</a>
+                        <a href="#section-5" class="block text-gray-400 hover:bg-gray-700 hover:text-white p-2 rounded-lg transition-colors">5. Course Content QA</a>
+                        <a href="#section-6" class="block text-gray-400 hover:bg-gray-700 hover:text-white p-2 rounded-lg transition-colors">6. Assessment & Certification</a>
+                        <a href="#section-7" class="block text-gray-400 hover:bg-gray-700 hover:text-white p-2 rounded-lg transition-colors">7. Personnel Standards</a>
+                        <a href="#section-8" class="block text-gray-400 hover:bg-gray-700 hover:text-white p-2 rounded-lg transition-colors">8. Student Services</a>
+                        <a href="#section-9" class="block text-gray-400 hover:bg-gray-700 hover:text-white p-2 rounded-lg transition-colors">9. Continuous Improvement</a>
+                        <a href="#section-10" class="block text-gray-400 hover:bg-gray-700 hover:text-white p-2 rounded-lg transition-colors">10. Compliance Monitoring</a>
+                        <a href="#section-11" class="block text-gray-400 hover:bg-gray-700 hover:text-white p-2 rounded-lg transition-colors">11. Document Control</a>
+                        <a href="#section-12" class="block text-gray-400 hover:bg-gray-700 hover:text-white p-2 rounded-lg transition-colors">12. Emergency Procedures</a>
+                        <a href="#appendices" class="block text-gray-400 hover:bg-gray-700 hover:text-white p-2 rounded-lg transition-colors">Appendices</a>
+                    </nav>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="lg:w-3/4 space-y-12">
+
+                <!-- Section 1: Introduction and Scope -->
+                <section id="section-1" class="bg-gray-800 rounded-2xl shadow-lg p-8 card-hover-effect">
+                    <h2 class="text-3xl font-bold text-white mb-6">
+                        <i class="fas fa-info-circle mr-3 text-indigo-400"></i>1. Introduction and Scope
+                    </h2>
+                    
+                    <div class="prose prose-invert max-w-none">
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">1.1 Purpose</h3>
+                        <p class="text-gray-300 mb-6">This Quality Assurance Manual establishes the comprehensive framework for maintaining and continuously improving the quality of training services provided by Dronefly.sg as an Unmanned Aircraft Basic Training Organisation (UABTO). It serves as the foundational document that guides all quality-related activities, ensuring compliance with regulatory requirements and delivering exceptional educational outcomes.</p>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">1.2 Scope</h3>
+                        <p class="text-gray-300 mb-4">This manual applies to all aspects of UABTO operations, including:</p>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2 mb-6">
+                            <li>Course development and content creation</li>
+                            <li>Instructional delivery and student assessment</li>
+                            <li>Certification processes and record keeping</li>
+                            <li>Personnel management and development</li>
+                            <li>Student services and support systems</li>
+                            <li>Compliance monitoring and regulatory adherence</li>
+                            <li>Continuous improvement initiatives</li>
+                        </ul>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">1.3 Regulatory Framework</h3>
+                        <p class="text-gray-300 mb-4">This manual is developed in accordance with:</p>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2 mb-6">
+                            <li>CAAS Advisory Circular AC 101-3-1(4) - Approvals for Unmanned Aircraft Training</li>
+                            <li>Singapore Air Navigation Act and associated regulations</li>
+                            <li>International best practices for aviation training organizations</li>
+                            <li>ISO 9001:2015 Quality Management Systems principles</li>
+                        </ul>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">1.4 Quality Management Philosophy</h3>
+                        <p class="text-gray-300">Our quality management approach is built on the Plan-Do-Check-Act (PDCA) cycle, emphasizing continuous improvement, risk-based thinking, and student-centered service delivery. We are committed to exceeding regulatory requirements while maintaining operational efficiency and educational excellence.</p>
+                    </div>
+                </section>
+
+                <!-- Section 2: Quality Policy and Objectives -->
+                <section id="section-2" class="bg-gray-800 rounded-2xl shadow-lg p-8 card-hover-effect">
+                    <h2 class="text-3xl font-bold text-white mb-6">
+                        <i class="fas fa-bullseye mr-3 text-indigo-400"></i>2. Quality Policy and Objectives
+                    </h2>
+                    
+                    <div class="prose prose-invert max-w-none">
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">2.1 Quality Policy Statement</h3>
+                        <div class="bg-indigo-900/30 border-l-4 border-indigo-400 p-6 mb-6">
+                            <p class="text-gray-200 italic text-lg leading-relaxed">
+                                "Dronefly.sg is committed to delivering world-class unmanned aircraft training that exceeds regulatory standards, empowers safe and responsible drone operations, and contributes to the advancement of Singapore's aviation industry. We achieve this through continuous improvement, innovation in educational delivery, and an unwavering focus on student success."
+                            </p>
+                            <p class="text-gray-400 mt-4 text-right">— Alan Soon, Accountable Manager</p>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">2.2 Quality Objectives</h3>
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div class="metric-card rounded-lg p-6">
+                                <h4 class="text-lg font-semibold text-white mb-3">
+                                    <i class="fas fa-graduation-cap mr-2 text-green-400"></i>Student Success
+                                </h4>
+                                <ul class="text-gray-300 space-y-2 text-sm">
+                                    <li>• Achieve ≥95% first-attempt pass rate</li>
+                                    <li>• Maintain ≥4.5/5.0 student satisfaction</li>
+                                    <li>• Complete course delivery within 2 hours</li>
+                                </ul>
+                            </div>
+                            <div class="metric-card rounded-lg p-6">
+                                <h4 class="text-lg font-semibold text-white mb-3">
+                                    <i class="fas fa-shield-check mr-2 text-blue-400"></i>Regulatory Compliance
+                                </h4>
+                                <ul class="text-gray-300 space-y-2 text-sm">
+                                    <li>• 100% compliance with CAAS requirements</li>
+                                    <li>• Zero non-conformities in audits</li>
+                                    <li>• Annual regulatory review completion</li>
+                                </ul>
+                            </div>
+                            <div class="metric-card rounded-lg p-6">
+                                <h4 class="text-lg font-semibold text-white mb-3">
+                                    <i class="fas fa-chart-line mr-2 text-purple-400"></i>Operational Excellence
+                                </h4>
+                                <ul class="text-gray-300 space-y-2 text-sm">
+                                    <li>• 99.9% system uptime</li>
+                                    <li>• <24 hour response to inquiries</li>
+                                    <li>• Quarterly process improvements</li>
+                                </ul>
+                            </div>
+                            <div class="metric-card rounded-lg p-6">
+                                <h4 class="text-lg font-semibold text-white mb-3">
+                                    <i class="fas fa-users mr-2 text-orange-400"></i>Stakeholder Engagement
+                                </h4>
+                                <ul class="text-gray-300 space-y-2 text-sm">
+                                    <li>• Regular industry consultation</li>
+                                    <li>• Continuous curriculum updates</li>
+                                    <li>• Community feedback integration</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">2.3 Quality Commitment</h3>
+                        <p class="text-gray-300">All personnel are committed to understanding and implementing this quality policy. Regular reviews ensure our objectives remain relevant and achievable, driving continuous improvement across all organizational levels.</p>
+                    </div>
+                </section>
+
+                <!-- Section 3: Organizational Structure and Responsibilities -->
+                <section id="section-3" class="bg-gray-800 rounded-2xl shadow-lg p-8 card-hover-effect">
+                    <h2 class="text-3xl font-bold text-white mb-6">
+                        <i class="fas fa-sitemap mr-3 text-indigo-400"></i>3. Organizational Structure and Responsibilities
+                    </h2>
+                    
+                    <div class="prose prose-invert max-w-none">
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">3.1 Organizational Chart</h3>
+                        <div class="bg-gray-700 rounded-lg p-6 mb-6">
+                            <div class="text-center">
+                                <div class="bg-indigo-600 text-white p-4 rounded-lg inline-block mb-4">
+                                    <i class="fas fa-user-shield text-2xl mb-2"></i>
+                                    <div class="font-bold">Accountable Manager</div>
+                                    <div class="text-sm">Alan Soon</div>
+                                </div>
+                                <div class="w-px h-8 bg-gray-500 mx-auto"></div>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                                    <div class="bg-gray-600 text-white p-3 rounded-lg">
+                                        <i class="fas fa-code text-lg mb-2"></i>
+                                        <div class="font-semibold text-sm">Technical Support</div>
+                                        <div class="text-xs text-gray-300">(External Contractor)</div>
+                                    </div>
+                                    <div class="bg-gray-600 text-white p-3 rounded-lg">
+                                        <i class="fas fa-book-open text-lg mb-2"></i>
+                                        <div class="font-semibold text-sm">Curriculum Review</div>
+                                        <div class="text-xs text-gray-300">(External Consultant)</div>
+                                    </div>
+                                    <div class="bg-gray-600 text-white p-3 rounded-lg">
+                                        <i class="fas fa-clipboard-check text-lg mb-2"></i>
+                                        <div class="font-semibold text-sm">Quality Assurance</div>
+                                        <div class="text-xs text-gray-300">(External Auditor)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">3.2 Key Roles and Responsibilities</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="bg-gray-700 rounded-lg p-6">
+                                <h4 class="text-lg font-semibold text-white mb-3">
+                                    <i class="fas fa-user-shield mr-2 text-indigo-400"></i>Accountable Manager (Alan Soon)
+                                </h4>
+                                <ul class="text-gray-300 space-y-2">
+                                    <li>• Overall responsibility for UABTO operations and compliance</li>
+                                    <li>• Quality policy development and implementation</li>
+                                    <li>• Resource allocation and strategic planning</li>
+                                    <li>• Regulatory liaison and reporting</li>
+                                    <li>• Final authority on quality-related decisions</li>
+                                    <li>• Management review and continuous improvement oversight</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-gray-700 rounded-lg p-6">
+                                <h4 class="text-lg font-semibold text-white mb-3">
+                                    <i class="fas fa-code mr-2 text-blue-400"></i>Technical Support (External Contractor)
+                                </h4>
+                                <ul class="text-gray-300 space-y-2">
+                                    <li>• Learning management system maintenance and security</li>
+                                    <li>• Platform performance monitoring and optimization</li>
+                                    <li>• Data backup and recovery procedures</li>
+                                    <li>• Technical compliance with PDPA and IM8 standards</li>
+                                    <li>• System updates and security patches</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-gray-700 rounded-lg p-6">
+                                <h4 class="text-lg font-semibold text-white mb-3">
+                                    <i class="fas fa-book-open mr-2 text-green-400"></i>Curriculum Review Specialist (External Consultant)
+                                </h4>
+                                <ul class="text-gray-300 space-y-2">
+                                    <li>• Annual curriculum content review and updates</li>
+                                    <li>• Regulatory compliance verification</li>
+                                    <li>• Industry best practice integration</li>
+                                    <li>• Learning objective assessment and refinement</li>
+                                    <li>• Subject matter expertise consultation</li>
+                                </ul>
+                            </div>
+
+                            <div class="bg-gray-700 rounded-lg p-6">
+                                <h4 class="text-lg font-semibold text-white mb-3">
+                                    <i class="fas fa-clipboard-check mr-2 text-purple-400"></i>Quality Assurance Auditor (External)</h4>
+                                <ul class="text-gray-300 space-y-2">
+                                    <li>• Independent annual quality audits</li>
+                                    <li>• Compliance verification and reporting</li>
+                                    <li>• Process effectiveness evaluation</li>
+                                    <li>• Corrective action recommendations</li>
+                                    <li>• Best practice identification and sharing</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4 mt-8">3.3 Authority and Communication</h3>
+                        <p class="text-gray-300 mb-4">Clear lines of authority and communication are established to ensure effective quality management:</p>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2">
+                            <li>The Accountable Manager has ultimate authority for all quality decisions</li>
+                            <li>External specialists report directly to the Accountable Manager</li>
+                            <li>Regular communication protocols ensure timely information flow</li>
+                            <li>Emergency escalation procedures are clearly defined</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 4: Training Program Quality Standards -->
+                <section id="section-4" class="bg-gray-800 rounded-2xl shadow-lg p-8 card-hover-effect">
+                    <h2 class="text-3xl font-bold text-white mb-6">
+                        <i class="fas fa-chalkboard-teacher mr-3 text-indigo-400"></i>4. Training Program Quality Standards
+                    </h2>
+                    
+                    <div class="prose prose-invert max-w-none">
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">4.1 Program Design Principles</h3>
+                        <p class="text-gray-300 mb-4">Our training programs are designed according to established educational principles:</p>
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="font-semibold text-white mb-2">
+                                    <i class="fas fa-target mr-2 text-green-400"></i>Learning-Centered Design
+                                </h4>
+                                <p class="text-gray-300 text-sm">Programs focus on measurable learning outcomes and competency development</p>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="font-semibold text-white mb-2">
+                                    <i class="fas fa-layer-group mr-2 text-blue-400"></i>Progressive Structure
+                                </h4>
+                                <p class="text-gray-300 text-sm">Content builds systematically from basic concepts to advanced applications</p>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="font-semibold text-white mb-2">
+                                    <i class="fas fa-users mr-2 text-purple-400"></i>Inclusive Accessibility
+                                </h4>
+                                <p class="text-gray-300 text-sm">Materials accommodate diverse learning styles and accessibility needs</p>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="font-semibold text-white mb-2">
+                                    <i class="fas fa-sync-alt mr-2 text-orange-400"></i>Continuous Updates
+                                </h4>
+                                <p class="text-gray-300 text-sm">Regular content reviews ensure currency and regulatory compliance</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">4.2 Learning Objectives Framework</h3>
+                        <p class="text-gray-300 mb-4">All training modules include clearly defined learning objectives that are:</p>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2 mb-6">
+                            <li><strong>Specific:</strong> Clearly defined and unambiguous</li>
+                            <li><strong>Measurable:</strong> Quantifiable through assessment</li>
+                            <li><strong>Achievable:</strong> Realistic within the course timeframe</li>
+                            <li><strong>Relevant:</strong> Directly applicable to safe drone operations</li>
+                            <li><strong>Time-bound:</strong> Accomplished within the 2-hour course duration</li>
+                        </ul>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">4.3 Quality Standards Matrix</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full bg-gray-700 rounded-lg overflow-hidden">
+                                <thead class="bg-gray-600">
+                                    <tr>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Quality Aspect</th>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Standard</th>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Measurement</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-gray-300">
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Content Accuracy</td>
+                                        <td class="px-4 py-3">100% regulatory compliance</td>
+                                        <td class="px-4 py-3">Annual expert review</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Learning Effectiveness</td>
+                                        <td class="px-4 py-3">≥95% pass rate</td>
+                                        <td class="px-4 py-3">Assessment analytics</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">User Experience</td>
+                                        <td class="px-4 py-3">≥4.5/5.0 satisfaction</td>
+                                        <td class="px-4 py-3">Student feedback surveys</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Technical Performance</td>
+                                        <td class="px-4 py-3">99.9% uptime</td>
+                                        <td class="px-4 py-3">System monitoring</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Response Time</td>
+                                        <td class="px-4 py-3"><24 hours</td>
+                                        <td class="px-4 py-3">Support ticket tracking</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 5: Course Content Quality Assurance -->
+                <section id="section-5" class="bg-gray-800 rounded-2xl shadow-lg p-8 card-hover-effect">
+                    <h2 class="text-3xl font-bold text-white mb-6">
+                        <i class="fas fa-book mr-3 text-indigo-400"></i>5. Course Content Quality Assurance
+                    </h2>
+                    
+                    <div class="prose prose-invert max-w-none">
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">5.1 Content Development Process</h3>
+                        <div class="bg-gray-700 rounded-lg p-6 mb-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center space-x-4">
+                                    <div class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">1</div>
+                                    <span class="text-white font-semibold">Research & Analysis</span>
+                                </div>
+                                <i class="fas fa-arrow-right text-gray-400"></i>
+                            </div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center space-x-4">
+                                    <div class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">2</div>
+                                    <span class="text-white font-semibold">Content Creation</span>
+                                </div>
+                                <i class="fas fa-arrow-right text-gray-400"></i>
+                            </div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center space-x-4">
+                                    <div class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">3</div>
+                                    <span class="text-white font-semibold">Expert Review</span>
+                                </div>
+                                <i class="fas fa-arrow-right text-gray-400"></i>
+                            </div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center space-x-4">
+                                    <div class="bg-indigo-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">4</div>
+                                    <span class="text-white font-semibold">Testing & Validation</span>
+                                </div>
+                                <i class="fas fa-arrow-right text-gray-400"></i>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="flex items-center space-x-4">
+                                    <div class="bg-green-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">5</div>
+                                    <span class="text-white font-semibold">Publication & Monitoring</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">5.2 Content Review Criteria</h3>
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div class="space-y-4">
+                                <div class="bg-gray-700 rounded-lg p-4">
+                                    <h4 class="font-semibold text-white mb-2">
+                                        <i class="fas fa-gavel mr-2 text-red-400"></i>Regulatory Compliance
+                                    </h4>
+                                    <ul class="text-gray-300 text-sm space-y-1">
+                                        <li>• CAAS AC 101-3-1(4) alignment</li>
+                                        <li>• Current regulation references</li>
+                                        <li>• Legal requirement accuracy</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-700 rounded-lg p-4">
+                                    <h4 class="font-semibold text-white mb-2">
+                                        <i class="fas fa-brain mr-2 text-blue-400"></i>Educational Effectiveness
+                                    </h4>
+                                    <ul class="text-gray-300 text-sm space-y-1">
+                                        <li>• Clear learning progression</li>
+                                        <li>• Appropriate difficulty level</li>
+                                        <li>• Engaging presentation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="bg-gray-700 rounded-lg p-4">
+                                    <h4 class="font-semibold text-white mb-2">
+                                        <i class="fas fa-check-circle mr-2 text-green-400"></i>Technical Accuracy
+                                    </h4>
+                                    <ul class="text-gray-300 text-sm space-y-1">
+                                        <li>• Factual correctness</li>
+                                        <li>• Current industry practices</li>
+                                        <li>• Technology updates</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-700 rounded-lg p-4">
+                                    <h4 class="font-semibold text-white mb-2">
+                                        <i class="fas fa-universal-access mr-2 text-purple-400"></i>Accessibility
+                                    </h4>
+                                    <ul class="text-gray-300 text-sm space-y-1">
+                                        <li>• WCAG 2.1 compliance</li>
+                                        <li>• Multiple learning styles</li>
+                                        <li>• Language clarity</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">5.3 Version Control and Updates</h3>
+                        <p class="text-gray-300 mb-4">All course content follows strict version control procedures:</p>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2">
+                            <li>Quarterly content reviews for regulatory changes</li>
+                            <li>Annual comprehensive curriculum updates</li>
+                            <li>Emergency updates for critical safety information</li>
+                            <li>Change documentation and approval workflows</li>
+                            <li>Student notification of significant updates</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 6: Assessment and Certification Quality -->
+                <section id="section-6" class="bg-gray-800 rounded-2xl shadow-lg p-8 card-hover-effect">
+                    <h2 class="text-3xl font-bold text-white mb-6">
+                        <i class="fas fa-certificate mr-3 text-indigo-400"></i>6. Assessment and Certification Quality
+                    </h2>
+                    
+                    <div class="prose prose-invert max-w-none">
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">6.1 Assessment Framework</h3>
+                        <p class="text-gray-300 mb-6">Our assessment system ensures fair, valid, and reliable evaluation of student competency through multiple assessment methods and rigorous quality controls.</p>
+
+                        <div class="grid md:grid-cols-3 gap-6 mb-6">
+                            <div class="bg-gray-700 rounded-lg p-6 text-center">
+                                <i class="fas fa-question-circle text-3xl text-blue-400 mb-3"></i>
+                                <h4 class="font-semibold text-white mb-2">Knowledge Assessment</h4>
+                                <p class="text-gray-300 text-sm">Multiple-choice questions testing regulatory knowledge and safety principles</p>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-6 text-center">
+                                <i class="fas fa-lightbulb text-3xl text-yellow-400 mb-3"></i>
+                                <h4 class="font-semibold text-white mb-2">Comprehension Evaluation</h4>
+                                <p class="text-gray-300 text-sm">Scenario-based questions testing understanding and application</p>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-6 text-center">
+                                <i class="fas fa-cogs text-3xl text-green-400 mb-3"></i>
+                                <h4 class="font-semibold text-white mb-2">Practical Application</h4>
+                                <p class="text-gray-300 text-sm">Case studies demonstrating real-world problem-solving abilities</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">6.2 Assessment Quality Standards</h3>
+                        <div class="overflow-x-auto mb-6">
+                            <table class="w-full bg-gray-700 rounded-lg overflow-hidden">
+                                <thead class="bg-gray-600">
+                                    <tr>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Quality Metric</th>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Target</th>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Monitoring Method</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-gray-300">
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Question Validity</td>
+                                        <td class="px-4 py-3">100% alignment with learning objectives</td>
+                                        <td class="px-4 py-3">Expert review and validation</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Assessment Reliability</td>
+                                        <td class="px-4 py-3">Cronbach's α ≥ 0.8</td>
+                                        <td class="px-4 py-3">Statistical analysis</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Pass Rate</td>
+                                        <td class="px-4 py-3">≥95% first attempt</td>
+                                        <td class="px-4 py-3">Performance analytics</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Question Discrimination</td>
+                                        <td class="px-4 py-3">Index ≥ 0.3</td>
+                                        <td class="px-4 py-3">Item analysis</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Completion Time</td>
+                                        <td class="px-4 py-3">15-20 minutes average</td>
+                                        <td class="px-4 py-3">System tracking</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">6.3 Certification Process</h3>
+                        <div class="bg-gray-700 rounded-lg p-6 mb-6">
+                            <h4 class="font-semibold text-white mb-4">Certification Workflow</h4>
+                            <div class="space-y-4">
+                                <div class="flex items-center space-x-4">
+                                    <div class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                                    <div>
+                                        <p class="text-white font-medium">Course Completion Verification</p>
+                                        <p class="text-gray-400 text-sm">System confirms all modules completed</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                                    <div>
+                                        <p class="text-white font-medium">Assessment Completion</p>
+                                        <p class="text-gray-400 text-sm">Minimum 75% score required for pass</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                                    <div>
+                                        <p class="text-white font-medium">Identity Verification</p>
+                                        <p class="text-gray-400 text-sm">Student identity confirmed through secure login</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="bg-green-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">4</div>
+                                    <div>
+                                        <p class="text-white font-medium">Certificate Generation</p>
+                                        <p class="text-gray-400 text-sm">Automated certificate creation with unique ID</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">6.4 Certificate Security Features</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="font-semibold text-white mb-2">
+                                    <i class="fas fa-shield-alt mr-2 text-green-400"></i>Digital Security
+                                </h4>
+                                <ul class="text-gray-300 text-sm space-y-1">
+                                    <li>• Unique certificate ID</li>
+                                    <li>• Digital signature verification</li>
+                                    <li>• Tamper-evident design</li>
+                                    <li>• Blockchain verification (planned)</li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="font-semibold text-white mb-2">
+                                    <i class="fas fa-database mr-2 text-blue-400"></i>Record Keeping
+                                </h4>
+                                <ul class="text-gray-300 text-sm space-y-1">
+                                    <li>• Permanent digital archive</li>
+                                    <li>• CAAS reporting integration</li>
+                                    <li>• Audit trail maintenance</li>
+                                    <li>• Backup and recovery systems</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 7: Instructor and Personnel Standards -->
+                <section id="section-7" class="bg-gray-800 rounded-2xl shadow-lg p-8 card-hover-effect">
+                    <h2 class="text-3xl font-bold text-white mb-6">
+                        <i class="fas fa-user-graduate mr-3 text-indigo-400"></i>7. Instructor and Personnel Standards
+                    </h2>
+                    
+                    <div class="prose prose-invert max-w-none">
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">7.1 Personnel Qualifications</h3>
+                        <p class="text-gray-300 mb-6">All personnel involved in UABTO operations must meet specific qualification requirements to ensure competent and professional service delivery.</p>
+
+                        <div class="space-y-6">
+                            <div class="bg-gray-700 rounded-lg p-6">
+                                <h4 class="text-lg font-semibold text-white mb-4">
+                                    <i class="fas fa-user-shield mr-2 text-indigo-400"></i>Accountable Manager Requirements
+                                </h4>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h5 class="font-semibold text-white mb-2">Minimum Qualifications</h5>
+                                        <ul class="text-gray-300 text-sm space-y-1">
+                                            <li>• Valid UABT certificate</li>
+                                            <li>• Aviation industry experience</li>
+                                            <li>• Management experience</li>
+                                            <li>• Regulatory knowledge</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-white mb-2">Ongoing Requirements</h5>
+                                        <ul class="text-gray-300 text-sm space-y-1">
+                                            <li>• Annual regulatory updates</li>
+                                            <li>• Continuous professional development</li>
+                                            <li>• Industry engagement</li>
+                                            <li>• Quality management training</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-700 rounded-lg p-6">
+                                <h4 class="text-lg font-semibold text-white mb-4">
+                                    <i class="fas fa-book-open mr-2 text-green-400"></i>Curriculum Specialist Requirements
+                                </h4>
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h5 class="font-semibold text-white mb-2">Technical Expertise</h5>
+                                        <ul class="text-gray-300 text-sm space-y-1">
+                                            <li>• Subject matter expertise in UAS</li>
+                                            <li>• Current industry knowledge</li>
+                                            <li>• Regulatory compliance experience</li>
+                                            <li>• Educational design background</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-white mb-2">Professional Standards</h5>
+                                        <ul class="text-gray-300 text-sm space-y-1">
+                                            <li>• Professional certification</li>
+                                            <li>• Continuing education</li>
+                                            <li>• Industry networking</li>
+                                            <li>• Quality assurance training</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4 mt-8">7.2 Performance Standards</h3>
+                        <div class="overflow-x-auto mb-6">
+                            <table class="w-full bg-gray-700 rounded-lg overflow-hidden">
+                                <thead class="bg-gray-600">
+                                    <tr>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Role</th>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Key Performance Indicators</th>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Review Frequency</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-gray-300">
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Accountable Manager</td>
+                                        <td class="px-4 py-3">Regulatory compliance, quality metrics, stakeholder satisfaction</td>
+                                        <td class="px-4 py-3">Quarterly</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Curriculum Specialist</td>
+                                        <td class="px-4 py-3">Content accuracy, update timeliness, expert feedback</td>
+                                        <td class="px-4 py-3">Annually</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Technical Support</td>
+                                        <td class="px-4 py-3">System uptime, response time, security compliance</td>
+                                        <td class="px-4 py-3">Monthly</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">QA Auditor</td>
+                                        <td class="px-4 py-3">Audit thoroughness, finding accuracy, improvement recommendations</td>
+                                        <td class="px-4 py-3">Annually</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">7.3 Professional Development</h3>
+                        <p class="text-gray-300 mb-4">Continuous professional development ensures personnel maintain current knowledge and skills:</p>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2">
+                            <li>Annual training requirements for all personnel</li>
+                            <li>Industry conference participation</li>
+                            <li>Professional certification maintenance</li>
+                            <li>Knowledge sharing and best practice exchange</li>
+                            <li>Regular performance reviews and feedback</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Section 8: Student Services and Support -->
+                <section id="section-8" class="bg-gray-800 rounded-2xl shadow-lg p-8 card-hover-effect">
+                    <h2 class="text-3xl font-bold text-white mb-6">
+                        <i class="fas fa-users mr-3 text-indigo-400"></i>8. Student Services and Support
+                    </h2>
+                    
+                    <div class="prose prose-invert max-w-none">
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">8.1 Student-Centered Approach</h3>
+                        <p class="text-gray-300 mb-6">Our student services are designed to provide comprehensive support throughout the learning journey, ensuring accessibility, engagement, and successful outcomes for all learners.</p>
+
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div class="bg-gray-700 rounded-lg p-6">
+                                <h4 class="font-semibold text-white mb-3">
+                                    <i class="fas fa-headset mr-2 text-blue-400"></i>Technical Support
+                                </h4>
+                                <ul class="text-gray-300 text-sm space-y-2">
+                                    <li>• 24/7 online help system</li>
+                                    <li>• Email support within 24 hours</li>
+                                    <li>• Technical troubleshooting guides</li>
+                                    <li>• System compatibility assistance</li>
+                                    <li>• Accessibility support</li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-6">
+                                <h4 class="font-semibold text-white mb-3">
+                                    <i class="fas fa-graduation-cap mr-2 text-green-400"></i>Academic Support
+                                </h4>
+                                <ul class="text-gray-300 text-sm space-y-2">
+                                    <li>• Learning resource library</li>
+                                    <li>• Additional practice materials</li>
+                                    <li>• Progress tracking tools</li>
+                                    <li>• Remedial learning paths</li>
+                                    <li>• Certificate verification service</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">8.2 Accessibility and Inclusion</h3>
+                        <div class="bg-gray-700 rounded-lg p-6 mb-6">
+                            <h4 class="font-semibold text-white mb-4">Universal Design Principles</h4>
+                            <div class="grid md:grid-cols-3 gap-4">
+                                <div class="text-center">
+                                    <i class="fas fa-universal-access text-2xl text-purple-400 mb-2"></i>
+                                    <h5 class="font-semibold text-white text-sm">WCAG 2.1 AA</h5>
+                                    <p class="text-gray-400 text-xs">Web accessibility compliance</p>
+                                </div>
+                                <div class="text-center">
+                                    <i class="fas fa-language text-2xl text-orange-400 mb-2"></i>
+                                    <h5 class="font-semibold text-white text-sm">Multi-Language</h5>
+                                    <p class="text-gray-400 text-xs">English and simplified Chinese</p>
+                                </div>
+                                <div class="text-center">
+                                    <i class="fas fa-mobile-alt text-2xl text-blue-400 mb-2"></i>
+                                    <h5 class="font-semibold text-white text-sm">Responsive Design</h5>
+                                    <p class="text-gray-400 text-xs">All devices supported</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">8.3 Student Feedback System</h3>
+                        <div class="space-y-4">
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="font-semibold text-white mb-2">
+                                    <i class="fas fa-star mr-2 text-yellow-400"></i>Course Evaluation
+                                </h4>
+                                <p class="text-gray-300 text-sm">Post-completion survey covering content quality, user experience, and learning effectiveness</p>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="font-semibold text-white mb-2">
+                                    <i class="fas fa-comments mr-2 text-green-400"></i>Continuous Feedback
+                                </h4>
+                                <p class="text-gray-300 text-sm">Ongoing feedback collection through support interactions and user behavior analytics</p>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="font-semibold text-white mb-2">
+                                    <i class="fas fa-chart-line mr-2 text-blue-400"></i>Improvement Integration
+                                </h4>
+                                <p class="text-gray-300 text-sm">Regular analysis and integration of feedback into service improvements and course updates</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4 mt-8">8.4 Service Level Agreements</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full bg-gray-700 rounded-lg overflow-hidden">
+                                <thead class="bg-gray-600">
+                                    <tr>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Service</th>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Standard</th>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Measurement</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-gray-300">
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Email Response</td>
+                                        <td class="px-4 py-3">Within 24 hours</td>
+                                        <td class="px-4 py-3">Support ticket tracking</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">System Availability</td>
+                                        <td class="px-4 py-3">99.9% uptime</td>
+                                        <td class="px-4 py-3">Automated monitoring</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Certificate Delivery</td>
+                                        <td class="px-4 py-3">Immediate upon completion</td>
+                                        <td class="px-4 py-3">System automation</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Issue Resolution</td>
+                                        <td class="px-4 py-3">95% within 48 hours</td>
+                                        <td class="px-4 py-3">Resolution tracking</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 9: Continuous Improvement Process -->
+                <section id="section-9" class="bg-gray-800 rounded-2xl shadow-lg p-8 card-hover-effect">
+                    <h2 class="text-3xl font-bold text-white mb-6">
+                        <i class="fas fa-sync-alt mr-3 text-indigo-400"></i>9. Continuous Improvement Process
+                    </h2>
+                    
+                    <div class="prose prose-invert max-w-none">
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">9.1 PDCA Cycle Implementation</h3>
+                        <p class="text-gray-300 mb-6">Our continuous improvement process follows the Plan-Do-Check-Act (PDCA) cycle, ensuring systematic and sustainable enhancement of all UABTO operations.</p>
+
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div class="bg-gradient-to-br from-blue-900 to-blue-800 rounded-lg p-6">
+                                <h4 class="font-semibold text-white mb-3">
+                                    <i class="fas fa-clipboard-list mr-2 text-blue-300"></i>PLAN
+                                </h4>
+                                <ul class="text-blue-100 text-sm space-y-2">
+                                    <li>• Identify improvement opportunities</li>
+                                    <li>• Set measurable objectives</li>
+                                    <li>• Develop action plans</li>
+                                    <li>• Allocate resources</li>
+                                </ul>
+                            </div>
+                            <div class="bg-gradient-to-br from-green-900 to-green-800 rounded-lg p-6">
+                                <h4 class="font-semibold text-white mb-3">
+                                    <i class="fas fa-play mr-2 text-green-300"></i>DO
+                                </h4>
+                                <ul class="text-green-100 text-sm space-y-2">
+                                    <li>• Implement planned changes</li>
+                                    <li>• Execute improvement initiatives</li>
+                                    <li>• Document implementation process</li>
+                                    <li>• Collect performance data</li>
+                                </ul>
+                            </div>
+                            <div class="bg-gradient-to-br from-orange-900 to-orange-800 rounded-lg p-6">
+                                <h4 class="font-semibold text-white mb-3">
+                                    <i class="fas fa-search mr-2 text-orange-300"></i>CHECK
+                                </h4>
+                                <ul class="text-orange-100 text-sm space-y-2">
+                                    <li>• Monitor results and performance</li>
+                                    <li>• Compare against objectives</li>
+                                    <li>• Analyze effectiveness</li>
+                                    <li>• Identify lessons learned</li>
+                                </ul>
+                            </div>
+                            <div class="bg-gradient-to-br from-purple-900 to-purple-800 rounded-lg p-6">
+                                <h4 class="font-semibold text-white mb-3">
+                                    <i class="fas fa-rocket mr-2 text-purple-300"></i>ACT
+                                </h4>
+                                <ul class="text-purple-100 text-sm space-y-2">
+                                    <li>• Standardize successful changes</li>
+                                    <li>• Adjust unsuccessful initiatives</li>
+                                    <li>• Update procedures and training</li>
+                                    <li>• Plan next improvement cycle</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">9.2 Improvement Data Sources</h3>
+                        <div class="space-y-4 mb-6">
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="font-semibold text-white mb-2">
+                                    <i class="fas fa-chart-bar mr-2 text-blue-400"></i>Performance Metrics
+                                </h4>
+                                <p class="text-gray-300 text-sm">KPI tracking, system analytics, completion rates, and quality indicators</p>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="font-semibold text-white mb-2">
+                                    <i class="fas fa-users mr-2 text-green-400"></i>Stakeholder Feedback
+                                </h4>
+                                <p class="text-gray-300 text-sm">Student evaluations, industry input, regulatory guidance, and partner feedback</p>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="font-semibold text-white mb-2">
+                                    <i class="fas fa-clipboard-check mr-2 text-purple-400"></i>Audit Findings
+                                </h4>
+                                <p class="text-gray-300 text-sm">Internal reviews, external audits, compliance assessments, and best practice benchmarking</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">9.3 Improvement Implementation</h3>
+                        <div class="bg-gray-700 rounded-lg p-6">
+                            <h4 class="font-semibold text-white mb-4">Improvement Process Workflow</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center space-x-4">
+                                    <div class="bg-indigo-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs">1</div>
+                                    <span class="text-gray-300">Opportunity identification and prioritization</span>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="bg-indigo-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs">2</div>
+                                    <span class="text-gray-300">Impact assessment and resource planning</span>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="bg-indigo-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs">3</div>
+                                    <span class="text-gray-300">Stakeholder consultation and approval</span>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="bg-indigo-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs">4</div>
+                                    <span class="text-gray-300">Implementation planning and execution</span>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="bg-indigo-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs">5</div>
+                                    <span class="text-gray-300">Monitoring and effectiveness evaluation</span>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="bg-green-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs">6</div>
+                                    <span class="text-gray-300">Standardization and knowledge sharing</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 10: Compliance Monitoring and Auditing -->
+                <section id="section-10" class="bg-gray-800 rounded-2xl shadow-lg p-8 card-hover-effect">
+                    <h2 class="text-3xl font-bold text-white mb-6">
+                        <i class="fas fa-search mr-3 text-indigo-400"></i>10. Compliance Monitoring and Auditing
+                    </h2>
+                    
+                    <div class="prose prose-invert max-w-none">
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">10.1 Compliance Framework</h3>
+                        <p class="text-gray-300 mb-6">Our compliance monitoring system ensures continuous adherence to regulatory requirements and internal quality standards through systematic monitoring, regular audits, and proactive corrective actions.</p>
+
+                        <div class="grid md:grid-cols-3 gap-6 mb-6">
+                            <div class="bg-gray-700 rounded-lg p-6 text-center">
+                                <i class="fas fa-eye text-3xl text-blue-400 mb-3"></i>
+                                <h4 class="font-semibold text-white mb-2">Continuous Monitoring</h4>
+                                <p class="text-gray-300 text-sm">Real-time compliance tracking and automated alerts</p>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-6 text-center">
+                                <i class="fas fa-calendar-check text-3xl text-green-400 mb-3"></i>
+                                <h4 class="font-semibold text-white mb-2">Scheduled Reviews</h4>
+                                <p class="text-gray-300 text-sm">Regular internal and external audit programs</p>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-6 text-center">
+                                <i class="fas fa-tools text-3xl text-purple-400 mb-3"></i>
+                                <h4 class="font-semibold text-white mb-2">Corrective Actions</h4>
+                                <p class="text-gray-300 text-sm">Systematic non-conformity resolution and prevention</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">10.2 Monitoring Systems</h3>
+                        <div class="space-y-4 mb-6">
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="font-semibold text-white mb-2">
+                                    <i class="fas fa-tachometer-alt mr-2 text-blue-400"></i>Performance Dashboard
+                                </h4>
+                                <p class="text-gray-300 text-sm">Real-time monitoring of key quality indicators, system performance, and compliance metrics</p>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="font-semibold text-white mb-2">
+                                    <i class="fas fa-bell mr-2 text-yellow-400"></i>Alert System
+                                </h4>
+                                <p class="text-gray-300 text-sm">Automated notifications for compliance deviations, system issues, and quality threshold breaches</p>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="font-semibold text-white mb-2">
+                                    <i class="fas fa-file-alt mr-2 text-green-400"></i>Compliance Reports
+                                </h4>
+                                <p class="text-gray-300 text-sm">Regular compliance status reports for internal management and regulatory authorities</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">10.3 Audit Program</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full bg-gray-700 rounded-lg overflow-hidden">
+                                <thead class="bg-gray-600">
+                                    <tr>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Audit Type</th>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Frequency</th>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Scope</th>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Auditor</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-gray-300">
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Internal Quality Review</td>
+                                        <td class="px-4 py-3">Quarterly</td>
+                                        <td class="px-4 py-3">Process compliance, KPI review</td>
+                                        <td class="px-4 py-3">Accountable Manager</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">External Quality Audit</td>
+                                        <td class="px-4 py-3">Annual</td>
+                                        <td class="px-4 py-3">Comprehensive system review</td>
+                                        <td class="px-4 py-3">Independent Auditor</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Regulatory Compliance</td>
+                                        <td class="px-4 py-3">As required</td>
+                                        <td class="px-4 py-3">CAAS requirement adherence</td>
+                                        <td class="px-4 py-3">CAAS or Designee</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Technical Security</td>
+                                        <td class="px-4 py-3">Bi-annual</td>
+                                        <td class="px-4 py-3">System security, data protection</td>
+                                        <td class="px-4 py-3">Security Specialist</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 11: Document Control and Management -->
+                <section id="section-11" class="bg-gray-800 rounded-2xl shadow-lg p-8 card-hover-effect">
+                    <h2 class="text-3xl font-bold text-white mb-6">
+                        <i class="fas fa-folder-open mr-3 text-indigo-400"></i>11. Document Control and Management
+                    </h2>
+                    
+                    <div class="prose prose-invert max-w-none">
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">11.1 Document Control System</h3>
+                        <p class="text-gray-300 mb-6">Effective document control ensures that all personnel have access to current, approved documents while maintaining proper version control and change management.</p>
+
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div class="bg-gray-700 rounded-lg p-6">
+                                <h4 class="font-semibold text-white mb-3">
+                                    <i class="fas fa-file-contract mr-2 text-blue-400"></i>Controlled Documents
+                                </h4>
+                                <ul class="text-gray-300 text-sm space-y-2">
+                                    <li>• Quality Assurance Manual</li>
+                                    <li>• Training curricula and materials</li>
+                                    <li>• Assessment instruments</li>
+                                    <li>• Standard Operating Procedures</li>
+                                    <li>• Forms and templates</li>
+                                    <li>• Regulatory compliance documents</li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-6">
+                                <h4 class="font-semibold text-white mb-3">
+                                    <i class="fas fa-shield-alt mr-2 text-green-400"></i>Control Measures
+                                </h4>
+                                <ul class="text-gray-300 text-sm space-y-2">
+                                    <li>• Unique document identification</li>
+                                    <li>• Version control and dating</li>
+                                    <li>• Approval authorization tracking</li>
+                                    <li>• Distribution control</li>
+                                    <li>• Obsolete document removal</li>
+                                    <li>• Change history maintenance</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">11.2 Document Lifecycle Management</h3>
+                        <div class="bg-gray-700 rounded-lg p-6 mb-6">
+                            <div class="space-y-4">
+                                <div class="flex items-center space-x-4">
+                                    <div class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                                    <div>
+                                        <p class="text-white font-medium">Creation and Development</p>
+                                        <p class="text-gray-400 text-sm">Document drafted according to templates and standards</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                                    <div>
+                                        <p class="text-white font-medium">Review and Approval</p>
+                                        <p class="text-gray-400 text-sm">Content review by subject matter experts and formal approval</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                                    <div>
+                                        <p class="text-white font-medium">Distribution and Implementation</p>
+                                        <p class="text-gray-400 text-sm">Controlled distribution to authorized personnel</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">4</div>
+                                    <div>
+                                        <p class="text-white font-medium">Maintenance and Updates</p>
+                                        <p class="text-gray-400 text-sm">Regular review and revision as needed</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="bg-red-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">5</div>
+                                    <div>
+                                        <p class="text-white font-medium">Retirement and Archival</p>
+                                        <p class="text-gray-400 text-sm">Controlled obsolescence and historical preservation</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">11.3 Change Management Process</h3>
+                        <div class="space-y-4 mb-6">
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="font-semibold text-white mb-2">
+                                    <i class="fas fa-edit mr-2 text-yellow-400"></i>Change Request Process
+                                </h4>
+                                <p class="text-gray-300 text-sm">Formal process for requesting, evaluating, and approving document changes</p>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="font-semibold text-white mb-2">
+                                    <i class="fas fa-balance-scale mr-2 text-purple-400"></i>Impact Assessment
+                                </h4>
+                                <p class="text-gray-300 text-sm">Evaluation of proposed changes on quality, compliance, and operational effectiveness</p>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="font-semibold text-white mb-2">
+                                    <i class="fas fa-broadcast-tower mr-2 text-green-400"></i>Communication Plan
+                                </h4>
+                                <p class="text-gray-300 text-sm">Systematic notification of changes to all affected stakeholders</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">11.4 Document Access and Security</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full bg-gray-700 rounded-lg overflow-hidden">
+                                <thead class="bg-gray-600">
+                                    <tr>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Document Type</th>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Access Level</th>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Storage Location</th>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Backup Frequency</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-gray-300">
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Quality Manual</td>
+                                        <td class="px-4 py-3">Public</td>
+                                        <td class="px-4 py-3">Web server, Document repository</td>
+                                        <td class="px-4 py-3">Daily</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Training Materials</td>
+                                        <td class="px-4 py-3">Student access</td>
+                                        <td class="px-4 py-3">LMS, CDN</td>
+                                        <td class="px-4 py-3">Daily</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Student Records</td>
+                                        <td class="px-4 py-3">Restricted</td>
+                                        <td class="px-4 py-3">Encrypted database</td>
+                                        <td class="px-4 py-3">Real-time</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Internal Procedures</td>
+                                        <td class="px-4 py-3">Staff only</td>
+                                        <td class="px-4 py-3">Secure repository</td>
+                                        <td class="px-4 py-3">Weekly</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 12: Emergency and Contingency Procedures -->
+                <section id="section-12" class="bg-gray-800 rounded-2xl shadow-lg p-8 card-hover-effect">
+                    <h2 class="text-3xl font-bold text-white mb-6">
+                        <i class="fas fa-exclamation-triangle mr-3 text-indigo-400"></i>12. Emergency and Contingency Procedures
+                    </h2>
+                    
+                    <div class="prose prose-invert max-w-none">
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">12.1 Emergency Response Framework</h3>
+                        <p class="text-gray-300 mb-6">Comprehensive emergency procedures ensure business continuity and stakeholder protection during various contingency scenarios.</p>
+
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div class="bg-red-900/30 border border-red-700 rounded-lg p-6">
+                                <h4 class="font-semibold text-white mb-3">
+                                    <i class="fas fa-server mr-2 text-red-400"></i>System Failures
+                                </h4>
+                                <ul class="text-gray-300 text-sm space-y-2">
+                                    <li>• Immediate system status assessment</li>
+                                    <li>• Backup system activation</li>
+                                    <li>• Student notification procedures</li>
+                                    <li>• Service restoration timeline</li>
+                                    <li>• Post-incident analysis</li>
+                                </ul>
+                            </div>
+                            <div class="bg-orange-900/30 border border-orange-700 rounded-lg p-6">
+                                <h4 class="font-semibold text-white mb-3">
+                                    <i class="fas fa-shield-virus mr-2 text-orange-400"></i>Security Incidents
+                                </h4>
+                                <ul class="text-gray-300 text-sm space-y-2">
+                                    <li>• Immediate threat containment</li>
+                                    <li>• Data breach assessment</li>
+                                    <li>• Regulatory notification</li>
+                                    <li>• Student data protection</li>
+                                    <li>• System security enhancement</li>
+                                </ul>
+                            </div>
+                            <div class="bg-yellow-900/30 border border-yellow-700 rounded-lg p-6">
+                                <h4 class="font-semibold text-white mb-3">
+                                    <i class="fas fa-gavel mr-2 text-yellow-400"></i>Regulatory Changes
+                                </h4>
+                                <ul class="text-gray-300 text-sm space-y-2">
+                                    <li>• Rapid content assessment</li>
+                                    <li>• Emergency curriculum updates</li>
+                                    <li>• Student communication</li>
+                                    <li>• Compliance verification</li>
+                                    <li>• Training delivery continuity</li>
+                                </ul>
+                            </div>
+                            <div class="bg-blue-900/30 border border-blue-700 rounded-lg p-6">
+                                <h4 class="font-semibold text-white mb-3">
+                                    <i class="fas fa-user-times mr-2 text-blue-400"></i>Personnel Unavailability
+                                </h4>
+                                <ul class="text-gray-300 text-sm space-y-2">
+                                    <li>• Backup personnel activation</li>
+                                    <li>• Responsibility delegation</li>
+                                    <li>• Service continuity planning</li>
+                                    <li>• Stakeholder communication</li>
+                                    <li>• Recovery planning</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">12.2 Business Continuity Plan</h3>
+                        <div class="bg-gray-700 rounded-lg p-6 mb-6">
+                            <h4 class="font-semibold text-white mb-4">Critical Business Functions</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-300">Training delivery platform</span>
+                                    <span class="quality-badge badge-high">Critical</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-300">Student assessment system</span>
+                                    <span class="quality-badge badge-high">Critical</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-300">Certificate generation</span>
+                                    <span class="quality-badge badge-high">Critical</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-300">Student support services</span>
+                                    <span class="quality-badge badge-medium">Important</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-300">Administrative functions</span>
+                                    <span class="quality-badge badge-low">Standard</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">12.3 Recovery Procedures</h3>
+                        <div class="space-y-4">
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="font-semibold text-white mb-2">
+                                    <i class="fas fa-clock mr-2 text-blue-400"></i>Recovery Time Objectives (RTO)
+                                </h4>
+                                <ul class="text-gray-300 text-sm space-y-1">
+                                    <li>• Critical systems: 4 hours maximum</li>
+                                    <li>• Important systems: 24 hours maximum</li>
+                                    <li>• Standard systems: 72 hours maximum</li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="font-semibold text-white mb-2">
+                                    <i class="fas fa-database mr-2 text-green-400"></i>Recovery Point Objectives (RPO)
+                                </h4>
+                                <ul class="text-gray-300 text-sm space-y-1">
+                                    <li>• Student data: Zero data loss</li>
+                                    <li>• Training content: 24 hours maximum</li>
+                                    <li>• System configurations: 1 week maximum</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4 mt-8">12.4 Communication Protocols</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full bg-gray-700 rounded-lg overflow-hidden">
+                                <thead class="bg-gray-600">
+                                    <tr>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Stakeholder</th>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Notification Method</th>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Timeline</th>
+                                        <th class="px-4 py-3 text-left text-white font-semibold">Information Level</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-gray-300">
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Students</td>
+                                        <td class="px-4 py-3">Email, website banner</td>
+                                        <td class="px-4 py-3">Within 2 hours</td>
+                                        <td class="px-4 py-3">Service impact, expected resolution</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">CAAS</td>
+                                        <td class="px-4 py-3">Official correspondence</td>
+                                        <td class="px-4 py-3">Within 24 hours</td>
+                                        <td class="px-4 py-3">Compliance impact, mitigation measures</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Technical Partners</td>
+                                        <td class="px-4 py-3">Direct contact</td>
+                                        <td class="px-4 py-3">Immediate</td>
+                                        <td class="px-4 py-3">Technical details, support requirements</td>
+                                    </tr>
+                                    <tr class="border-t border-gray-600">
+                                        <td class="px-4 py-3">Industry Partners</td>
+                                        <td class="px-4 py-3">Email notification</td>
+                                        <td class="px-4 py-3">Within 48 hours</td>
+                                        <td class="px-4 py-3">General status, partnership impact</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Appendices Section -->
+                <section id="appendices" class="bg-gray-800 rounded-2xl shadow-lg p-8 card-hover-effect">
+                    <h2 class="text-3xl font-bold text-white mb-6">
+                        <i class="fas fa-paperclip mr-3 text-indigo-400"></i>Appendices
+                    </h2>
+                    
+                    <div class="prose prose-invert max-w-none">
+                        <!-- Appendix A -->
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">Appendix A: Quality Metrics and KPIs</h3>
+                        <div class="bg-gray-700 rounded-lg p-6 mb-6">
+                            <h4 class="font-semibold text-white mb-4">Key Performance Indicators Dashboard</h4>
+                            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                <div class="metric-card rounded-lg p-4 text-center">
+                                    <i class="fas fa-graduation-cap text-2xl text-green-400 mb-2"></i>
+                                    <div class="text-2xl font-bold text-white">95%</div>
+                                    <div class="text-sm text-gray-400">Pass Rate Target</div>
+                                </div>
+                                <div class="metric-card rounded-lg p-4 text-center">
+                                    <i class="fas fa-star text-2xl text-yellow-400 mb-2"></i>
+                                    <div class="text-2xl font-bold text-white">4.5/5</div>
+                                    <div class="text-sm text-gray-400">Satisfaction Target</div>
+                                </div>
+                                <div class="metric-card rounded-lg p-4 text-center">
+                                    <i class="fas fa-clock text-2xl text-blue-400 mb-2"></i>
+                                    <div class="text-2xl font-bold text-white">24h</div>
+                                    <div class="text-sm text-gray-400">Response Time</div>
+                                </div>
+                                <div class="metric-card rounded-lg p-4 text-center">
+                                    <i class="fas fa-shield-check text-2xl text-purple-400 mb-2"></i>
+                                    <div class="text-2xl font-bold text-white">99.9%</div>
+                                    <div class="text-sm text-gray-400">System Uptime</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Appendix B -->
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">Appendix B: Regulatory Compliance Checklist</h3>
+                        <div class="bg-gray-700 rounded-lg p-6 mb-6">
+                            <h4 class="font-semibold text-white mb-4">CAAS AC 101-3-1(4) Compliance Matrix</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-300">Accountable Manager qualification</span>
+                                    <span class="quality-badge badge-low"><i class="fas fa-check mr-1"></i>Compliant</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-300">Training curriculum approval</span>
+                                    <span class="quality-badge badge-low"><i class="fas fa-check mr-1"></i>Compliant</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-300">Quality assurance system</span>
+                                    <span class="quality-badge badge-low"><i class="fas fa-check mr-1"></i>Compliant</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-300">Record keeping system</span>
+                                    <span class="quality-badge badge-low"><i class="fas fa-check mr-1"></i>Compliant</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-300">Student assessment procedures</span>
+                                    <span class="quality-badge badge-low"><i class="fas fa-check mr-1"></i>Compliant</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-300">Certificate issuance process</span>
+                                    <span class="quality-badge badge-low"><i class="fas fa-check mr-1"></i>Compliant</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Appendix C -->
+                        <h3 class="text-xl font-semibold text-indigo-300 mb-4">Appendix C: Document Templates and Forms</h3>
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div class="bg-gray-700 rounded-lg p-6">
+                                <h4 class="font-semibold text-white mb-3">
+                                    <i class="fas fa-file-alt mr-2 text-blue-400"></i>Quality Documents
+                                </h4>
+                                <ul class="text-gray-300 text-sm space-y-2">
+                                    <li>• Incident report template</li>
+                                    <li>• Corrective action form</li>
+                                    <li>• Audit checklist template</li>
+                                    <li>• Management review template</li>
+                                    <li>• Change request form</li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-6">
+                                <h4 class="font-semibold text-white mb-3">
+                                    <i class="fas fa-clipboard-list mr-2 text-green-400"></i>Operational Forms
+                                </h4>
+                                <ul class="text-gray-300 text-sm space-y-2">
+                                    <li>• Student feedback survey</li>
+                                    <li>• Course evaluation form</li>
+                                    <li>• Technical support ticket</li>
+                                    <li>• Performance review template</li>
