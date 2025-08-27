@@ -51,7 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         requiresRemoteID = true;
                         break;
                 }
-                html += '<li>A <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft/ua-regulatory-requirements/ua-operator-and-activity-permits" target="_blank" class="text-indigo-400 hover:underline"><strong>Class 2 Activity Permit</strong></a> is required for flying at events with >50 people, flying above 200ft, or within restricted areas.</li>';
+                html += '<li>A <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft/ua-regulatory-requirements/ua-operator-and-activity-permits" target="_blank" class="text-indigo-400 hover:underline"><strong>Class 2 Activity Permit</strong></a> is required for flying above 200ft, within 5km of an aerodrome, or within other restricted areas.</li>';
+                html += '<li>For more complex operations (e.g., flying a drone over 25kg or flying Beyond Visual Line-of-Sight), an <a href="https://www.caas.gov.sg/public-passengers/unmanned-aircraft/ua-regulatory-requirements/ua-operator-and-activity-permits" target="_blank" class="text-indigo-400 hover:underline"><strong>Operator Permit</strong> and <strong>Class 1 Activity Permit</strong></a> are required.</li>';
             }
             if (requiresRemoteID) {
                 html += '<li><strong>Upcoming:</strong> From <strong>1 Dec 2025</strong>, your drone must have <a href="#faq-remote-id" class="text-indigo-400 hover:underline"><strong>Broadcast Remote ID (B-RID)</strong></a>.</li>';
