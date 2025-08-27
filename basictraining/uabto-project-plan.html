@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UABTO Project Plan - Dronefly.sg</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .sidebar {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        .content {
+            height: 100vh;
+            overflow-y: auto;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-300">
+    <div class="flex min-h-screen">
+        <!-- Sidebar Navigation -->
+        <div class="w-80 bg-gray-800 sidebar">
+            <div class="p-6">
+                <h2 class="text-xl font-bold text-white mb-6">
+                    <i class="fas fa-project-diagram mr-2 text-indigo-400"></i>
+                    UABTO Project Plan
+                </h2>
+                <nav class="space-y-2">
+                    <a href="#executive-summary" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-chart-line mr-3 text-indigo-400"></i>
+                        Executive Summary
+                    </a>
+                    <a href="#current-status" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-tasks mr-3 text-green-400"></i>
+                        Current Status Assessment
+                    </a>
+                    <a href="#caas-requirements" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-clipboard-check mr-3 text-blue-400"></i>
+                        CAAS Requirements Analysis
+                    </a>
+                    <a href="#implementation-plan" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-road mr-3 text-purple-400"></i>
+                        Implementation Plan
+                    </a>
+                    <a href="#task-breakdown" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-list-ul mr-3 text-yellow-400"></i>
+                        Detailed Task Breakdown
+                    </a>
+                    <a href="#risk-management" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-shield-alt mr-3 text-red-400"></i>
+                        Risk Management
+                    </a>
+                    <a href="#success-metrics" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-trophy mr-3 text-orange-400"></i>
+                        Success Metrics
+                    </a>
+                    <a href="#next-steps" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-arrow-right mr-3 text-cyan-400"></i>
+                        Next Steps
+                    </a>
+                    <a href="#conclusion" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition-colors">
+                        <i class="fas fa-flag-checkered mr-3 text-pink-400"></i>
+                        Conclusion
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 content">
+            <!-- Hero Section -->
+            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-8">
+                <div class="max-w-4xl mx-auto">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-project-diagram text-4xl mr-4"></i>
+                        <div>
+                            <h1 class="text-4xl font-bold">UABTO Application Project Management Plan</h1>
+                            <p class="text-xl opacity-90">Dronefly.sg Unmanned Aircraft Basic Training Organisation</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-4 mt-6">
+                        <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm font-medium">
+                            <i class="fas fa-calendar mr-2"></i>Project Timeline
+                        </span>
+                        <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm font-medium">
+                            <i class="fas fa-check-circle mr-2"></i>90% Complete
+                        </span>
+                        <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm font-medium">
+                            <i class="fas fa-plane mr-2"></i>CAAS Compliance
+                        </span>
+                        <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm font-medium">
+                            <i class="fas fa-graduation-cap mr-2"></i>Training Excellence
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-4xl mx-auto p-8">
+                <!-- Executive Summary -->
+                <section id="executive-summary" class="mb-12">
+                    <div class="bg-gray-800 rounded-lg p-6 card-hover">
+                        <h2 class="text-2xl font-bold text-indigo-400 mb-4">
+                            <i class="fas fa-chart-line mr-2"></i>Executive Summary
+                        </h2>
+                        <p class="text-gray-300 leading-relaxed">
+                            This project plan outlines the steps to complete and submit the UABTO application to CAAS, building on the substantial courseware and system components already developed.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Current Status Assessment -->
+                <section id="current-status" class="mb-12">
+                    <div class="bg-gray-800 rounded-lg p-6 card-hover">
+                        <h2 class="text-2xl font-bold text-indigo-400 mb-6">
+                            <i class="fas fa-tasks mr-2"></i>Current Status Assessment
+                        </h2>
+                        
+                        <h3 class="text-xl font-semibold text-green-400 mb-4">
+                            <i class="fas fa-check-circle mr-2"></i>COMPLETED COMPONENTS
+                        </h3>
+
+                        <div class="grid md:grid-cols-2 gap-6 mb-8">
+                            <!-- Courseware Development -->
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="text-lg font-semibold text-white mb-3">
+                                    <i class="fas fa-book mr-2 text-blue-400"></i>1. Courseware Development (90% Complete)
+                                </h4>
+                                <ul class="space-y-2 text-sm">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        <strong>Module 1:</strong> Air Law & Legislations - Complete interactive e-learning script and quiz
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        <strong>Module 2:</strong> UAS General Knowledge - Complete interactive e-learning script and quiz
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        <strong>Module 3:</strong> UAS Safety & Operations - Complete interactive e-learning script and quiz
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        All modules cover learning outcomes specified in Appendix 2 of AC 101-3-1(4)
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        Interactive quiz system with 20+ questions per module
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        Professional web-based delivery platform
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Organizational Structure -->
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="text-lg font-semibold text-white mb-3">
+                                    <i class="fas fa-sitemap mr-2 text-purple-400"></i>2. Organizational Structure (100% Complete)
+                                </h4>
+                                <ul class="space-y-2 text-sm">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        Accountable Manager profile (Alan Soon) with relevant qualifications
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        Lean organizational model with external contractor support
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        Clear accountability and responsibility framework
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- System Components -->
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="text-lg font-semibold text-white mb-3">
+                                    <i class="fas fa-cogs mr-2 text-yellow-400"></i>3. System Components (80% Complete)
+                                </h4>
+                                <ul class="space-y-2 text-sm">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        Learning Management System (web-based platform)
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        Certificate generation system (mockup complete)
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        Student progress tracking
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        Professional branding and user interface
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Personnel Qualifications -->
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="text-lg font-semibold text-white mb-3">
+                                    <i class="fas fa-user-graduate mr-2 text-cyan-400"></i>4. Personnel Qualifications (100% Complete)
+                                </h4>
+                                <ul class="space-y-2 text-sm">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        Accountable Manager: UABT certified, RPC holder, extensive aviation/media experience
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        Clear demonstration of competency and experience
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CAAS Requirements Analysis -->
+                <section id="caas-requirements" class="mb-12">
+                    <div class="bg-gray-800 rounded-lg p-6 card-hover">
+                        <h2 class="text-2xl font-bold text-indigo-400 mb-6">
+                            <i class="fas fa-clipboard-check mr-2"></i>CAAS Requirements Analysis
+                        </h2>
+                        
+                        <h3 class="text-xl font-semibold text-white mb-4">Key UABTO Requirements from AC 101-3-1(4):</h3>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- Section 4.2 -->
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="text-lg font-semibold text-blue-400 mb-3">
+                                    <i class="fas fa-file-alt mr-2"></i>Section 4.2 - Application Requirements
+                                </h4>
+                                <ul class="space-y-2 text-sm">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        Completed application form
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        Training syllabus and curriculum
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        Organizational structure
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        Personnel qualifications
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        Training facilities description
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        Quality assurance procedures
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        Record keeping procedures
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        Training materials and resources
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Section 4.3 -->
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h4 class="text-lg font-semibold text-purple-400 mb-3">
+                                    <i class="fas fa-user-tie mr-2"></i>Section 4.3 - Accountable Manager Requirements
+                                </h4>
+                                <ul class="space-y-2 text-sm">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        Appropriate experience and qualifications
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        Ultimate responsibility for training organization
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-400 mr-2"></i>
+                                        Authority to ensure compliance
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Section 4.4 -->
+                            <div class="bg-gray-700 rounded-lg p-4 md:col-span-2">
+                                <h4 class="text-lg font-semibold text-cyan-400 mb-3">
+                                    <i class="fas fa-graduation-cap mr-2"></i>Section 4.4 - Training Program Requirements
+                                </h4>
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <ul class="space-y-2 text-sm">
+                                        <li class="flex items-center">
+                                            <i class="fas fa-check text-green-400 mr-2"></i>
+                                            Covers all required learning outcomes
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-check text-green-400 mr-2"></i>
+                                            Appropriate assessment methods
+                                        </li>
+                                    </ul>
+                                    <ul class="space-y-2 text-sm">
+                                        <li class="flex items-center">
+                                            <i class="fas fa-check text-green-400 mr-2"></i>
+                                            Minimum training hours met (2+ hours per module)
+                                        </li>
+                                        <li class="flex items-center">
+                                            <i class="fas fa-check text-green-400 mr-2"></i>
+                                            Competency-based approach
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Implementation Plan -->
+                <section id="implementation-plan" class="mb-12">
+                    <div class="bg-gray-800 rounded-lg p-6 card-hover">
+                        <h2 class="text-2xl font-bold text-indigo-400 mb-6">
+                            <i class="fas fa-road mr-2"></i>Implementation Plan
+                        </h2>
+
+                        <div class="space-y-8">
+                            <!-- Phase 1 -->
+                            <div class="bg-gray-700 rounded-lg p-6">
+                                <h3 class="text-xl font-semibold text-red-400 mb-4">
+                                    <i class="fas fa-exclamation-triangle mr-2"></i>Phase 1: Documentation Completion (Priority: HIGH)
+                                </h3>
+                                <p class="text-gray-300 mb-4"><strong>Timeline:</strong> 2-3 weeks</p>
+                                
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-white mb-3">1.1 Application Form Preparation</h4>
+                                        <ul class="space-y-2 text-sm">
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Download and complete CAAS UABTO application form
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Gather all required supporting documents
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Prepare organizational charts and personnel CVs
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Compile evidence of facilities and resources
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-white mb-3">1.2 Quality Assurance Manual Development</h4>
+                                        <ul class="space-y-2 text-sm">
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Create QA procedures for course content review
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Establish instructor qualification standards
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Define assessment and certification processes
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Document continuous improvement procedures
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="mt-6">
+                                    <h4 class="text-lg font-semibold text-white mb-3">1.3 Operations Manual Creation</h4>
+                                    <div class="grid md:grid-cols-2 gap-4">
+                                        <ul class="space-y-2 text-sm">
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Training delivery procedures
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Student enrollment and management
+                                            </li>
+                                        </ul>
+                                        <ul class="space-y-2 text-sm">
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Record keeping and data protection
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Emergency and contingency procedures
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Phase 2 -->
+                            <div class="bg-gray-700 rounded-lg p-6">
+                                <h3 class="text-xl font-semibold text-yellow-400 mb-4">
+                                    <i class="fas fa-exclamation-circle mr-2"></i>Phase 2: System Enhancement (Priority: MEDIUM)
+                                </h3>
+                                <p class="text-gray-300 mb-4"><strong>Timeline:</strong> 1-2 weeks</p>
+                                
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-white mb-3">2.1 Learning Management System Completion</h4>
+                                        <ul class="space-y-2 text-sm">
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Implement user authentication and enrollment
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Add progress tracking and reporting
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Integrate certificate generation
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Add administrative dashboard
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-white mb-3">2.2 Assessment System Refinement</h4>
+                                        <ul class="space-y-2 text-sm">
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Implement randomized question pools
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Add detailed performance analytics
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Create remedial training pathways
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Establish passing criteria documentation
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Phase 3 -->
+                            <div class="bg-gray-700 rounded-lg p-6">
+                                <h3 class="text-xl font-semibold text-red-400 mb-4">
+                                    <i class="fas fa-exclamation-triangle mr-2"></i>Phase 3: Compliance and Submission (Priority: HIGH)
+                                </h3>
+                                <p class="text-gray-300 mb-4"><strong>Timeline:</strong> 1 week</p>
+                                
+                                <div class="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-white mb-3">3.1 Final Documentation Review</h4>
+                                        <ul class="space-y-2 text-sm">
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Legal review of all documentation
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                PDPA compliance verification
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Insurance and liability documentation
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Financial capability demonstration
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-white mb-3">3.2 Application Submission</h4>
+                                        <ul class="space-y-2 text-sm">
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Complete application package assembly
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Submit to CAAS with required fees
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Schedule inspection/audit if required
+                                            </li>
+                                            <li class="flex items-center">
+                                                <i class="fas fa-square text-gray-400 mr-2"></i>
+                                                Respond to any CAAS queries or requests
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Detailed Task Breakdown -->
+                <section id="task-breakdown" class="mb-12">
+                    <div class="bg-gray-800 rounded-lg p-6 card-hover">
+                        <h2 class="text-2xl font-bold text-indigo-400 mb-6">
+                            <i class="fas fa-list-ul mr-2"></i>Detailed Task Breakdown
+                        </h2>
+
+                        <!-- Immediate Actions -->
+                        <div class="mb-8">
+                            <h3 class="text-xl font-semibold text-red-400 mb-4">
+                                <i class="fas fa-clock mr-2"></i>IMMEDIATE ACTIONS (Next 7 Days)
+                            </h3>
+
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <!-- Day 1-2 -->
+                                <div class="bg-gray-700 rounded-lg p-4">
+                                    <h4 class="text-lg font-semibold text-white mb-3">
+                                        <i class="fas fa-calendar-day mr-2 text-blue-400"></i>Day 1-2: Application Form and Documentation
+                                    </h4>
+                                    <div class="mb-4">
+                                        <h5 class="font-semibold text-gray-200 mb-2">1. Download CAAS Application Forms</h5>
+                                        <ul class="space-y-1 text-sm ml-4">
+                                            <li>• UABTO application form</li>
+                                            <li>• Personnel qualification forms</li>
+                                            <li>• Facility declaration forms</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-200 mb-2">2. Compile Supporting Evidence</h5>
+                                        <ul class="space-y-1 text-sm ml-4">
+                                            <li>• Alan Soon's qualifications (UABT, RPC certificates)</li>
+                                            <li>• Business registration documents</li>
+                                            <li>• Insurance certificates</li>
+                                            <li>• Financial statements</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Day 3-4 -->
+                                <div class="bg-gray-700 rounded-lg p-4">
+                                    <h4 class="text-lg font-semibold text-white mb-3">
+                                        <i class="fas fa-calendar-day mr-2 text-green-400"></i>Day 3-4: Quality Assurance Manual
+                                    </h4>
+                                    <div class="mb-4">
+                                        <h5 class="font-semibold text-gray-200 mb-2">1. Course Content QA Procedures</h5>
+                                        <ul class="space-y-1 text-sm ml-4">
+                                            <li>• Annual curriculum review process</li>
+                                            <li>• Subject matter expert validation</li>
+                                            <li>• Regulatory compliance monitoring</li>
+                                            <li>• Student feedback integration</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-200 mb-2">2. Assessment Quality Standards</h5>
+                                        <ul class="space-y-1 text-sm ml-4">
+                                            <li>• Question bank management</li>
+                                            <li>• Passing criteria justification</li>
+                                            <li>• Remedial training protocols</li>
+                                            <li>• Certificate issuance procedures</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Day 5-7 -->
+                                <div class="bg-gray-700 rounded-lg p-4 md:col-span-2">
+                                    <h4 class="text-lg font-semibold text-white mb-3">
+                                        <i class="fas fa-calendar-week mr-2 text-purple-400"></i>Day 5-7: Operations Manual
+                                    </h4>
+                                    <div class="grid md:grid-cols-2 gap-6">
+                                        <div>
+                                            <h5 class="font-semibold text-gray-200 mb-2">1. Training Delivery Standards</h5>
+                                            <ul class="space-y-1 text-sm ml-4">
+                                                <li>• Online platform requirements</li>
+                                                <li>• Technical support procedures</li>
+                                                <li>• Accessibility compliance</li>
+                                                <li>• Multi-device compatibility</li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-semibold text-gray-200 mb-2">2. Administrative Procedures</h5>
+                                            <ul class="space-y-1 text-sm ml-4">
+                                                <li>• Student enrollment process</li>
+                                                <li>• Progress monitoring</li>
+                                                <li>• Certificate management</li>
+                                                <li>• Record retention policies</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Medium-term Actions -->
+                        <div class="mb-8">
+                            <h3 class="text-xl font-semibold text-yellow-400 mb-4">
+                                <i class="fas fa-calendar-alt mr-2"></i>MEDIUM-TERM ACTIONS (Weeks 2-4)
+                            </h3>
+
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <!-- System Enhancements -->
+                                <div class="bg-gray-700 rounded-lg p-4">
+                                    <h4 class="text-lg font-semibold text-white mb-3">
+                                        <i class="fas fa-cogs mr-2 text-blue-400"></i>System Enhancements
+                                    </h4>
+                                    <div class="mb-4">
+                                        <h5 class="font-semibold text-gray-200 mb-2">1. User Management System</h5>
+                                        <ul class="space-y-1 text-sm ml-4">
+                                            <li>• Student registration portal</li>
+                                            <li>• Progress tracking dashboard</li>
+                                            <li>• Automated certificate generation</li>
+                                            <li>• Administrative reporting tools</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-200 mb-2">2. Content Management</h5>
+                                        <ul class="space-y-1 text-sm ml-4">
+                                            <li>• Version control for course materials</li>
+                                            <li>• Update deployment procedures</li>
+                                            <li>• Backup and recovery systems</li>
+                                            <li>• Performance monitoring</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Compliance Verification -->
+                                <div class="bg-gray-700 rounded-lg p-4">
+                                    <h4 class="text-lg font-semibold text-white mb-3">
+                                        <i class="fas fa-shield-alt mr-2 text-green-400"></i>Compliance Verification
+                                    </h4>
+                                    <div class="mb-4">
+                                        <h5 class="font-semibold text-gray-200 mb-2">1. PDPA Compliance</h5>
+                                        <ul class="space-y-1 text-sm ml-4">
+                                            <li>• Data protection impact assessment</li>
+                                            <li>• Privacy policy updates</li>
+                                            <li>• Consent management procedures</li>
+                                            <li>• Data breach response plan</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-200 mb-2">2. Accessibility Standards</h5>
+                                        <ul class="space-y-1 text-sm ml-4">
+                                            <li>• WCAG 2.1 compliance audit</li>
+                                            <li>• Multi-language support planning</li>
+                                            <li>• Assistive technology compatibility</li>
+                                            <li>• User experience optimization</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Risk Management -->
+                <section id="risk-management" class="mb-12">
+                    <div class="bg-gray-800 rounded-lg p-6 card-hover">
+                        <h2 class="text-2xl font-bold text-indigo-400 mb-6">
+                            <i class="fas fa-shield-alt mr-2"></i>Risk Management
+                        </h2>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- High-Risk Items -->
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h3 class="text-xl font-semibold text-red-400 mb-4">
+                                    <i class="fas fa-exclamation-triangle mr-2"></i>High-Risk Items
+                                </h3>
+                                <div class="space-y-4">
+                                    <div class="border-l-4 border-red-400 pl-4">
+                                        <h4 class="font-semibold text-white mb-2">1. CAAS Application Rejection</h4>
+                                        <p class="text-sm text-gray-300 mb-1"><strong>Mitigation:</strong> Thorough pre-submission review</p>
+                                        <p class="text-sm text-gray-300"><strong>Contingency:</strong> Rapid response to feedback</p>
+                                    </div>
+                                    <div class="border-l-4 border-red-400 pl-4">
+                                        <h4 class="font-semibold text-white mb-2">2. Technical System Failures</h4>
+                                        <p class="text-sm text-gray-300 mb-1"><strong>Mitigation:</strong> Robust testing and backup systems</p>
+                                        <p class="text-sm text-gray-300"><strong>Contingency:</strong> Alternative delivery methods</p>
+                                    </div>
+                                    <div class="border-l-4 border-red-400 pl-4">
+                                        <h4 class="font-semibold text-white mb-2">3. Regulatory Changes</h4>
+                                        <p class="text-sm text-gray-300 mb-1"><strong>Mitigation:</strong> Regular monitoring of CAAS updates</p>
+                                        <p class="text-sm text-gray-300"><strong>Contingency:</strong> Agile curriculum adaptation</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Medium-Risk Items -->
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h3 class="text-xl font-semibold text-yellow-400 mb-4">
+                                    <i class="fas fa-exclamation-circle mr-2"></i>Medium-Risk Items
+                                </h3>
+                                <div class="space-y-4">
+                                    <div class="border-l-4 border-yellow-400 pl-4">
+                                        <h4 class="font-semibold text-white mb-2">1. Competitor Market Entry</h4>
+                                        <p class="text-sm text-gray-300 mb-1"><strong>Mitigation:</strong> First-mover advantage and quality focus</p>
+                                        <p class="text-sm text-gray-300"><strong>Contingency:</strong> Differentiation strategy</p>
+                                    </div>
+                                    <div class="border-l-4 border-yellow-400 pl-4">
+                                        <h4 class="font-semibold text-white mb-2">2. Technology Obsolescence</h4>
+                                        <p class="text-sm text-gray-300 mb-1"><strong>Mitigation:</strong> Modern, scalable architecture</p>
+                                        <p class="text-sm text-gray-300"><strong>Contingency:</strong> Platform migration planning</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Success Metrics -->
+                <section id="success-metrics" class="mb-12">
+                    <div class="bg-gray-800 rounded-lg p-6 card-hover">
+                        <h2 class="text-2xl font-bold text-indigo-400 mb-6">
+                            <i class="fas fa-trophy mr-2"></i>Success Metrics
+                        </h2>
+
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <!-- Application Success -->
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h3 class="text-lg font-semibold text-green-400 mb-3">
+                                    <i class="fas fa-check-circle mr-2"></i>Application Success
+                                </h3>
+                                <ul class="space-y-2 text-sm">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-square text-gray-400 mr-2"></i>
+                                        CAAS UABTO approval received
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-square text-gray-400 mr-2"></i>
+                                        All compliance requirements met
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-square text-gray-400 mr-2"></i>
+                                        Zero major deficiencies identified
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Operational Readiness -->
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h3 class="text-lg font-semibold text-blue-400 mb-3">
+                                    <i class="fas fa-cogs mr-2"></i>Operational Readiness
+                                </h3>
+                                <ul class="space-y-2 text-sm">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-square text-gray-400 mr-2"></i>
+                                        System can handle 100+ concurrent users
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-square text-gray-400 mr-2"></i>
+                                        99.9% uptime achieved
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-square text-gray-400 mr-2"></i>
+                                        Certificate generation automated
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-square text-gray-400 mr-2"></i>
+                                        Student satisfaction >90%
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Business Objectives -->
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h3 class="text-lg font-semibold text-purple-400 mb-3">
+                                    <i class="fas fa-chart-line mr-2"></i>Business Objectives
+                                </h3>
+                                <ul class="space-y-2 text-sm">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-square text-gray-400 mr-2"></i>
+                                        First students enrolled within 30 days of approval
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-square text-gray-400 mr-2"></i>
+                                        Break-even achieved within 6 months
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-square text-gray-400 mr-2"></i>
+                                        Market leadership position established
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Next Steps -->
+                <section id="next-steps" class="mb-12">
+                    <div class="bg-gray-800 rounded-lg p-6 card-hover">
+                        <h2 class="text-2xl font-bold text-indigo-400 mb-6">
+                            <i class="fas fa-arrow-right mr-2"></i>Next Steps
+                        </h2>
+
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <!-- Immediate -->
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h3 class="text-lg font-semibold text-red-400 mb-3">
+                                    <i class="fas fa-clock mr-2"></i>Immediate (This Week)
+                                </h3>
+                                <ol class="space-y-2 text-sm">
+                                    <li class="flex items-start">
+                                        <span class="bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5">1</span>
+                                        Download and begin completing CAAS application forms
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5">2</span>
+                                        Start drafting Quality Assurance Manual
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5">3</span>
+                                        Compile all personnel qualification documents
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5">4</span>
+                                        Begin Operations Manual development
+                                    </li>
+                                </ol>
+                            </div>
+
+                            <!-- Short-term -->
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h3 class="text-lg font-semibold text-yellow-400 mb-3">
+                                    <i class="fas fa-calendar-week mr-2"></i>Short-term (Next 2 Weeks)
+                                </h3>
+                                <ol class="space-y-2 text-sm">
+                                    <li class="flex items-start">
+                                        <span class="bg-yellow-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5">1</span>
+                                        Complete all documentation
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="bg-yellow-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5">2</span>
+                                        Conduct internal review and testing
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="bg-yellow-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5">3</span>
+                                        Prepare submission package
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="bg-yellow-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5">4</span>
+                                        Schedule legal/compliance review
+                                    </li>
+                                </ol>
+                            </div>
+
+                            <!-- Medium-term -->
+                            <div class="bg-gray-700 rounded-lg p-4">
+                                <h3 class="text-lg font-semibold text-green-400 mb-3">
+                                    <i class="fas fa-calendar mr-2"></i>Medium-term (Next Month)
+                                </h3>
+                                <ol class="space-y-2 text-sm">
+                                    <li class="flex items-start">
+                                        <span class="bg-green-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5">1</span>
+                                        Submit application to CAAS
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="bg-green-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5">2</span>
+                                        Respond to any CAAS queries
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="bg-green-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5">3</span>
+                                        Prepare for inspection/audit
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="bg-green-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs mr-2 mt-0.5">4</span>
+                                        Finalize system enhancements
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Conclusion -->
+                <section id="conclusion" class="mb-12">
+                    <div class="bg-gray-800 rounded-lg p-6 card-hover">
+                        <h2 class="text-2xl font-bold text-indigo-400 mb-6">
+                            <i class="fas fa-flag-checkered mr-2"></i>Conclusion
+                        </h2>
+                        
+                        <div class="bg-gradient-to-r from-green-600 to-blue-600 rounded-lg p-6 text-white mb-6">
+                            <h3 class="text-xl font-semibold mb-4">
+                                <i class="fas fa-star mr-2"></i>Application Readiness Assessment
+                            </h3>
+                            <p class="leading-relaxed mb-4">
+                                Your UABTO application is well-positioned for success with substantial courseware and organizational components already complete. The primary focus should be on completing the formal documentation requirements and ensuring full regulatory compliance.
+                            </p>
+                            <p class="leading-relaxed">
+                                The quality of your existing courseware and the professional presentation of your materials demonstrate a serious commitment to aviation training excellence. With focused effort on the remaining documentation and compliance requirements, you should be able to submit a compelling application to CAAS.
+                            </p>
+                        </div>
+
+                        <div class="bg-red-600 rounded-lg p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-3">
+                                <i class="fas fa-exclamation-triangle mr-2"></i>Recommended Priority
+                            </h3>
+                            <p class="text-lg font-medium">
+                                Complete Phase 1 (Documentation) immediately, as this is the critical path to application submission.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Highlight active navigation item
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -80% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                const navLink = document.querySelector(`a[href="#${id}"]`);
+                
+                if (entry.isIntersecting) {
+                    // Remove active class from all nav links
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('bg-gray-700');
+                    });
+                    // Add active class to current nav link
+                    if (navLink) {
+                        navLink.classList.add('bg-gray-700');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section[id]').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
